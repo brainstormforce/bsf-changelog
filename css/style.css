@@ -1,0 +1,39 @@
+body {
+	background: #F5F5F5;
+}
+
+.changelog-content {
+	
+	width:70%;
+	padding:20px 30px;
+}
+.content-all {
+	
+    background-color: white;
+    padding: 48px 35px;
+    margin-bottom: 20px;
+}
+.bsf-cat-col {
+	background-color: white;
+	text-align: center;
+    width: 30.33%;
+    padding: 48px 35px;
+    float: left;
+    min-height: 1px;
+    position: relative;
+    margin:20px 10px;
+   
+}
+.bsf-cat-col:hover {
+	transform: translateY(0);
+    transition: all 150ms linear;
+}
+.bsf-cat-col a {
+	color:#000000;
+}
+.bsf-cat-content {
+    margin-top : 20px;
+}
+.changelog-container {
+    margin: 40px 30px;
+}
