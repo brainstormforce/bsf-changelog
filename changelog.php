@@ -1,16 +1,17 @@
 <?php
 /**
+ * Plugin Name: BSF Changelog
+ * Plugin URI:  https://www.brainstormforce.com/
+ * Description: Easily build changelog website. This plugin provides shortcodes to display category list.
+ * Version:     1.0.0
+ * Author:      BrainstormForce
+ * Author URI:  https://www.brainstormforce.com/
+ * Text Domain: bsf-changelog
+ * Domain Path: /languages
+ * License:     GPL2
  *
- Plugin Name: BSF Changelog
- Plugin URI:  https://developer.wordpress.org/plugins/the-basics/
- Description: First Wordpress Plugin
- Version:     1.0.2
- Author:      Sushma Kure
- Author URI:  https://codepen.io/sushmak02
- Text Domain: changelog-textdomain
- Domain Path: /languages
- License:     GPL2
+ * @package BSF_Changelog
  */
-
+// Including class doc loader.
 
 require_once 'includes/changelog-loader.php';
