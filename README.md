@@ -1,27 +1,26 @@
-=== BSF Changelog ===
-Contributors: brainstormforce, aniljbsfio
-Tags: docs, wpchangelog, documentation, product_changelog  
-Requires at least: 3.0  
-Tested up to: 4.8.1  
-Stable tag: 1.0.0
+# BSF Changelog #  
+**Contributors:** brainstormforce, aniljbsfio  
+**Tags:** changelog, wpchangelog, wp_changelog  
+**Tested up to:** 4.8.1  
+**Stable tag:** 1.0.0  
 
-BSF Change log allows you to create change log website within minute with ajax search.
+BSF Change allows you to create documentation website.
 
-== Description ==
+## Description ##
 
-A BSF Change log Easily build documentation website with AJAX based live search functionality. This plugin provides shortcodes to display category list & live search input box.
+A BSF Changelog Easily build chagelog website with custom layouts.
 
-== Installation ==
+## Installation ##
 
 1. Unzip the downloaded zip file
 2. Upload the included folder to '/wp-content/plugins' directory of your WordPress installation
 3. Activate the plugin via the WordPress Plugins page
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions ##
 
 None yet
 
-== Changelog ==
+## Changelog ##
 
-= Version 1.0.0 =
+### Version 1.0.0 ###
 * Initial release
