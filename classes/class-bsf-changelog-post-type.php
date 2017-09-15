@@ -23,9 +23,8 @@ class BSF_Changelog_Post_Type {
 	 * Hook in methods.
 	 */
 	public static function init() {
-		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 10 );
+		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 11 );
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 10 );
-		add_filter( 'rest_api_allowed_post_types', array( __CLASS__, 'rest_api_allowed_post_types' ) );
 	}
 
 	/**
@@ -38,6 +37,7 @@ class BSF_Changelog_Post_Type {
 		}
 
 		do_action( 'bsf_changelogs_before_register_taxonomy' );
+
 
 		register_taxonomy(
 			'product',
@@ -109,7 +109,7 @@ class BSF_Changelog_Post_Type {
 	 * Register core post types.
 	 */
 	public static function register_post_types() {
-		if ( ! is_blog_installed() || post_type_exists( 'bsf_changelogs' ) ) {
+		if ( ! is_blog_installed() ) {
 			return;
 		}
 
@@ -176,6 +176,6 @@ class BSF_Changelog_Post_Type {
 	}
 }
 
-BSF_Changelog_post_Type::init();
+BSF_Changelog_Post_Type::init();
 
 

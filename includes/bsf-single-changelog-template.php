@@ -7,9 +7,8 @@
  */
 
 get_header();
-	// Displays live search box.
-	echo do_shortcode( '[changelog_wp_live_search]' );
 ?>
+	
 
 <div class="wrap changelogs-wraper">
 	<div id="primary" class="content-area bsf-options-form-wrap grid-parent mobile-grid-100 grid-75 tablet-grid-75">
@@ -53,11 +52,6 @@ get_header();
 			?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
-		<div itemscope="itemscope" id="secondary" class="widget-area sidebar grid-25 tablet-grid-25 grid-parent changelogs-sidebar-area secondary" role="complementary">
-			<div class="sidebar-main content-area">
-					<?php dynamic_sidebar( 'changelogs-sidebar-1' ); ?>
-			</div>
-		</div>
 </div><!-- .wrap -->
 
 <?php get_footer(); ?>

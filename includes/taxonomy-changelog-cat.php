@@ -11,13 +11,8 @@
  */
 
 get_header(); ?>
-<?php
-	// display live search box.
-	echo do_shortcode( '[chnangelog_wp_live_search]' );
-?>
-<div class="wrap chnangelogs-wraper">
-
-	<div id="primary" class="content-area grid-parent mobile-grid-100 grid-75 tablet-grid-75">
+<div class="wrap changelog-wraper">
+	<div id="bsf-changelog-primary" class="content-area">
 		<main id="main" class="in-wrap" role="main">
 
 		<?php if ( have_posts() ) : ?>
@@ -44,9 +39,12 @@ get_header(); ?>
 				 */
 				?>
 				<article id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-chnangelogs status-publish format-standard chnangelogs_category">
-					<h2 class="bsf-entry-title">
-						<a rel="bookmark" href="<?php echo esc_url( the_permalink() ); ?>"><?php the_title(); ?></a>
-					</h2>
+					<header class="entry-header">
+						<h2 class="bsf-entry-title"><?php the_title(); ?> </h2>
+					</header>
+					<div class="bsf-entry-content clear" itemprop="text">
+						<?php the_content(); ?>
+					</div>
 				</article>
 				<?php
 			endwhile;
@@ -67,11 +65,6 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-	<div itemscope="itemscope" id="secondary" class="widget-area sidebar grid-25 tablet-grid-25 grid-parent chnangelogs-sidebar-area secondary" role="complementary">
-			<div class="sidebar-main content-area">
-				<?php dynamic_sidebar( 'chnangelogs-sidebar-1' ); ?>
-			</div>
-		</div>
 </div><!-- .wrap -->
 
 <?php get_footer(); ?>

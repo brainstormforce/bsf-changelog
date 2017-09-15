@@ -12,65 +12,18 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 <div class="wrap">
 	<div class="bsf-options-form-wrap clearfix">
 
-		<h1><?php esc_html_e( 'changelogs Settings', 'bsf-changelogs' ); ?></h1>
+		<h1><?php esc_html_e( 'Changelogs Settings', 'bsf-changelogs' ); ?></h1>
 		<form method="post" action="options.php"> 
-				<h2 class="title"><?php _e( 'Live Search', 'bsf-changelogs' ); ?></h2>
-				<p><?php _e( "Settings to control the live search functionality & it's search area.", 'bsf-changelogs' ); ?></p>
-				
 					<?php settings_fields( 'bsf-changelogs-settings-group' ); ?>
 					<?php do_settings_sections( 'bsf-changelogs-settings-group' ); ?>
 
 					<table  class="form-table">
 						<tr valign="top">
-							<th scope="row"><?php _e( 'Enable Live Search', 'bsf-changelogs' ); ?></th>
+							<th scope="row"><?php _e( 'Changelog Archive Page Title', 'bsf-changelogs' ); ?></th>
 							<td>
-								<?php
-								$checked = '';
-								$bsf_ls_enabled = get_option( 'bsf_ls_enabled' );
-								$checked = ( false === $bsf_ls_enabled ) ? " checked='checked' " : ( ( 1 == $bsf_ls_enabled ) ? " checked='checked' " : '' );
-								?>
-								<input type="checkbox" <?php echo $checked; ?> name="bsf_ls_enabled" value="1" <?php echo checked( 1, $checked, false ); ?> />
+								<input type="text" class="regular-text code" name="bsf_changelog_title" value="<?php echo get_option( 'bsf_changelog_title' ); ?> "/>
 							</td>
-						</tr>
-
-						<tr valign="top">
-							<th scope="row"><?php _e( 'Search Within Post Types', 'bsf-changelogs' ); ?></th>
-							<td>	
-								<fieldset>
-									<?php
-
-									$selected_post_types = get_option( 'bsf_search_post_types' );
-
-									$selected_post_types = ! $selected_post_types ? array( 'changelogs' ) : $selected_post_types;
-
-									$post_types = get_post_types(
-										array(
-											'public'    => true,
-											'show_ui'    => true,
-										), 'objects'
-									);
-
-									unset( $post_types['attachment'] );
-									unset( $post_types['fl-builder-template'] );
-									unset( $post_types['fl-theme-layout'] );
-
-									foreach ( $post_types as $key => $post_type ) {
-									?>
-										
-										<input type="checkbox" 
-										<?php
-										if ( in_array( $key, $selected_post_types ) ) {
-											echo "checked='checked' "; }
-?>
- name="bsf_search_post_types[]" value="<?php echo esc_attr( $key ); ?>" />
-										<label>
-											<?php echo ucfirst( $post_type->label ); ?>
-										</label><br>
-									
-									<?php } ?>
-								</fieldset>
-							</td>
-						</tr>
+						</tr>	
 
 						<tr valign="top">
 							<th scope="row"><?php _e( 'Enable built-in single page template', 'bsf-changelogs' ); ?></th>
@@ -106,13 +59,6 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 								<input type="checkbox" <?php echo $checked; ?> name="bsf_search_has_comments" value="1" <?php echo checked( 1, $checked, false ); ?> />
 							</td>
 						</tr>
-						<tr valign="top">
-							<th scope="row"><?php _e( 'changelog Archive Page Title', 'bsf-changelogs' ); ?></th>
-							<td>
-								<input type="text" class="regular-text code" name="bsf_changelog_title" value="<?php echo get_option( 'bsf_changelog_title' ); ?> "/>
-							</td>
-						</tr>	
-
 
 					</table>
 				
@@ -126,14 +72,6 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 
 		<div class="bsf-shortcode-container">
 			<table class="form-table">
-				 <tr valign="top">
-					 <th scope="row"><?php _e( 'Display Live Search Box', 'bsf-changelogs' ); ?></th>
-					<td>
-						   <div class="bsf-shortcode-container wp-ui-text-highlight">
-							   [changelog_wp_live_search placeholder="Have a question?"]
-						   </div>  
-					</td>
-				</tr>
 				<tr valign="top">
 					 <th scope="row"><?php _e( "Display changelog's Category List", 'bsf-changelogs' ); ?></th>
 					<td>

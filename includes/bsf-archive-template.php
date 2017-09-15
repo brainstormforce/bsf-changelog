@@ -7,11 +7,6 @@
  */
 
 get_header(); ?>
-
-<?php
-	// display live search box.
-	echo do_shortcode( '[changelog_wp_live_search]' );
-?>
 <div class="wrap changelogs-archive-wraper">
 
 	<?php
