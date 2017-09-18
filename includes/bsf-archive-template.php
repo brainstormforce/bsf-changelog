@@ -27,12 +27,12 @@ get_header();?>
 				$changelog_sub_title = get_option( 'bsf_changelog_sub_title' );
 			?>
 			<section class="bsfc-archive-description">
-			<div class="bsf-page-header">
+			<div class="bsf-changelog-header">
 			<?php if ( '' != $changelog_title ) {
-				 echo '<h1 class="page-title ">' . esc_attr( $changelog_title ) .'<h1>'; 
+				 echo '<h1 class="page-title ">' . esc_attr( $changelog_title ) .'</h1>'; 
 				}
 				if ( '' != $changelog_sub_title )  {
-	 			 echo '<h4 class="page-sub-title">' . esc_attr( $changelog_sub_title ) .'<h4>'; 
+	 			 echo '<p class="page-sub-title">' . esc_attr( $changelog_sub_title ) .'</p>'; 
 	 			}
 				?>
 			</div><!-- .page-header -->

@@ -17,7 +17,7 @@ get_header(); ?>
 
 		<?php if ( have_posts() ) : ?>
 		<section class="bsfc-archive-description">
-			<div class="bsf-page-header">
+			<div class="bsf-changelog-header">
 				<?php
 					$all_prodcut_url = site_url().'/changelog'; 
 					echo '<h1 class="page-title">' . single_cat_title( '', false ) . '</h1>';

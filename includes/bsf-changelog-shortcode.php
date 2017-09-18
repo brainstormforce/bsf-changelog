@@ -43,7 +43,7 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 				echo '<h2 class="changelog-title">' . esc_attr( $changelog_title ) . '</h2>'; 
 		 	}
 		 	if ( '' != $changelog_title )  {
-		 		echo '<h4 class="changelog-sub-title">' . esc_attr( $changelog_sub_title ) . '</h4>'; 
+		 		echo '<p class="changelog-sub-title">' . esc_attr( $changelog_sub_title ) . '</p>'; 
 		 	}
 		 ?>
 	</div>

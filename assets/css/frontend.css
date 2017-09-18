@@ -124,16 +124,16 @@
     margin: 60px 0;
 }
 
-.changelogs-tax-templates-enabled .changelogs-wraper .bsf-page-header {
+.changelogs-tax-templates-enabled .changelogs-wraper .bsf-changelog-header {
     border-bottom: 1px solid #e6e6e6;
     margin: 0 0 30px;
     padding: 0 0 30px;
     position: relative;
 }
 
-.bsf-page-header > h1 {
+.bsf-changelog-header > h1 {
     color: #1a1a1a;
-    margin: 0;
+    margin: 5px 0;
 }
 
 .changelogs-single-templates-enabled .changelogs-single-main,
@@ -202,10 +202,19 @@
     font-size: inherit;
     line-height: inherit;
     margin: 5px 0;
+    padding: 0;
 }
 .changelog-sub-title {
   padding: 0;
 }
+
+.bsf-entry-content.clear {
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    visibility: visible;
+}
+
  /* Changelog Style */
 
  div#bsf-changelog-primary {
@@ -219,6 +228,7 @@
     background-color: #eee;
     margin: 0;
     padding: 5em 6.67em;
+    border: 1px solid #e8e8e8;
  }
  body.product-tax-enabled article,
  body.post-type-archive-changelog article {
