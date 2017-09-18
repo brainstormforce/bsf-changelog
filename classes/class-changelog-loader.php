@@ -54,7 +54,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			$this->define_constants();
 			$this->load_files();
 			$this->init_hooks();
-			add_action( 'init',  array( $this, 'bsf_callback_init' ) );
+			add_action( 'init',  array( $this, 'bsf_changelog_init' ) );
 
 			do_action( 'bsf_Changelogs_loaded' );
 		}
@@ -63,10 +63,10 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 *
 		 * @category InitCallBack
 		 */
-		function bsf_callback_init() {
+		function bsf_changelog_init() {
 
-			$is_single_template_on = get_option( 'bsf_override_single_template' );
-			$is_cat_template_on = get_option( 'bsf_override_category_template' );
+			$is_single_template_on = get_option( 'bsf_changelog_single_template' );
+			$is_cat_template_on = get_option( 'bsf_changelog_category_template' );
 
 			if ( '1' == $is_single_template_on || false === $is_single_template_on ) {
 				add_filter( 'single_template', array( $this, 'get_bsf_Changelogs_single_template' ), 99 );
@@ -130,8 +130,8 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 */
 		function bsf_Changelogs_body_single_class( $classes ) {
 
-			if ( is_post_type_archive( 'Changelogs' ) || is_singular( 'Changelogs' ) && is_array( $classes ) ) {
-					 $cls = array_merge( $classes, array( 'Changelogs-single-templates-enabled' ) );
+			if ( is_post_type_archive( 'changelogs' ) || is_singular( 'changelogs' ) && is_array( $classes ) ) {
+					 $cls = array_merge( $classes, array( 'changelogs-single-templates-enabled' ) );
 				  return $cls;
 			}
 			return $classes;
@@ -158,11 +158,9 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 */
 		function register_bsf_changelogs_plugin_settings() {
 			// Register our settings.
-			register_setting( 'bsf-changelogs-settings-group', 'bsf_ls_enabled' );
-			register_setting( 'bsf-changelogs-settings-group', 'bsf_search_post_types' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_search_has_comments' );
-			register_setting( 'bsf-changelogs-settings-group', 'bsf_override_single_template' );
-			register_setting( 'bsf-changelogs-settings-group', 'bsf_override_category_template' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_single_template' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_category_template' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_title' );
 		}
 
@@ -288,7 +286,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * @since 1.0
 		 */
 		function enqueue_front_scripts() {
-			wp_enqueue_style( 'bsf-frontend-style', BSF_CHANGELOG_BASE_URL . 'assets/css/frontend.css' );
+			wp_enqueue_style( 'bsf-changelog-frontend-style', BSF_CHANGELOG_BASE_URL . 'assets/css/frontend.css' );
 
 		}
 
@@ -298,7 +296,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * @since 1.0
 		 */
 		function enqueue_admin_scripts() {
-			wp_enqueue_style( 'bsf-options-style', BSF_CHANGELOG_BASE_URL . 'assets/css/admin.css' );
+			wp_enqueue_style( 'bsf-changelog-options-style', BSF_CHANGELOG_BASE_URL . 'assets/css/admin.css' );
 		}
 	}
 

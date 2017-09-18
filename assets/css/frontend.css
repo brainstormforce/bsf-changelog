@@ -65,7 +65,7 @@
     margin: 0;
 }
 
-.docs-title {
+.changelogs-title {
     margin: 30px 0 0px 20px;
     border-bottom: 1px solid #e6e6e6;
     padding: 0 0 30px;
@@ -75,7 +75,7 @@
     margin: 30px 0;
 }
 
-.docs-tax-templates-enabled .docs-wraper .bsf-page-header {
+.changelogs-tax-templates-enabled .changelogs-wraper .bsf-page-header {
     border-bottom: 1px solid #e6e6e6;
     margin: 0 0 30px;
     padding: 0 0 30px;
@@ -87,8 +87,8 @@
     margin: 0;
 }
 
-.docs-single-templates-enabled .docs-single-main,
-.docs-tax-templates-enabled .bsf-main-wrap {
+.changelogs-single-templates-enabled .changelogs-single-main,
+.changelogs-tax-templates-enabled .bsf-main-wrap {
     position: relative;
     margin: 0;
  }
@@ -103,17 +103,17 @@
  }
 
 @media (min-width: 769px) {
-    .docs-tax-templates-enabled #primary,
-    .docs-single-templates-enabled #primary {
+    .changelogs-tax-templates-enabled #primary,
+    .changelogs-single-templates-enabled #primary {
       width: 70%;
     }
 
-    .docs-tax-templates-enabled #secondary,
-    .docs-single-templates-enabled #secondary {
+    .changelogs-tax-templates-enabled #secondary,
+    .changelogs-single-templates-enabled #secondary {
       width: 30%;
     }
 }
-.docs-single-templates-enabled .docs-wraper .page-title {
+.changelogs-single-templates-enabled .changelogs-wraper .page-title {
     font-size: 28px;
     line-height: 1.4em;
     border-bottom: 1px solid #e6e6e6;

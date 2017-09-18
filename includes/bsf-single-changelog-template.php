@@ -8,8 +8,6 @@
 
 get_header();
 ?>
-	
-
 <div class="wrap changelogs-wraper">
 	<div id="primary" class="content-area bsf-options-form-wrap grid-parent mobile-grid-100 grid-75 tablet-grid-75">
 		<main id="main" class="changelogs-single-main" role="main">
