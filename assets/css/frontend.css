@@ -237,24 +237,13 @@
     margin: 0;
     padding: 5.34em 6.67em;
 }
-
-
-@media (min-width: 769px) {
-    .changelogs-tax-templates-enabled #primary,
-    .changelogs-single-templates-enabled #primary {
-      width: 70%;
-    }
-
-    .changelogs-tax-templates-enabled #secondary,
-    .changelogs-single-templates-enabled #secondary {
-      width: 30%;
-    }
+/* Pagination */
+.product-tax-enabled .nav-links {
+    margin-top: 20px;
 }
-.changelogs-single-templates-enabled .changelogs-wraper .page-title {
-    font-size: 28px;
-    line-height: 1.4em;
-    border-bottom: 1px solid #e6e6e6;
-    padding: 0 0 25px;
+.product-tax-enabled .page-numbers {
+    padding: 6px;
+    border: 1px solid #d2d2d2;
 }
 
 @media (max-width: 768px ) {
