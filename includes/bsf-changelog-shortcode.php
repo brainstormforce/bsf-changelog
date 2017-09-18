@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_shortcode( 'changelog_wp_category_list', 'bsf_render_changelog_list' );
+add_shortcode( 'changelog_product_list', 'bsf_render_changelog_list' );
 
 /**
  * Get the category list of chnagelogs.
@@ -32,17 +32,21 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 			'hide_empty' => false,
 		)
 	);
+	?>
+	<div class="bsfc-title-wrap">
+		<span class="bsfc-icon-list2"></span>
+		<?php 
+		$changelog_title = get_option( 'bsf_changelog_title' );
+		$changelog_sub_title = get_option( 'bsf_changelog_sub_title' );
 
-	$changelog_title = get_option( 'bsf_changelog_title' );
-	$changelog_sub_title = get_option( 'bsf_changelog_sub_title' );
-
-		if ( '' != $changelog_title )  {
-			echo '<h2 class="changelog-title">' . esc_attr( $changelog_title ) . '<h2>'; 
-	 	}
-	 	if ( '' != $changelog_title )  {
-	 		echo '<h4 class="changelog-sub-title">' . esc_attr( $changelog_sub_title ) . '<h4>'; 
-	 	}
-	 ?>
+			if ( '' != $changelog_title )  {
+				echo '<h2 class="changelog-title">' . esc_attr( $changelog_title ) . '<h2>'; 
+		 	}
+		 	if ( '' != $changelog_title )  {
+		 		echo '<h4 class="changelog-sub-title">' . esc_attr( $changelog_sub_title ) . '<h4>'; 
+		 	}
+		 ?>
+	</div>
 	<div class="bsf-changelog-cat-wrap clearfix">
 		<?php
 		foreach ( $taxonomy_objects as $key => $object ) {
@@ -73,8 +77,4 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 
 	return ob_get_clean();
 }
-
-/**
- * To load search results.
- */
 

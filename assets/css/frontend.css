@@ -8,6 +8,59 @@
     clear: both;
 }
 
+@font-face {
+  font-family: 'changelog';
+  src:  url('../fonts/changelog.eot?9cclst');
+  src:  url('../fonts/changelog.eot?9cclst#iefix') format('embedded-opentype'),
+    url('../fonts/changelog.ttf?9cclst') format('truetype'),
+    url('../fonts/changelog.woff?9cclst') format('woff'),
+    url('../fonts/changelog.svg?9cclst#changelog') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="bsfc-icon-"], [class*=" bsfc-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'changelog' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bsfc-icon-pin-outline:before {
+  content: "\e903";
+}
+.bsfc-icon-pin:before {
+  content: "\e902";
+}
+.bsfc-icon-brand:before {
+  content: "\e901";
+}
+.bsfc-icon-list2:before {
+  content: "\e905";
+}
+.bsfc-icon-home:before {
+  content: "\e900";
+}
+.bsfc-icon-pencil2:before {
+  content: "\e906";
+}
+.bsfc-icon-file-text2:before {
+  content: "\e926";
+}
+.bsfc-icon-price-tag:before {
+  content: "\e935";
+}
+.bsfc-icon-price-tags:before {
+  content: "\e936";
+}
 /* Category list */
 
 .bsf-changelog-cat-wrap .bsf-changelog-col:nth-child(3n+1) {
@@ -68,7 +121,7 @@
 }
 
 .bsf-changelog-cat-wrap {
-    margin: 30px 0;
+    margin: 60px 0;
 }
 
 .changelogs-tax-templates-enabled .changelogs-wraper .bsf-page-header {
@@ -100,21 +153,54 @@
 
 /* Changelog Title */
 
-.changelogs-archive-wraper {
-    margin-top: 50px;
-}
-
-.changelog-title,
-.changelog-sub-title {
+.bsfc-title-wrap {
     text-align: center;
 }
 
+.bsfc-icon-list2 {
+    display: inline-block;
+    font-size: 50px;
+    color: inherit;
+    height: auto;
+    width: auto;
+    line-height: 50px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.changelogs-archive-wraper {
+    margin-top: 60px;
+}
 .changelog-title {
     font-family: inherit;
     font-weight: 700;
     font-size: 34px;
     line-height: 45px;
     margin-bottom: 15px
+}
+
+.bsf-changelog-col:after {
+    content: "\e903";
+    font-family: 'changelog' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    background-repeat: no-repeat;
+    position: absolute;
+    font-size: 25px;
+    color: inherit;
+    width: 0;
+    top: 10px;
+    left: 50%;
+    transform: rotate(270deg);
+}
+
+.page-sub-title {
+    font-size: inherit;
+    line-height: inherit;
+    margin: 5px 0;
 }
 
  /* Changelog Style */

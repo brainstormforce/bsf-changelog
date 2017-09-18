@@ -57,7 +57,7 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 					 <th scope="row"><?php _e( "Display Products List", 'bsf-changelogs' ); ?></th>
 					<td>
 						   <div class="bsf-shortcode-container wp-ui-text-highlight">
-							   [changelog_wp_category_list]
+							   [changelog_product_list]
 						   </div>  
 					</td>
 				</tr>

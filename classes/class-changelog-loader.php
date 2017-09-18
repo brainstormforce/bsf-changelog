@@ -96,7 +96,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 */
 		function category_template( $template ) {
 			if ( is_tax( 'product' ) ) {
-				$template = BSF_CHANGELOG_BASE_DIR . 'includes/taxonomy-changelog-cat.php';
+				$template = BSF_CHANGELOG_BASE_DIR . 'includes/changelog-taxonomy-template.php';
 			}
 			return $template;
 		}

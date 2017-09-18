@@ -13,7 +13,7 @@ get_header();?>
 	<?php
 		// Display category list.
 		if ( ( '1' === $has_multiple_product || false === $has_multiple_product ) ) {
-			echo do_shortcode( '[changelog_wp_category_list]' );
+			echo do_shortcode( '[changelog_product_list]' );
 		} 
 	?>
 </div><!-- .wrap -->
@@ -22,17 +22,21 @@ get_header();?>
 		<div id="bsf-changelog-primary" class="content-area">
 			<main id="main" class="in-wrap" role="main">
 
-			<?php if ( have_posts() ) : ?>
-			<?php $changelog_title = get_option( 'bsf_changelog_title' );
-			if ( '' != $changelog_title ) { ?>
+			<?php
+				$changelog_title = get_option( 'bsf_changelog_title' );
+				$changelog_sub_title = get_option( 'bsf_changelog_sub_title' );
+			?>
 			<section class="bsfc-archive-description">
-				<div class="bsf-page-header">
-					<h1 class="page-title "><?php echo esc_attr( $changelog_title ); ?></h1>
-				</div><!-- .page-header -->
+			<div class="bsf-page-header">
+			<?php if ( '' != $changelog_title ) {
+				 echo '<h1 class="page-title ">' . esc_attr( $changelog_title ) .'<h1>'; 
+				}
+				if ( '' != $changelog_sub_title )  {
+	 			 echo '<h4 class="page-sub-title">' . esc_attr( $changelog_sub_title ) .'<h4>'; 
+	 			}
+				?>
+			</div><!-- .page-header -->
 			</section>
-			<?php } ?>
-		<?php endif; ?>
-
 			<?php
 			if ( have_posts() ) :
 			?>
