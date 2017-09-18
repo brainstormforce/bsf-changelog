@@ -34,8 +34,7 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 	);
 	?>
 	<div class="bsfc-title-wrap">
-		<span class="bsfc-icon-list2"></span>
-		<?php 
+	<?php 
 		$changelog_title = get_option( 'bsf_changelog_title' );
 		$changelog_sub_title = get_option( 'bsf_changelog_sub_title' );
 

@@ -153,8 +153,40 @@
 
 /* Changelog Title */
 
+body.changelog-title-enabled .changelogs-archive-wraper {
+    margin-top: 145px;
+}
+
+body.single-product-enabled .wrap.changelogs-archive-wraper {
+    margin-top: 0;
+}
+
 .bsfc-title-wrap {
     text-align: center;
+    position: relative;
+}
+
+h2.changelog-title:after {
+    content: "\e905";
+    display: inline-block;
+    font-size: 50px;
+    color: inherit;
+    height: auto;
+    width: auto;
+    line-height: 50px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-family: 'changelog' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .bsfc-icon-list2 {
@@ -250,5 +282,14 @@
     .bsf-changelog-cat-wrap .bsf-changelog-col {
         float: none;
         width: 100%;
+    }
+    .product-tax-enabled .bsfc-archive-description, 
+    .post-type-archive-changelog .bsfc-archive-description, 
+    .post-type-archive-changelog .bsfc-author-box, 
+    .product-tax-enabled .bsfc-author-box {
+        padding: 2em;
+    }
+    body.product-tax-enabled article, body.post-type-archive-changelog article {
+        padding: 2em;
     }
 }

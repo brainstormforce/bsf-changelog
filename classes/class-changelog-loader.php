@@ -64,11 +64,19 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * @category InitCallBack
 		 */
 		function bsf_changelog_init() {
+			$is_title_enabled = get_option( 'bsf_changelog_title' );
+			if( '' != $is_title_enabled ) {
+				add_filter( 'body_class', array( $this, 'bsf_changelogs_archive_title' ), 99 );
+			}
 
 			$is_cat_template_on = get_option( 'bsf_changelog_category_template' );
 			if ( '1' == $is_cat_template_on || false === $is_cat_template_on ) {
 				add_filter( 'template_include', array( $this, 'category_template' ), 99 );
 				add_filter( 'body_class', array( $this, 'bsf_changelogs_body_tax_class' ) );
+			}
+	
+			if ( ! ( '1' == $is_cat_template_on || false === $is_cat_template_on ) ) {
+				add_filter( 'body_class', array( $this, 'bsf_single_product_body_class' ) );	
 			}
 
 		}
@@ -121,10 +129,10 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * @category Hooks
 		 * @return $classed
 		 */
-		function bsf_changelogs_body_single_class( $classes ) {
+		function bsf_changelogs_archive_title( $classes ) {
 
-			if ( is_post_type_archive( 'changelog' ) || is_singular( 'changelog' ) && is_array( $classes ) ) {
-					 $cls = array_merge( $classes, array( 'changelog-single-templates-enabled' ) );
+			if ( is_post_type_archive( 'changelog' ) ) {
+				$cls = array_merge( $classes, array( 'changelog-title-enabled' ) );
 				  return $cls;
 			}
 			return $classes;
@@ -138,9 +146,25 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 */
 		function bsf_changelogs_body_tax_class( $classes ) {
 
-			if ( is_post_type_archive( 'changelogs' ) || is_tax( 'product' ) && is_array( $classes ) ) {
+			if ( is_post_type_archive( 'changelog' ) || is_tax( 'product' ) && is_array( $classes ) ) {
 				// Add clss to body.
 				  $cls = array_merge( $classes, array( 'product-tax-enabled' ) );
+				  return $cls;
+			}
+			return $classes;
+		}
+
+		/**
+		 * Processes this test, when one of its tokens is encountered.
+		 *
+		 * @param Class-bsf-Changelogs-loader $classes load.
+		 * @return $classes
+		 */
+		function bsf_single_product_body_class( $classes ) {
+
+			if ( is_post_type_archive( 'changelog' ) && is_array( $classes ) ) {
+				// Add clss to body.
+				  $cls = array_merge( $classes, array( 'single-product-enabled' ) );
 				  return $cls;
 			}
 			return $classes;

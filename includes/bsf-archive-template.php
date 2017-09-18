@@ -26,17 +26,19 @@ get_header();?>
 				$changelog_title = get_option( 'bsf_changelog_title' );
 				$changelog_sub_title = get_option( 'bsf_changelog_sub_title' );
 			?>
+			<?php if ( '' != $changelog_title ) { ?>
 			<section class="bsfc-archive-description">
-			<div class="bsf-changelog-header">
-			<?php if ( '' != $changelog_title ) {
-				 echo '<h1 class="page-title ">' . esc_attr( $changelog_title ) .'</h1>'; 
-				}
-				if ( '' != $changelog_sub_title )  {
-	 			 echo '<p class="page-sub-title">' . esc_attr( $changelog_sub_title ) .'</p>'; 
-	 			}
-				?>
-			</div><!-- .page-header -->
+				<div class="bsf-changelog-header">
+				<?php if ( '' != $changelog_title ) {
+					 echo '<h1 class="page-title ">' . esc_attr( $changelog_title ) .'</h1>'; 
+					}
+					if ( '' != $changelog_sub_title )  {
+		 			 echo '<p class="page-sub-title">' . esc_attr( $changelog_sub_title ) .'</p>'; 
+		 			}
+					?>
+				</div><!-- .page-header -->
 			</section>
+			<?php } ?>
 			<?php
 			if ( have_posts() ) :
 			?>

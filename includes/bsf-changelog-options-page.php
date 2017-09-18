@@ -32,6 +32,10 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 						<tr valign="top">
 							<th scope="row"><?php _e( 'Changelog Page Title', 'bsf-changelogs' ); ?></th>
 							<td>
+								<?php 
+									$default_title = get_option( 'bsf_changelog_title' );
+									$default_title = 'Changelog Title Area';
+								?>
 								<input type="text" class="regular-text code" name="bsf_changelog_title" value="<?php echo get_option( 'bsf_changelog_title' ); ?> "/>
 							</td>
 						</tr>	
