@@ -178,7 +178,8 @@
     font-weight: 700;
     font-size: 34px;
     line-height: 45px;
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    padding:0;
 }
 
 .bsf-changelog-col:after {
@@ -202,7 +203,9 @@
     line-height: inherit;
     margin: 5px 0;
 }
-
+.changelog-sub-title {
+  padding: 0;
+}
  /* Changelog Style */
 
  div#bsf-changelog-primary {
