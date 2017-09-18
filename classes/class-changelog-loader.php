@@ -65,17 +65,10 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 */
 		function bsf_changelog_init() {
 
-			$is_single_template_on = get_option( 'bsf_changelog_single_template' );
 			$is_cat_template_on = get_option( 'bsf_changelog_category_template' );
-
-			if ( '1' == $is_single_template_on || false === $is_single_template_on ) {
-				add_filter( 'single_template', array( $this, 'get_bsf_Changelogs_single_template' ), 99 );
-				add_filter( 'body_class', array( $this, 'bsf_Changelogs_body_single_class' ) );
-			}
-
 			if ( '1' == $is_cat_template_on || false === $is_cat_template_on ) {
 				add_filter( 'template_include', array( $this, 'category_template' ), 99 );
-				add_filter( 'body_class', array( $this, 'bsf_Changelogs_body_tax_class' ) );
+				add_filter( 'body_class', array( $this, 'bsf_changelogs_body_tax_class' ) );
 			}
 
 		}
@@ -91,7 +84,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_front_scripts' ), 10 );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ), 10 );
 			// Use this filter to overwrite archive page for bsf Changelogs post type.
-			add_filter( 'archive_template', array( $this, 'get_bsf_changelogs_archive_template' ) );
+			add_filter( 'archive_template', array( $this, 'get_bsf_changelog_archive_template' ) );
 			// Call register settings function.
 			add_action( 'admin_init', array( $this, 'register_bsf_changelogs_plugin_settings' ));
 		}
@@ -128,10 +121,10 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * @category Hooks
 		 * @return $classed
 		 */
-		function bsf_Changelogs_body_single_class( $classes ) {
+		function bsf_changelogs_body_single_class( $classes ) {
 
-			if ( is_post_type_archive( 'changelogs' ) || is_singular( 'changelogs' ) && is_array( $classes ) ) {
-					 $cls = array_merge( $classes, array( 'changelogs-single-templates-enabled' ) );
+			if ( is_post_type_archive( 'changelog' ) || is_singular( 'changelog' ) && is_array( $classes ) ) {
+					 $cls = array_merge( $classes, array( 'changelog-single-templates-enabled' ) );
 				  return $cls;
 			}
 			return $classes;
@@ -143,11 +136,11 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * @param Class-bsf-Changelogs-loader $classes load.
 		 * @return $classes
 		 */
-		function bsf_Changelogs_body_tax_class( $classes ) {
+		function bsf_changelogs_body_tax_class( $classes ) {
 
 			if ( is_post_type_archive( 'changelogs' ) || is_tax( 'product' ) && is_array( $classes ) ) {
 				// Add clss to body.
-				  $cls = array_merge( $classes, array( 'product-tax-templates-enabled' ) );
+				  $cls = array_merge( $classes, array( 'product-tax-enabled' ) );
 				  return $cls;
 			}
 			return $classes;
@@ -158,10 +151,9 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 */
 		function register_bsf_changelogs_plugin_settings() {
 			// Register our settings.
-			register_setting( 'bsf-changelogs-settings-group', 'bsf_search_has_comments' );
-			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_single_template' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_category_template' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_title' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_sub_title' );
 		}
 
 		/**
@@ -205,7 +197,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * @param int $archive_template Overirde archive templates.
 		 * @author BrainstormForce
 		 */
-		function get_bsf_changelogs_archive_template( $archive_template ) {
+		function get_bsf_changelog_archive_template( $archive_template ) {
 
 			if ( is_post_type_archive( BSF_CHANGELOG_POST_TYPE ) ) {
 				$archive_template = BSF_CHANGELOG_BASE_DIR . 'includes/bsf-archive-template.php';

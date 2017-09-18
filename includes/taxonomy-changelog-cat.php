@@ -16,12 +16,14 @@ get_header(); ?>
 		<main id="main" class="in-wrap" role="main">
 
 		<?php if ( have_posts() ) : ?>
-		<div class="bsf-page-header">
-			<?php
-				echo '<h1 class="page-title">' . single_cat_title( '', false ) . '</h1>';
-				the_archive_description( '<div class="taxonomy-description">', '</div>' );
-			?>
-		</div><!-- .page-header -->
+		<section class="bsfc-archive-description">
+			<div class="bsf-page-header">
+				<?php
+					echo '<h1 class="page-title">' . single_cat_title( '', false ) . '</h1>';
+					the_archive_description( '<div class="taxonomy-description">', '</div>' );
+				?>
+			</div><!-- .page-header -->
+		</section>
 	<?php endif; ?>
 
 		<?php
@@ -40,7 +42,7 @@ get_header(); ?>
 				?>
 				<article id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-chnangelogs status-publish format-standard chnangelogs_category">
 					<header class="entry-header">
-						<h2 class="bsf-entry-title"><?php the_title(); ?> </h2>
+						<h2 class="entry-title"><?php the_title(); ?> </h2>
 					</header>
 					<div class="bsf-entry-content clear" itemprop="text">
 						<?php the_content(); ?>

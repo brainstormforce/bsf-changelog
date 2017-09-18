@@ -33,17 +33,17 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 		)
 	);
 
-	?>
+	$changelog_title = get_option( 'bsf_changelog_title' );
+	$changelog_sub_title = get_option( 'bsf_changelog_sub_title' );
 
-	<?php
-	$chnagelog_title = get_option( 'bsf_changelog_title' );
-
-	if ( '' != $chnagelog_title ) {
-	?>
-		<h1 class="chnagelogs-title"><?php echo esc_attr( $chnagelog_title ); ?></h1>
-	<?php } ?>
-
-	<div class="bsf-categories-wrap clearfix">
+		if ( '' != $changelog_title )  {
+			echo '<h2 class="changelog-title">' . esc_attr( $changelog_title ) . '<h2>'; 
+	 	}
+	 	if ( '' != $changelog_title )  {
+	 		echo '<h4 class="changelog-sub-title">' . esc_attr( $changelog_sub_title ) . '<h4>'; 
+	 	}
+	 ?>
+	<div class="bsf-changelog-cat-wrap clearfix">
 		<?php
 		foreach ( $taxonomy_objects as $key => $object ) {
 
@@ -54,11 +54,11 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 			if ( $count > 0 ) {
 
 			?>
-			<div class="bsf-cat-col" >
-				<a class="bsf-cat-link" href="<?php echo esc_url( $cat_link ); ?>">
+			<div class="bsf-changelog-col" >
+				<a class="bsf-changelog-link" href="<?php echo esc_url( $cat_link ); ?>">
 					<h4><?php echo $object->name; ?></h4>
 					<span class="bsf-cat-count">
-						<?php echo $count . ' ' . __( 'Articles', 'bsf-chnagelogs' ); ?> 
+						<?php echo $count . ' ' . __( 'Versions', 'bsf-changelog' ); ?> 
 					</span>
 				</a>
 			</div>

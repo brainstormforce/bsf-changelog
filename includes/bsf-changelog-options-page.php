@@ -19,25 +19,7 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 
 					<table  class="form-table">
 						<tr valign="top">
-							<th scope="row"><?php _e( 'Changelog Archive Page Title', 'bsf-changelogs' ); ?></th>
-							<td>
-								<input type="text" class="regular-text code" name="bsf_changelog_title" value="<?php echo get_option( 'bsf_changelog_title' ); ?> "/>
-							</td>
-						</tr>	
-
-						<tr valign="top">
-							<th scope="row"><?php _e( 'Enable built-in single page template', 'bsf-changelogs' ); ?></th>
-							<td>
-								<?php
-								$checked = '';
-								$bsf_changelog_single_template = get_option( 'bsf_changelog_single_template' );
-								$checked = ( false === $bsf_changelog_single_template ) ? " checked='checked' " : ( ( 1 == $bsf_changelog_single_template ) ? " checked='checked' " : '' );
-								?>
-								<input type="checkbox" <?php echo $checked; ?> name="bsf_changelog_single_template" value="1" <?php echo checked( 1, $checked, false ); ?> />
-							</td>
-						</tr>
-						<tr valign="top">
-							<th scope="row"><?php _e( 'Enable built-in category page template', 'bsf-changelogs' ); ?></th>
+							<th scope="row"><?php _e( 'Do You Have Multiple Products?', 'bsf-changelogs' ); ?></th>
 							<td>
 								<?php
 								$checked = '';
@@ -48,18 +30,17 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 							</td>
 						</tr>	
 						<tr valign="top">
-							<th scope="row"><?php _e( "Turn Off changelog's Comments", 'bsf-changelogs' ); ?></th>
+							<th scope="row"><?php _e( 'Changelog Page Title', 'bsf-changelogs' ); ?></th>
 							<td>
-								<?php
-								$checked = '';
-								$bsf_search_has_comments = get_option( 'bsf_search_has_comments' );
-								$checked = ( false === $bsf_search_has_comments ) ? " checked='checked' " : ( ( 1 == $bsf_search_has_comments ) ? " checked='checked' " : '' );
-
-								?>
-								<input type="checkbox" <?php echo $checked; ?> name="bsf_search_has_comments" value="1" <?php echo checked( 1, $checked, false ); ?> />
+								<input type="text" class="regular-text code" name="bsf_changelog_title" value="<?php echo get_option( 'bsf_changelog_title' ); ?> "/>
 							</td>
-						</tr>
-
+						</tr>	
+						<tr valign="top">
+							<th scope="row"><?php _e( 'Changelog Page Sub-Title', 'bsf-changelogs' ); ?></th>
+							<td>
+								<input type="text" class="regular-text code" name="bsf_changelog_sub_title" value="<?php echo get_option( 'bsf_changelog_sub_title' ); ?> "/>
+							</td>
+						</tr>	
 					</table>
 				
 						<?php submit_button(); ?>
@@ -73,7 +54,7 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 		<div class="bsf-shortcode-container">
 			<table class="form-table">
 				<tr valign="top">
-					 <th scope="row"><?php _e( "Display changelog's Category List", 'bsf-changelogs' ); ?></th>
+					 <th scope="row"><?php _e( "Display Products List", 'bsf-changelogs' ); ?></th>
 					<td>
 						   <div class="bsf-shortcode-container wp-ui-text-highlight">
 							   [changelog_wp_category_list]
