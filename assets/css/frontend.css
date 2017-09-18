@@ -1,0 +1,297 @@
+.clearfix:before, 
+.clearfix:after {
+    display: table;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+@font-face {
+  font-family: 'changelog';
+  src:  url('../fonts/changelog.eot?9cclst');
+  src:  url('../fonts/changelog.eot?9cclst#iefix') format('embedded-opentype'),
+    url('../fonts/changelog.ttf?9cclst') format('truetype'),
+    url('../fonts/changelog.woff?9cclst') format('woff'),
+    url('../fonts/changelog.svg?9cclst#changelog') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="bsfc-icon-"], [class*=" bsfc-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'changelog' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bsfc-icon-pin-outline:before {
+  content: "\e903";
+}
+.bsfc-icon-pin:before {
+  content: "\e902";
+}
+.bsfc-icon-brand:before {
+  content: "\e901";
+}
+.bsfc-icon-list2:before {
+  content: "\e905";
+}
+.bsfc-icon-home:before {
+  content: "\e900";
+}
+.bsfc-icon-pencil2:before {
+  content: "\e906";
+}
+.bsfc-icon-file-text2:before {
+  content: "\e926";
+}
+.bsfc-icon-price-tag:before {
+  content: "\e935";
+}
+.bsfc-icon-price-tags:before {
+  content: "\e936";
+}
+/* Category list */
+
+.bsf-changelog-cat-wrap .bsf-changelog-col:nth-child(3n+1) {
+    clear: left;
+}
+
+.bsf-changelog-cat-wrap .bsf-changelog-col {
+    margin: 0 !important;
+    width: 33.33%;
+    float: left;
+    min-height: 1px;
+    position: relative;
+}
+
+.bsf-changelog-cat-wrap .bsf-changelog-col {
+    padding-left: 0;
+}
+
+.bsf-changelog-cat-wrap a.bsf-changelog-link {
+    display: block;
+    background: #fbfbfb;
+    border: 1px solid #c6c6c6;
+    padding: 55px 20px;
+    color: #4d4d4d;
+    margin: 20px;
+    text-align: center;
+    box-shadow: none;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+    -moz-transition: all 150ms linear;
+    transition: all 150ms linear;
+    text-decoration: none;
+    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    box-shadow: 5px 6px 7px rgba(33, 33, 33, 0.08);
+    border: 1px solid #d8d8d8;
+}
+
+.bsf-changelog-cat-wrap h4:first-child {
+    color: #000;
+    font-size: 17px;
+    margin: 0 0 5px;
+    letter-spacing: normal;
+    font-weight: normal;
+    text-transform: none;
+}
+
+.bsf-changelog-cat-wrap .bsf-cat-count{
+    color: #808285;
+    font-size: 13px;
+    margin: 0;
+}
+
+.changelogs-title {
+    margin: 30px 0 0px 20px;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 0 0 30px;
+}
+
+.bsf-changelog-cat-wrap {
+    margin: 60px 0;
+}
+
+.changelogs-tax-templates-enabled .changelogs-wraper .bsf-changelog-header {
+    border-bottom: 1px solid #e6e6e6;
+    margin: 0 0 30px;
+    padding: 0 0 30px;
+    position: relative;
+}
+
+.bsf-changelog-header > h1 {
+    color: #1a1a1a;
+    margin: 5px 0;
+}
+
+.changelogs-single-templates-enabled .changelogs-single-main,
+.changelogs-tax-templates-enabled .bsf-main-wrap {
+    position: relative;
+    margin: 0;
+ }
+ .bsf-main-wrap article {
+     border-bottom: none;
+     margin: 0 !important;
+ }
+ .bsf-main-wrap article i {
+     font-size: inherit;
+     line-height: inherit;
+     margin-right: 10px;
+ }
+
+/* Changelog Title */
+
+body.changelog-title-enabled .changelogs-archive-wraper {
+    margin-top: 145px;
+}
+
+body.single-product-enabled .wrap.changelogs-archive-wraper {
+    margin-top: 0;
+}
+
+.bsfc-title-wrap {
+    text-align: center;
+    position: relative;
+}
+
+h2.changelog-title:after {
+    content: "\e905";
+    display: inline-block;
+    font-size: 50px;
+    color: inherit;
+    height: auto;
+    width: auto;
+    line-height: 50px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-family: 'changelog' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bsfc-icon-list2 {
+    display: inline-block;
+    font-size: 50px;
+    color: inherit;
+    height: auto;
+    width: auto;
+    line-height: 50px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.changelogs-archive-wraper {
+    margin-top: 60px;
+}
+.changelog-title {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 45px;
+    margin-bottom: 15px;
+    padding:0;
+}
+
+.bsf-changelog-col:after {
+    content: "\e903";
+    font-family: 'changelog' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    background-repeat: no-repeat;
+    position: absolute;
+    font-size: 25px;
+    color: inherit;
+    width: 0;
+    top: 10px;
+    left: 50%;
+    transform: rotate(270deg);
+}
+
+.page-sub-title {
+    font-size: inherit;
+    line-height: inherit;
+    margin: 5px 0;
+    padding: 0;
+}
+.changelog-sub-title {
+  padding: 0;
+}
+
+.bsf-entry-content.clear {
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    visibility: visible;
+}
+
+ /* Changelog Style */
+
+ div#bsf-changelog-primary {
+    margin: 5em 0 !important;
+    padding: 0;
+ }
+ .product-tax-enabled .bsfc-archive-description,
+ .post-type-archive-changelog .bsfc-archive-description, 
+ .post-type-archive-changelog .bsfc-author-box,
+ .product-tax-enabled .bsfc-author-box {
+    background-color: #eee;
+    margin: 0;
+    padding: 5em 6.67em;
+    border: 1px solid #e8e8e8;
+ }
+ body.product-tax-enabled article,
+ body.post-type-archive-changelog article {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    margin: 0;
+    padding: 5.34em 6.67em;
+}
+/* Pagination */
+.product-tax-enabled .nav-links {
+    margin-top: 20px;
+}
+.product-tax-enabled .page-numbers {
+    padding: 6px;
+    border: 1px solid #d2d2d2;
+}
+
+@media (max-width: 768px ) {
+    .bsf-changelog-cat-wrap .bsf-changelog-col {
+        float: none;
+        width: 100%;
+    }
+    .product-tax-enabled .bsfc-archive-description, 
+    .post-type-archive-changelog .bsfc-archive-description, 
+    .post-type-archive-changelog .bsfc-author-box, 
+    .product-tax-enabled .bsfc-author-box {
+        padding: 2em;
+    }
+    body.product-tax-enabled article, body.post-type-archive-changelog article {
+        padding: 2em;
+    }
+}
