@@ -277,6 +277,10 @@ h2.changelog-title:after {
     padding: 6px;
     border: 1px solid #d2d2d2;
 }
+.product-tax-enabled .entry-header,
+.single-product-enabled .entry-header {
+    margin-bottom: 2em !important;
+}
 
 @media (max-width: 768px ) {
     .bsf-changelog-cat-wrap .bsf-changelog-col {
