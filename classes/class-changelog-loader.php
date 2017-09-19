@@ -302,7 +302,9 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * @since 1.0
 		 */
 		function enqueue_front_scripts() {
+			if ( is_post_type_archive( 'changelog' ) || is_tax( 'product' ) ) {
 			wp_enqueue_style( 'bsf-changelog-frontend-style', BSF_CHANGELOG_BASE_URL . 'assets/css/frontend.css' );
+			}
 
 		}
 
