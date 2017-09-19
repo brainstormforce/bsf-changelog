@@ -173,8 +173,6 @@ h2.changelog-title:after {
     display: inline-block;
     font-size: 50px;
     color: inherit;
-    height: auto;
-    width: auto;
     line-height: 50px;
     height: 50px;
     width: 50px;
@@ -293,5 +291,14 @@ h2.changelog-title:after {
     }
     body.product-tax-enabled article, body.post-type-archive-changelog article {
         padding: 2em;
+    }
+    .bsf-changelog-col:after {
+        top: -11px;
+    }
+    .bsf-changelog-cat-wrap a.bsf-changelog-link {
+        margin-bottom: 38px;
+    }
+    .bsf-changelog-cat-wrap {
+        margin: 35px 0;
     }
 }
