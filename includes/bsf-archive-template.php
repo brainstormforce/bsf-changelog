@@ -56,6 +56,7 @@ get_header();?>
 					<article id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-chnangelogs status-publish format-standard chnangelogs_category">
 						<header class="entry-header">
 							<h2 class="entry-title"><?php the_title(); ?> </h2>
+							<div class="changelog-publish-date"><?php echo  get_the_date( 'j M Y' ); ?></div>
 						</header>
 						<div class="bsf-entry-content clear" itemprop="text">
 							<?php the_content(); ?>
