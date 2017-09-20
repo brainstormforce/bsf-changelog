@@ -60,6 +60,7 @@ class BSF_Changelog_Post_Type {
 				),
 				'show_ui'               => true,
 				'query_var'             => true,
+				'show_admin_column'     => true,
 				'rewrite'          => array(
 					'slug'         => 'product',
 					'with_front'   => false,

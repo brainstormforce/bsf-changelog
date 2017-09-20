@@ -4,8 +4,8 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package WordPress
- * @subpackage Twenty_Seventeen
+ * @package Changelog
+ * @subpackage CategoryTemplate
  * @since 1.0
  * @version 1.0
  */
@@ -59,10 +59,6 @@ get_header(); ?>
 					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'bsf-chnangelogs' ) . ' </span>',
 				)
 			);
-
-		else :
-
-			get_template_part( 'template-parts/post/content', 'none' );
 
 		endif;
 		?>

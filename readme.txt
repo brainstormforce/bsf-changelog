@@ -9,7 +9,7 @@ BSF Changelog allows you to create Changelog website within minute with custom l
 
 == Description ==
 
-A BSF Changelog Easily build changelog website. This plugin provides shortcodes to display category list.
+BSF Changelog plugin is used for building multi products changelog website within minute, This plugin provides shortcodes to display changelog versions list and custom designs.
 
 == Installation ==
 

@@ -3,7 +3,7 @@
  * The template for archive Changelogs page
  *
  * @author Brainstormforce
- * @package changelog/ArchiveTemplate
+ * @package Changelog/ArchiveTemplate
  */
 
 get_header();?>
@@ -72,10 +72,6 @@ get_header();?>
 						'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'bsf-chnangelogs' ) . ' </span>',
 					)
 				);
-
-			else :
-
-				get_template_part( 'template-parts/post/content', 'none' );
 
 			endif;
 			?>
