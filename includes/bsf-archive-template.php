@@ -12,9 +12,9 @@ get_header();?>
 <div class="wrap changelogs-archive-wraper">
 	<?php
 		// Display category list.
-		if ( ( '1' === $has_multiple_product || false === $has_multiple_product ) ) {
-			echo do_shortcode( '[changelog_product_list]' );
-		} 
+	if ( ( '1' === $has_multiple_product || false === $has_multiple_product ) ) {
+		echo do_shortcode( '[changelog_product_list]' );
+	}
 	?>
 </div><!-- .wrap -->
 	<?php if ( ! ( '1' === $has_multiple_product || false === $has_multiple_product ) ) { ?>
@@ -29,12 +29,13 @@ get_header();?>
 			<?php if ( '' != $changelog_title ) { ?>
 			<section class="bsfc-archive-description">
 				<div class="bsf-changelog-header">
-				<?php if ( '' != $changelog_title ) {
-					 echo '<h1 class="page-title ">' . esc_attr( $changelog_title ) .'</h1>'; 
-					}
-					if ( '' != $changelog_sub_title )  {
-		 			 echo '<p class="page-sub-title">' . esc_attr( $changelog_sub_title ) .'</p>'; 
-		 			}
+				<?php
+				if ( '' != $changelog_title ) {
+					 echo '<h1 class="page-title ">' . esc_attr( $changelog_title ) . '</h1>';
+				}
+				if ( '' != $changelog_sub_title ) {
+					echo '<p class="page-sub-title">' . esc_attr( $changelog_sub_title ) . '</p>';
+				}
 					?>
 				</div><!-- .page-header -->
 			</section>
@@ -81,5 +82,6 @@ get_header();?>
 			</main><!-- #main -->
 		</div><!-- #primary -->
 	</div><!-- .wrap -->
-<?php }
+<?php
+}
 get_footer();

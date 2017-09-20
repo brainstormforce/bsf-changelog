@@ -13,4 +13,4 @@
  */
 
 // Including class doc loader.
-require_once 'classes/class-changelog-loader.php';
+require_once 'classes/class-bsf-changelog-loader.php';
