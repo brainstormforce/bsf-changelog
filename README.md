@@ -1,6 +1,6 @@
 # BSF Changelog #  
 **Contributors:** brainstormforce, aniljbsfio  
-**Tags:** changelog, wpchangelog, wpchangelog  
+**Tags:** changelog, wpchangelog, productschangelog  
 **Tested up to:** 4.8.2	   
 **Stable tag:** 1.0.0  
 
@@ -8,7 +8,7 @@ BSF Change allows you to create documentation website.
 
 ## Description ##
 
-A BSF Changelog Easily build chagelog website with custom layouts.
+BSF Changelog plugin is used for building multi products changelog website within minute, This plugin provides shortcodes to display changelog versions list and custom designs.
 
 ## Installation ##
 
