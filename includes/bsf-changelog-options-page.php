@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 						<tr valign="top">
 							<th scope="row"><?php _e( 'Changelog Page Title', 'bsf-changelogs' ); ?></th>
 							<td>
-								<?php 
+								<?php
 									$default_title = get_option( 'bsf_changelog_title' );
 									$default_title = 'Changelog Title Area';
 								?>
@@ -58,7 +58,7 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 		<div class="bsf-shortcode-container">
 			<table class="form-table">
 				<tr valign="top">
-					 <th scope="row"><?php _e( "Display Products List", 'bsf-changelogs' ); ?></th>
+					 <th scope="row"><?php _e( 'Display Products List', 'bsf-changelogs' ); ?></th>
 					<td>
 						   <div class="bsf-shortcode-container wp-ui-text-highlight">
 							   [changelog_product_list]

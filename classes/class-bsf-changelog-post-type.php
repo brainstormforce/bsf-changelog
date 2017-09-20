@@ -38,7 +38,6 @@ class BSF_Changelog_Post_Type {
 
 		do_action( 'bsf_changelogs_before_register_taxonomy' );
 
-
 		register_taxonomy(
 			'product',
 			apply_filters( 'product', array( BSF_CHANGELOG_POST_TYPE ) ),
@@ -138,7 +137,7 @@ class BSF_Changelog_Post_Type {
 					'labels'              => array(
 							'name'                  => __( 'Changelog', 'bsf-changelog' ),
 							'singular_name'         => __( 'Changelog', 'bsf-changelog' ),
-							'all_items'				=> __( 'All Versions', 'bsf-changelog' ),
+							'all_items'             => __( 'All Versions', 'bsf-changelog' ),
 							'menu_name'             => _x( 'Changelogs', 'Admin menu name', 'bsf-changelog' ),
 							'add_new'               => __( 'Add Version', 'bsf-changelog' ),
 							'add_new_item'          => __( 'Add New Version', 'bsf-changelog' ),
