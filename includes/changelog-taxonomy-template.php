@@ -21,7 +21,7 @@ get_header(); ?>
 				<?php
 					$all_prodcut_url = site_url() . '/changelog';
 					echo '<h1 class="page-title">' . single_cat_title( '', false ) . '</h1>';
-					echo "<a href='$all_prodcut_url'>All Products</a> / " . single_cat_title( '', false );
+					echo "<a href='$all_prodcut_url'>All Changelogs</a> / " . single_cat_title( '', false );
 				?>
 			</div><!-- .page-header -->
 		</section>
