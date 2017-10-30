@@ -1,10 +1,13 @@
-# BSF Changelog #  
+# BSF Changelog #
 **Contributors:** brainstormforce, aniljbsfio  
-**Tags:** changelog, wpchangelog, productschangelog  
-**Tested up to:** 4.8.2	   
+**Tags:** changelog, wpchangelog, products-changelog,  
+**Requires at least:** 3.0    
+**Tested up to:** 4.9.0  
 **Stable tag:** 1.0.0  
+**License:** GPLv2 or later  
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
-BSF Change allows you to create documentation website.
+BSF Changelog allows you to create Changelog website within minute with custom layouts.
 
 ## Description ##
 
