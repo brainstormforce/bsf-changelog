@@ -46,33 +46,32 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 	}
 			?>
 	</div>
-	<div class="bsf-changelog-cat-wrap clearfix">
-		<?php
-		foreach ( $taxonomy_objects as $key => $object ) {
+	
+	<?php if ( $taxonomy_objects && ! is_wp_error( $taxonomy_objects ) ) : ?>
+		<div class="bsf-changelog-cat-wrap clearfix">
+			<?php
+			foreach ( $taxonomy_objects as $key => $object ) {
 
-			$cat_link = get_category_link( $object->term_id );
-			$category = get_category( $object->term_id );
-			$count = $category->category_count;
+				if ( $object->count ) {
 
-			if ( $count > 0 ) {
+				?>
+				<div class="bsf-changelog-col" >
+					<a class="bsf-changelog-link" href="<?php echo esc_url( get_term_link( $object->slug, $object->taxonomy ) ); ?>">
+						<h4><?php echo $object->name; ?></h4>
+						<span class="bsf-cat-count">
+							<?php echo $object->count . ' ' . __( 'Versions', 'bsf-changelog' ); ?> 
+						</span>
+					</a>
+				</div>
 
-			?>
-			<div class="bsf-changelog-col" >
-				<a class="bsf-changelog-link" href="<?php echo esc_url( $cat_link ); ?>">
-					<h4><?php echo $object->name; ?></h4>
-					<span class="bsf-cat-count">
-						<?php echo $count . ' ' . __( 'Versions', 'bsf-changelog' ); ?> 
-					</span>
-				</a>
-			</div>
-
-		<?php
+			<?php
+				}
 			}
-		}
-?>
-	</div>
+			?>
+		</div>
 
 	<?php
+	endif;
 
 	return ob_get_clean();
 }
