@@ -57,9 +57,9 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 				?>
 				<div class="bsf-changelog-col" >
 					<a class="bsf-changelog-link" href="<?php echo esc_url( get_term_link( $object->slug, $object->taxonomy ) ); ?>">
-						<h4><?php echo $object->name; ?></h4>
+						<h4><?php echo esc_html( $object->name ); ?></h4>
 						<span class="bsf-cat-count">
-							<?php echo $object->count . ' ' . __( 'Versions', 'bsf-changelog' ); ?> 
+							<?php printf( __( '%1$s Versions', 'bsf-changelog' ), $object->count ); ?>
 						</span>
 					</a>
 				</div>
