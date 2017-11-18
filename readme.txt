@@ -22,7 +22,7 @@ BSF Changelog plugin is used for building multi products changelog website withi
 == Changelog ==
 
 Version 1.0.1 - 18-Nov-2017
-* Fix: Category issue fixed for WP-4.9
+* Fix: Category undefined issue fixed for WP-4.9 
 * Fix: Translation ready
 
 Version 1.0.0
