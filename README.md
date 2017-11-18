@@ -3,7 +3,7 @@
 **Tags:** changelog, wpchangelog, products-changelog,  
 **Requires at least:** 3.0    
 **Tested up to:** 4.9.0  
-**Stable tag:** 1.0.0  
+**Stable tag:** 1.0.1  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -21,5 +21,9 @@ BSF Changelog plugin is used for building multi products changelog website withi
 
 ## Changelog ##
 
-### Version 1.0.0 ###
+Version 1.0.1
+* Fix: Category issue fixed for WP-4.9
+* Fix: Translation ready
+
+Version 1.0.0
 * Initial release
