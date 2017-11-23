@@ -63,7 +63,7 @@ class BSF_Changelog_Post_Type {
 				'show_admin_column'     => true,
 				'hierarchical'          => true,
 				'rewrite'          => array(
-					'slug'         => apply_filters( 'changelog_taxonomy', 'product' ),
+					'slug'         => apply_filters( 'bsf_changelog_taxonomy', 'product' ),
 					'with_front'   => false,
 				),
 			)
