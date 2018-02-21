@@ -49,6 +49,7 @@ get_header(); ?>
 					<div class="bsf-entry-content clear" itemprop="text">
 						<?php the_content(); ?>
 					</div>
+					<?php edit_post_link( 'Edit' ); ?>
 				</article>
 				<?php
 			endwhile;
