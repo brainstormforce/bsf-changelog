@@ -22,9 +22,9 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 							<th scope="row"><?php _e( 'Do You Have Multiple Products?', 'bsf-changelogs' ); ?></th>
 							<td>
 								<?php
-								$checked = '';
+								$checked                         = '';
 								$bsf_changelog_category_template = get_option( 'bsf_changelog_category_template' );
-								$checked = ( false === $bsf_changelog_category_template ) ? " checked='checked' " : ( ( 1 == $bsf_changelog_category_template ) ? " checked='checked' " : '' );
+								$checked                         = ( false === $bsf_changelog_category_template ) ? " checked='checked' " : ( ( 1 == $bsf_changelog_category_template ) ? " checked='checked' " : '' );
 								?>
 								<input type="checkbox" <?php echo $checked; ?> name="bsf_changelog_category_template" value="1" <?php echo checked( 1, $checked, false ); ?> />
 							</td>
@@ -46,7 +46,6 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 							</td>
 						</tr>	
 					</table>
-				
 						<?php submit_button(); ?>
 		</form>
 	</div>
@@ -58,12 +57,12 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 		<div class="bsf-shortcode-container">
 			<table class="form-table">
 				<tr valign="top">
-					 <th scope="row"><?php _e( 'Display Products List', 'bsf-changelogs' ); ?></th>
-					<td>
-						   <div class="bsf-shortcode-container wp-ui-text-highlight">
-							   [changelog_product_list]
-						   </div>  
-					</td>
+					<th scope="row"><?php _e( 'Display Products List', 'bsf-changelogs' ); ?></th>
+				<td>
+						<div class="bsf-shortcode-container wp-ui-text-highlight">
+							[changelog_product_list]
+						</div>  
+		</td>
 				</tr>
 			</table>
 		</div>

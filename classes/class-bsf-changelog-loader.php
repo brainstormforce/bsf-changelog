@@ -54,7 +54,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			$this->define_constants();
 			$this->load_files();
 			$this->init_hooks();
-			add_action( 'init',  array( $this, 'bsf_changelog_init' ) );
+			add_action( 'init', array( $this, 'bsf_changelog_init' ) );
 
 			do_action( 'bsf_changelogs_loaded' );
 		}
@@ -133,7 +133,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 
 			if ( is_post_type_archive( 'changelog' ) ) {
 				$cls = array_merge( $classes, array( 'changelog-title-enabled' ) );
-				  return $cls;
+				return $cls;
 			}
 			return $classes;
 		}
@@ -148,8 +148,8 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 
 			if ( is_post_type_archive( 'changelog' ) || is_tax( 'product' ) && is_array( $classes ) ) {
 				// Add clss to body.
-				  $cls = array_merge( $classes, array( 'product-tax-enabled' ) );
-				  return $cls;
+				$cls = array_merge( $classes, array( 'product-tax-enabled' ) );
+				return $cls;
 			}
 			return $classes;
 		}
@@ -164,8 +164,8 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 
 			if ( is_post_type_archive( 'changelog' ) && is_array( $classes ) ) {
 				// Add clss to body.
-				  $cls = array_merge( $classes, array( 'single-product-enabled' ) );
-				  return $cls;
+				$cls = array_merge( $classes, array( 'single-product-enabled' ) );
+				return $cls;
 			}
 			return $classes;
 		}
@@ -226,7 +226,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			if ( is_post_type_archive( BSF_CHANGELOG_POST_TYPE ) ) {
 				$archive_template = BSF_CHANGELOG_BASE_DIR . 'includes/bsf-archive-template.php';
 			}
-			 return $archive_template;
+			return $archive_template;
 		}
 
 		/**
@@ -240,7 +240,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			if ( is_singular( 'changelog' ) ) {
 				$single_template = BSF_CHANGELOG_BASE_DIR . 'includes/bsf-single-changelog-template.php';
 			}
-			 return $single_template;
+			return $single_template;
 		}
 
 		/**
