@@ -19,10 +19,11 @@ get_header(); ?>
 		<section class="bsfc-archive-description">
 			<div class="bsf-changelog-header">
 				<?php
-					$all_prodcut_url = site_url() . '/changelog';
+					$all_prodcut_url = site_url() . '/' . BSF_CHANGELOG_POST_TYPE;
 					echo '<h1 class="page-title">' . single_cat_title( '', false ) . '</h1>';
-					echo "<a href='$all_prodcut_url'>All Products</a> / " . single_cat_title( '', false );
-				?>
+					?>
+					<a href="<?php echo esc_url( $all_prodcut_url ); ?>"><?php _e( 'All Changelogs', 'bsf-chnangelogs' ); ?></a> 
+					<?php echo '/ ' . single_cat_title( '', false ); ?>
 			</div><!-- .page-header -->
 		</section>
 	<?php endif; ?>
