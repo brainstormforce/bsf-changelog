@@ -27,7 +27,7 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 		), $atts
 	);
 
-	$taxonomy_objects = get_terms(
+	$taxonomy_objects        = get_terms(
 		$get_args['category'], array(
 			'hide_empty' => false,
 		)
@@ -35,7 +35,7 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 	?>
 	<div class="bsfc-title-wrap">
 	<?php
-		$changelog_title = get_option( 'bsf_changelog_title' );
+		$changelog_title     = get_option( 'bsf_changelog_title' );
 		$changelog_sub_title = get_option( 'bsf_changelog_sub_title' );
 
 	if ( '' != $changelog_title ) {
@@ -46,7 +46,6 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 	}
 			?>
 	</div>
-	
 	<?php if ( $taxonomy_objects && ! is_wp_error( $taxonomy_objects ) ) : ?>
 		<div class="bsf-changelog-cat-wrap clearfix">
 			<?php

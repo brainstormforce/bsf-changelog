@@ -23,7 +23,7 @@ get_header();?>
 			<main id="main" class="in-wrap" role="main">
 
 			<?php
-				$changelog_title = get_option( 'bsf_changelog_title' );
+				$changelog_title     = get_option( 'bsf_changelog_title' );
 				$changelog_sub_title = get_option( 'bsf_changelog_sub_title' );
 			?>
 			<?php if ( '' != $changelog_title ) { ?>
@@ -31,7 +31,7 @@ get_header();?>
 				<div class="bsf-changelog-header">
 				<?php
 				if ( '' != $changelog_title ) {
-					 echo '<h1 class="page-title ">' . esc_attr( $changelog_title ) . '</h1>';
+					echo '<h1 class="page-title ">' . esc_attr( $changelog_title ) . '</h1>';
 				}
 				if ( '' != $changelog_sub_title ) {
 					echo '<p class="page-sub-title">' . esc_attr( $changelog_sub_title ) . '</p>';
@@ -67,8 +67,8 @@ get_header();?>
 				endwhile;
 				the_posts_pagination(
 					array(
-						'prev_text' => '&laquo;<span class="screen-reader-text">' . __( 'Previous page', 'bsf-chnangelogs' ) . '</span>',
-						'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'bsf-chnangelogs' ) . '</span>&raquo;',
+						'prev_text'          => '&laquo;<span class="screen-reader-text">' . __( 'Previous page', 'bsf-chnangelogs' ) . '</span>',
+						'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'bsf-chnangelogs' ) . '</span>&raquo;',
 						'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'bsf-chnangelogs' ) . ' </span>',
 					)
 				);
