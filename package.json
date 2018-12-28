@@ -1,6 +1,6 @@
 {
   "name": "bsf-changelog",
-  "version": "0.1.0",
+  "version": "1.0.2",
   "main": "Gruntfile.js",
   "author": "YOUR NAME HERE",
   "devDependencies": {
