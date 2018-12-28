@@ -61,6 +61,7 @@ class BSF_Changelog_Post_Type {
 				'show_ui'           => true,
 				'query_var'         => true,
 				'show_admin_column' => true,
+				'show_in_rest' => true,
 				'hierarchical'      => true,
 				'rewrite'           => array(
 					'slug'       => apply_filters( 'bsf_changelog_taxonomy', 'product' ),
@@ -94,6 +95,7 @@ class BSF_Changelog_Post_Type {
 					),
 					'show_ui'      => true,
 					'query_var'    => true,
+					'show_in_rest' => true,
 					'rewrite'      => array(
 						'slug'       => 'changelogs-tag',
 						'with_front' => false,
