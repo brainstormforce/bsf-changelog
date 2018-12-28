@@ -21,8 +21,8 @@ get_header(); ?>
 				<?php
 					$all_prodcut_url = site_url() . '/' . BSF_CHANGELOG_POST_TYPE;
 					echo '<h1 class="page-title">' . single_cat_title( '', false ) . '</h1>';
-					?>
-					<a href="<?php echo esc_url( $all_prodcut_url ); ?>"><?php _e( 'All Changelogs', 'bsf-chnangelogs' ); ?></a> 
+				?>
+					<a href="<?php echo esc_url( $all_prodcut_url ); ?>"><?php _e( 'All Changelogs', 'bsf-changelog' ); ?></a> 
 					<?php echo '/ ' . single_cat_title( '', false ); ?>
 			</div><!-- .page-header -->
 		</section>
@@ -30,7 +30,7 @@ get_header(); ?>
 
 		<?php
 		if ( have_posts() ) :
-		?>
+			?>
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
@@ -56,9 +56,9 @@ get_header(); ?>
 			endwhile;
 			the_posts_pagination(
 				array(
-					'prev_text'          => '&laquo;<span class="screen-reader-text">' . __( 'Previous page', 'bsf-chnangelogs' ) . '</span>',
-					'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'bsf-chnangelogs' ) . '</span>&raquo;',
-					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'bsf-chnangelogs' ) . ' </span>',
+					'prev_text'          => '&laquo;<span class="screen-reader-text">' . __( 'Previous page', 'bsf-changelog' ) . '</span>',
+					'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'bsf-changelog' ) . '</span>&raquo;',
+					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'bsf-changelog' ) . ' </span>',
 				)
 			);
 

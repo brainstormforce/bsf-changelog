@@ -61,6 +61,7 @@ class BSF_Changelog_Post_Type {
 				'show_ui'           => true,
 				'query_var'         => true,
 				'show_admin_column' => true,
+				'show_in_rest'      => true,
 				'hierarchical'      => true,
 				'rewrite'           => array(
 					'slug'       => apply_filters( 'bsf_changelog_taxonomy', 'product' ),
@@ -73,7 +74,8 @@ class BSF_Changelog_Post_Type {
 			'changelog_tag',
 			apply_filters( 'bsf_taxonomy_objects_changelog_tag', array( BSF_CHANGELOG_POST_TYPE ) ),
 			apply_filters(
-				'bsf_taxonomy_args_changelog_tag', array(
+				'bsf_taxonomy_args_changelog_tag',
+				array(
 					'hierarchical' => false,
 					'label'        => __( 'Version tags', 'bsf-changelog' ),
 					'labels'       => array(
@@ -94,6 +96,7 @@ class BSF_Changelog_Post_Type {
 					),
 					'show_ui'      => true,
 					'query_var'    => true,
+					'show_in_rest' => true,
 					'rewrite'      => array(
 						'slug'       => 'changelogs-tag',
 						'with_front' => false,

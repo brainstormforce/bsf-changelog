@@ -210,7 +210,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 */
 		function php_version_notice() {
 
-			$message = __( 'Your server seems to be running outdated, unsupported and vulnerable version of PHP. You are advised to contact your host provider and upgrade to PHP version 5.6 or greater.', 'bsf-Changelogs' );
+			$message = __( 'Your server seems to be running outdated, unsupported and vulnerable version of PHP. You are advised to contact your host provider and upgrade to PHP version 5.6 or greater.', 'bsf-changelog' );
 
 			$this->render_admin_notice( $message, 'warning' );
 		}

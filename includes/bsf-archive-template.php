@@ -36,13 +36,13 @@ get_header();?>
 				if ( '' != $changelog_sub_title ) {
 					echo '<p class="page-sub-title">' . esc_attr( $changelog_sub_title ) . '</p>';
 				}
-					?>
+				?>
 				</div><!-- .page-header -->
 			</section>
 			<?php } ?>
 			<?php
 			if ( have_posts() ) :
-			?>
+				?>
 				<?php
 				/* Start the Loop */
 				while ( have_posts() ) :
@@ -67,9 +67,9 @@ get_header();?>
 				endwhile;
 				the_posts_pagination(
 					array(
-						'prev_text'          => '&laquo;<span class="screen-reader-text">' . __( 'Previous page', 'bsf-chnangelogs' ) . '</span>',
-						'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'bsf-chnangelogs' ) . '</span>&raquo;',
-						'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'bsf-chnangelogs' ) . ' </span>',
+						'prev_text'          => '&laquo;<span class="screen-reader-text">' . __( 'Previous page', 'bsf-changelog' ) . '</span>',
+						'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'bsf-changelog' ) . '</span>&raquo;',
+						'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'bsf-changelog' ) . ' </span>',
 					)
 				);
 
@@ -79,6 +79,6 @@ get_header();?>
 			</main><!-- #main -->
 		</div><!-- #primary -->
 	</div><!-- .wrap -->
-<?php
-}
-get_footer();
+		<?php
+	}
+	get_footer();

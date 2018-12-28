@@ -1,0 +1,302 @@
+# Copyright (C) 2018 Brainstorm Force
+# This file is distributed under the same license as the BSF Changelog package.
+msgid ""
+msgstr ""
+"Project-Id-Version: BSF Changelog 1.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bsf-changelog\n"
+"POT-Creation-Date: 2018-12-28 06:21:26+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: classes/class-bsf-changelog-loader.php:191
+#: classes/class-bsf-changelog-loader.php:192
+msgid "Changelog Settings"
+msgstr ""
+
+#: classes/class-bsf-changelog-loader.php:213
+msgid ""
+"Your server seems to be running outdated, unsupported and vulnerable "
+"version of PHP. You are advised to contact your host provider and upgrade "
+"to PHP version 5.6 or greater."
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:46
+msgid "Products"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:48
+msgid "Product categories"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:49
+msgid "Product"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:51
+msgid "Search categories"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:52
+msgid "All Product"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:53
+msgid "Parent product"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:54
+msgid "Parent product:"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:55
+msgid "Edit product"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:56
+msgid "Update product"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:57
+msgid "Add new product"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:58
+msgid "New product name"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:59
+msgid "No product found"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:80
+#: classes/class-bsf-changelog-post-type.php:82
+msgid "Version tags"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:83
+msgid "Tag"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:85
+msgid "Search tags"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:86
+msgid "All tags"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:87
+msgid "Edit tag"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:88
+msgid "Update tag"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:89
+msgid "Add new tag"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:90
+msgid "New tag name"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:91
+msgid "Popular tags"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:92
+msgid "Separate tags with commas"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:93
+msgid "Add or remove tags"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:94
+msgid "Choose from the most used tags"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:95
+msgid "No tags found"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:142
+#: classes/class-bsf-changelog-post-type.php:143
+msgid "Changelog"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:144
+msgid "All Versions"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:146
+msgid "Add Version"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:147
+msgid "Add New Version"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:148
+msgid "Edit"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:149
+msgid "Edit Version"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:150
+msgid "New Version"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:151
+#: classes/class-bsf-changelog-post-type.php:152
+msgid "View Version"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:153
+msgid "Search Version"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:154
+msgid "No version found"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:155
+msgid "No Version found in trash"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:156
+msgid "Parent Version"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:157
+msgid "changelogs image"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:158
+msgid "Set changelogs image"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:159
+msgid "Remove Version image"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:160
+msgid "Use as Version image"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:161
+msgid "Version list"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:163
+msgid "This is where you can add new changelogs to your site."
+msgstr ""
+
+#: includes/bsf-archive-template.php:70
+#: includes/changelog-taxonomy-template.php:59
+msgid "Previous page"
+msgstr ""
+
+#: includes/bsf-archive-template.php:71
+#: includes/changelog-taxonomy-template.php:60
+msgid "Next page"
+msgstr ""
+
+#: includes/bsf-archive-template.php:72
+#: includes/changelog-taxonomy-template.php:61
+msgid "Page"
+msgstr ""
+
+#: includes/bsf-changelog-options-page.php:15
+msgid "Changelogs Settings"
+msgstr ""
+
+#: includes/bsf-changelog-options-page.php:22
+msgid "Do You Have Multiple Products?"
+msgstr ""
+
+#: includes/bsf-changelog-options-page.php:33
+msgid "Changelog Page Title"
+msgstr ""
+
+#: includes/bsf-changelog-options-page.php:43
+msgid "Changelog Page Sub-Title"
+msgstr ""
+
+#: includes/bsf-changelog-options-page.php:54
+msgid "Shortcodes"
+msgstr ""
+
+#: includes/bsf-changelog-options-page.php:55
+msgid "Copy below shortcode and paste it into your post, page, or text widget."
+msgstr ""
+
+#: includes/bsf-changelog-options-page.php:60
+msgid "Display Products List"
+msgstr ""
+
+#: includes/bsf-changelog-shortcode.php:64
+#. translators: %s: Version number count term
+msgid "%1$s Versions"
+msgstr ""
+
+#: includes/changelog-taxonomy-template.php:25
+msgid "All Changelogs"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "BSF Changelog"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://brainstormforce.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"BSF Changelog plugin is used for building multi products changelog website "
+"within minute, This plugin provides shortcodes to display changelog "
+"versions list and custom designs."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Brainstorm Force"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.brainstormforce.com"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:50
+msgctxt "Admin menu name"
+msgid "Products"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:84
+msgctxt "Admin menu name"
+msgid "Tags"
+msgstr ""
+
+#: classes/class-bsf-changelog-post-type.php:145
+msgctxt "Admin menu name"
+msgid "Changelogs"
+msgstr ""
