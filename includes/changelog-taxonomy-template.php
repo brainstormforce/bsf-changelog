@@ -21,7 +21,7 @@ get_header(); ?>
 				<?php
 					$all_prodcut_url = site_url() . '/' . BSF_CHANGELOG_POST_TYPE;
 					echo '<h1 class="page-title">' . single_cat_title( '', false ) . '</h1>';
-					?>
+				?>
 					<a href="<?php echo esc_url( $all_prodcut_url ); ?>"><?php _e( 'All Changelogs', 'bsf-chnangelogs' ); ?></a> 
 					<?php echo '/ ' . single_cat_title( '', false ); ?>
 			</div><!-- .page-header -->
@@ -30,7 +30,7 @@ get_header(); ?>
 
 		<?php
 		if ( have_posts() ) :
-		?>
+			?>
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :

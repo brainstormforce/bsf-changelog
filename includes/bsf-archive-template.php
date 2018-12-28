@@ -36,13 +36,13 @@ get_header();?>
 				if ( '' != $changelog_sub_title ) {
 					echo '<p class="page-sub-title">' . esc_attr( $changelog_sub_title ) . '</p>';
 				}
-					?>
+				?>
 				</div><!-- .page-header -->
 			</section>
 			<?php } ?>
 			<?php
 			if ( have_posts() ) :
-			?>
+				?>
 				<?php
 				/* Start the Loop */
 				while ( have_posts() ) :
@@ -79,6 +79,6 @@ get_header();?>
 			</main><!-- #main -->
 		</div><!-- #primary -->
 	</div><!-- .wrap -->
-<?php
-}
-get_footer();
+		<?php
+	}
+	get_footer();

@@ -24,11 +24,13 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 	$get_args = shortcode_atts(
 		array(
 			'category' => 'product',
-		), $atts
+		),
+		$atts
 	);
 
-	$taxonomy_objects        = get_terms(
-		$get_args['category'], array(
+	$taxonomy_objects = get_terms(
+		$get_args['category'],
+		array(
 			'hide_empty' => false,
 		)
 	);
@@ -44,7 +46,7 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 	if ( '' != $changelog_title ) {
 		echo '<p class="changelog-sub-title">' . esc_attr( $changelog_sub_title ) . '</p>';
 	}
-			?>
+	?>
 	</div>
 	<?php if ( $taxonomy_objects && ! is_wp_error( $taxonomy_objects ) ) : ?>
 		<div class="bsf-changelog-cat-wrap clearfix">
@@ -53,7 +55,7 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 
 				if ( $object->count ) {
 
-				?>
+					?>
 				<div class="bsf-changelog-col" >
 					<a class="bsf-changelog-link" href="<?php echo esc_url( get_term_link( $object->slug, $object->taxonomy ) ); ?>">
 						<h4><?php echo esc_html( $object->name ); ?></h4>
@@ -64,13 +66,13 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 					</a>
 				</div>
 
-			<?php
+					<?php
 				}
 			}
 			?>
 		</div>
 
-	<?php
+		<?php
 	endif;
 
 	return ob_get_clean();
