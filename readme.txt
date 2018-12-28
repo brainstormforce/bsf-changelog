@@ -1,5 +1,5 @@
 === BSF Changelog ===
-Contributors: brainstormforce, aniljbsfio
+Contributors: brainstormforce
 Tags: changelog, wpchangelog, products-changelog,
 Requires at least: 3.0  
 Tested up to: 5.0
