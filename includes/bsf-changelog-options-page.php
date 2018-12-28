@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 							</td>
 						</tr>	
 						<tr valign="top">
-							<th scope="row"><?php _e( 'Changelog Page Sub-Title', 'bsf-changelogs' ); ?></th>
+							<th scope="row"><?php _e( 'Changelog Page Sub-Title', 'bsf-changelog' ); ?></th>
 							<td>
 								<input type="text" class="regular-text code" name="bsf_changelog_sub_title" value="<?php echo get_option( 'bsf_changelog_sub_title' ); ?> "/>
 							</td>
@@ -51,13 +51,13 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 	</div>
 	<div class="bsf-shortcodes-wrap">
 
-		<h2 class="title"><?php _e( 'Shortcodes', 'bsf-changelogs' ); ?></h2>
-		<p><?php _e( 'Copy below shortcode and paste it into your post, page, or text widget.', 'bsf-changelogs' ); ?></p>
+		<h2 class="title"><?php _e( 'Shortcodes', 'bsf-changelog' ); ?></h2>
+		<p><?php _e( 'Copy below shortcode and paste it into your post, page, or text widget.', 'bsf-changelog' ); ?></p>
 
 		<div class="bsf-shortcode-container">
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"><?php _e( 'Display Products List', 'bsf-changelogs' ); ?></th>
+					<th scope="row"><?php _e( 'Display Products List', 'bsf-changelog' ); ?></th>
 				<td>
 						<div class="bsf-shortcode-container wp-ui-text-highlight">
 							[changelog_product_list]
