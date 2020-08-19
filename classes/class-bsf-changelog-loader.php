@@ -65,17 +65,17 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 */
 		function bsf_changelog_init() {
 			$is_title_enabled = get_option( 'bsf_changelog_title' );
-			if ( '' != $is_title_enabled ) {
+			if ( '' !== $is_title_enabled ) {
 				add_filter( 'body_class', array( $this, 'bsf_changelogs_archive_title' ), 99 );
 			}
 
 			$is_cat_template_on = get_option( 'bsf_changelog_category_template' );
-			if ( '1' == $is_cat_template_on || false === $is_cat_template_on ) {
+			if ( '1' === $is_cat_template_on || false === $is_cat_template_on ) {
 				add_filter( 'template_include', array( $this, 'category_template' ), 99 );
 				add_filter( 'body_class', array( $this, 'bsf_changelogs_body_tax_class' ) );
 			}
 
-			if ( ! ( '1' == $is_cat_template_on || false === $is_cat_template_on ) ) {
+			if ( ! ( '1' === $is_cat_template_on || false === $is_cat_template_on ) ) {
 				add_filter( 'body_class', array( $this, 'bsf_single_product_body_class' ) );
 			}
 

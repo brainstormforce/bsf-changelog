@@ -40,10 +40,10 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 		$changelog_title     = get_option( 'bsf_changelog_title' );
 		$changelog_sub_title = get_option( 'bsf_changelog_sub_title' );
 
-	if ( '' != $changelog_title ) {
+	if ( '' !== $changelog_title ) {
 		echo '<h2 class="changelog-title">' . esc_attr( $changelog_title ) . '</h2>';
 	}
-	if ( '' != $changelog_title ) {
+	if ( '' !== $changelog_title ) {
 		echo '<p class="changelog-sub-title">' . esc_attr( $changelog_sub_title ) . '</p>';
 	}
 	?>
