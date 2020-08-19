@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 								<?php
 								$checked                         = '';
 								$bsf_changelog_category_template = get_option( 'bsf_changelog_category_template' );
-								$checked                         = ( false === $bsf_changelog_category_template ) ? " checked='checked' " : ( ( 1 == $bsf_changelog_category_template ) ? " checked='checked' " : '' );
+								$checked                         = ( false === $bsf_changelog_category_template ) ? " checked='checked' " : ( ( 1 === $bsf_changelog_category_template ) ? " checked='checked' " : '' );
 								?>
 								<input type="checkbox" <?php echo $checked; ?> name="bsf_changelog_category_template" value="1" <?php echo checked( 1, $checked, false ); ?> />
 							</td>
