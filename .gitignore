@@ -6,5 +6,3 @@ node_modules/
 *.tar.gz
 package-lock.json
 vendor/
-.github
-.wordpress-org 
