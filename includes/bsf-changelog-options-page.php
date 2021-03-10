@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 							<td>
 								<?php
 								$bsf_changelog_category_template = get_option( 'bsf_changelog_category_template' );
-								if ( isset( $bsf_changelog_category_template ) && 'yes' === $bsf_changelog_category_template ) {//PHPCS:ignore:WordPress.PHP.StrictComparisons.LooseComparison
+								if ( isset( $bsf_changelog_category_template ) && 'yes' === $bsf_changelog_category_template ) {
 									echo '<input type="checkbox" checked name="bsf_changelog_category_template" value="yes">';
 								} else {
 									echo '<input type="checkbox" name="bsf_changelog_category_template" value="yes">';
