@@ -276,7 +276,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 
 			$file = dirname( dirname( __FILE__ ) );
 
-			define( 'BSF_CHANGELOG_VERSION', '1.0.4' );
+			define( 'BSF_CHANGELOG_VERSION', '1.0.5' );
 			define( 'BSF_CHANGELOG_DIR_NAME', plugin_basename( $file ) );
 			define( 'BSF_CHANGELOG_BASE_FILE', trailingslashit( $file ) . BSF_CHANGELOG_DIR_NAME . '.php' );
 			define( 'BSF_CHANGELOG_BASE_DIR', plugin_dir_path( BSF_CHANGELOG_BASE_FILE ) );
