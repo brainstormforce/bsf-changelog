@@ -303,9 +303,11 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 */
 		function enqueue_front_scripts() {
 			if ( is_post_type_archive( 'changelog' ) || is_tax( 'product' ) ) {
+				print_r( is_post_type_archive( 'changelog' ) );
 				wp_enqueue_style( 'bsf-changelog-frontend-style', BSF_CHANGELOG_BASE_URL . 'assets/css/frontend.css' );
+				wp_register_script( 'bsf-changelog-frontend-auto-anchor', BSF_CHANGELOG_BASE_URL . 'assets/js/auto-anchar.js', array( 'jquery' ), BSF_CHANGELOG_VERSION, true );
+				wp_enqueue_script( 'bsf-changelog-frontend-auto-anchor', BSF_CHANGELOG_BASE_URL . 'assets/js/auto-anchar.js', array( 'jquery' ), BSF_CHANGELOG_VERSION, true );
 			}
-
 		}
 
 		/**

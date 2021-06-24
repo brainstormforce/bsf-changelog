@@ -306,3 +306,8 @@ h2.changelog-title:after {
         margin: 35px 0;
     }
 }
+
+.bsf-changelog-anchors .dashicons.dashicons-paperclip {
+    font-size: 18px;
+    vertical-align: middle;
+}
