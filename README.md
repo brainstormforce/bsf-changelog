@@ -23,7 +23,7 @@ BSF Changelog plugin is used for building multi products changelog website withi
 
 ### Version 1.0.5 ###
 * New: Added anchor support to changelog headings.
-* Fix: Multiple Products checkbox issue for multiple products changelog.
+* Fix: Multiple Products checkbox not save for multiple products changelog.
 
 ### Version 1.0.4 ###
 * Fix: Multiple Products checkbox not checked after settings save.

@@ -1,6 +1,6 @@
 ( function( $ ) {
 
-    var h2s = $( 'body' ).find('h2');
+    var h2s = $( 'body' ).find('h2,h3');
     h2s.each( function (){
         let header = $( this );
         var link = header.text().replace(/([^A-Za-z0-9[\]{}_.:-])\s?/g, "-").replace(/-$/, "");
