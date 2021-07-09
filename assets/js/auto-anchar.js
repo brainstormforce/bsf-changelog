@@ -1,9 +1,10 @@
 function addAnchorLink( heading ) {
-    var link = heading.innerText.replace(/([^A-Za-z0-9[\]{}_.:-])\s?/g, "-").replace(/-$/, "");
+    var link = heading.innerText;
+    var linkToLowerCase = link.toLowerCase().replace(/\s+/g, '-').replace(/[&\/\\#,^!+()$~%.\[\]'":*?;-_<>{}@‘’”“|]/g, '-');
     heading.innerHTML = '\n\t\t<a href="#'
-        .concat(link.toLowerCase(), '" id="')
-        .concat(link.toLowerCase(), '" class="bsf-changelog-anchors">\n\t\t\t<i class="dashicons dashicons-paperclip"></i>\n\t\t\t')
-        .concat(heading.innerHTML, "\n\t\t</a>\n\t");
+        .concat( linkToLowerCase, '" id="' )
+        .concat( linkToLowerCase, '" class="bsf-changelog-anchors">\n\t\t\t<i class="dashicons dashicons-paperclip"></i>\n\t\t\t' )
+        .concat( heading.innerHTML, '\n\t\t</a>\n\t' );
 }
 
 function bsfChangelogScrollToView() {
@@ -14,7 +15,7 @@ function bsfChangelogScrollToView() {
     element.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-var headingTag3 = Array.from(document.querySelectorAll( "#content h3" ));
+var headingTag3 = Array.from(document.querySelectorAll( "#content h2" ));
 headingTag3.forEach( function ( h3 ) {
     return addAnchorLink( h3 );
 });
