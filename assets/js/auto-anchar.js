@@ -1,16 +1,23 @@
-( function( $ ) {
-
-    var h2s = $( 'body' ).find('h2,h3');
-    h2s.each( function (){
-        let header = $( this );
-        var link = header.text().replace(/([^A-Za-z0-9[\]{}_.:-])\s?/g, "-").replace(/-$/, "");
-        header.innerHTML = '\n\t\t<a href="#'
+function addAnchorLink( heading ) {
+    var link = heading.innerText.replace(/([^A-Za-z0-9[\]{}_.:-])\s?/g, "-").replace(/-$/, "");
+    heading.innerHTML = '\n\t\t<a href="#'
         .concat(link.toLowerCase(), '" id="')
         .concat(link.toLowerCase(), '" class="bsf-changelog-anchors">\n\t\t\t<i class="dashicons dashicons-paperclip"></i>\n\t\t\t')
-        .concat(header.text(), "\n\t\t</a>\n\t");
+        .concat(heading.innerHTML, "\n\t\t</a>\n\t");
+}
 
-        header.html(header.innerHTML);
-       
-    });
+function bsfChangelogScrollToView() {
+    var hash = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    if ( "" == hash ) return;
+    element = document.querySelector(hash);
+    if ( null === element ) return;
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
-} )( jQuery )
+var headingTag3 = Array.from(document.querySelectorAll( "#content h3" ));
+headingTag3.forEach( function ( h3 ) {
+    return addAnchorLink( h3 );
+});
+
+hash = window.location.hash;
+bsfChangelogScrollToView( hash );
