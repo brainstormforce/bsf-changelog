@@ -15,7 +15,7 @@ function bsfChangelogScrollToView() {
     element.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-var headingTag3 = Array.from(document.querySelectorAll( "#content h2" ));
+var headingTag3 = Array.from(document.querySelectorAll( "#content h3" ));
 headingTag3.forEach( function ( h3 ) {
     return addAnchorLink( h3 );
 });
