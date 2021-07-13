@@ -10,12 +10,17 @@ function addAnchorLink( heading ) {
 function bsfChangelogScrollToView() {
     var hash = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
     if ( "" == hash ) return;
-    element = document.querySelector(hash);
-    if ( null === element ) return;
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
+    var hashId = encodeURI( hash.substring( 1 ) );
+    var selectedAnchor = document.querySelector( '#' + hashId );
+    if ( null === selectedAnchor ) return;
+    const topPos = selectedAnchor.getBoundingClientRect().top + window.pageYOffset
+    window.scrollTo( {
+        top: topPos, 
+        behavior: 'smooth' 
+    } );
 }
 
-var headingTag3 = Array.from(document.querySelectorAll( "#content h3" ));
+var headingTag3 = Array.from(document.querySelectorAll("h3"));
 headingTag3.forEach( function ( h3 ) {
     return addAnchorLink( h3 );
 });
