@@ -2,8 +2,8 @@
 **Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)  
 **Tags:** changelog, wpchangelog, products-changelog,  
 **Requires at least:** 3.0    
-**Tested up to:** 5.7  
-**Stable tag:** 1.0.4  
+**Tested up to:** 5.8  
+**Stable tag:** 1.0.5  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -20,6 +20,10 @@ BSF Changelog plugin is used for building multi products changelog website withi
 3. Activate the plugin via the WordPress Plugins page
 
 ## Changelog ##
+
+### Version 1.0.5 ###
+* New: Added anchor support to changelog headings.
+* Fix: Multiple Products checkbox not save for multiple products changelog.
 
 ### Version 1.0.4 ###
 * Fix: Multiple Products checkbox not checked after settings save.
