@@ -16,18 +16,17 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 		<form method="post" action="options.php"> 
 					<?php settings_fields( 'bsf-changelogs-settings-group' ); ?>
 					<?php do_settings_sections( 'bsf-changelogs-settings-group' ); ?>
-					
 					<table  class="form-table">
 						<tr valign="top">
 							<th scope="row"><?php _e( 'Do You Have Multiple Products?', 'bsf-changelog' ); ?></th>
 							<td>
 								<?php
 								$bsf_changelog_category_template = get_option( 'bsf_changelog_category_template' );
-								if ( isset( $bsf_changelog_category_template ) && 'yes' === $bsf_changelog_category_template ) {
-									echo '<input type="checkbox" checked name="bsf_changelog_category_template" value="yes">';
+								if ( isset( $bsf_changelog_category_template ) && '1' === $bsf_changelog_category_template || 'yes' === $bsf_changelog_category_template ) {
+									echo '<input type="checkbox" checked name="bsf_changelog_category_template" value="1">';
 								} else {
-									echo '<input type="checkbox" name="bsf_changelog_category_template" value="yes">';
-								} 
+									echo '<input type="checkbox" name="bsf_changelog_category_template" value="1">';
+								}
 								?>
 							</td>
 						</tr>	
