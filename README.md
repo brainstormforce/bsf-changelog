@@ -1,11 +1,11 @@
 # BSF Changelog #
-**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)  
-**Tags:** changelog, wpchangelog, products-changelog,  
-**Requires at least:** 3.0    
-**Tested up to:** 5.9  
-**Stable tag:** 1.0.5  
-**License:** GPLv2 or later  
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
+**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)
+**Tags:** changelog, wpchangelog, products-changelog,
+**Requires at least:** 3.0
+**Tested up to:** 6.0
+**Stable tag:** 1.0.5
+**License:** GPLv2 or later
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
 BSF Changelog allows you to create Changelog website within minute with custom layouts.
 
@@ -34,7 +34,7 @@ BSF Changelog plugin is used for building multi products changelog website withi
 - Fix: Taxonomies not displayed in the Block Editor.
 
 ### Version 1.0.1 ###
-- Fix: Category undefined issue fixed for WP-4.9 
+- Fix: Category undefined issue fixed for WP-4.9
 - Fix: Translation ready
 
 ### Version 1.0.0 ###
