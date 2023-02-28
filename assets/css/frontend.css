@@ -1,4 +1,4 @@
-.clearfix:before, 
+.clearfix:before,
 .clearfix:after {
     display: table;
     content: "";
@@ -6,6 +6,10 @@
 
 .clearfix:after {
     clear: both;
+}
+
+.changelog-wraper {
+	width: 690px;
 }
 
 *, *:before, *:after {box-sizing:  border-box !important;}
@@ -153,6 +157,59 @@
      margin-right: 10px;
  }
 
+
+/* Changelog Pre-Title */
+
+.pre-title {
+	display: flex;
+}
+
+.pre-title .author-img-section,
+.pre-title .author-name-date-section,
+.pre-title .category-section {
+	display: inline-block;
+}
+
+.pre-title .author-img-section {
+	align-self: center;
+	width: 8%;
+}
+
+.pre-title .author-img-section img {
+	height: 50px;
+	width: 50px;
+	border-radius: 50px;
+}
+
+.pre-title .author-name-date-section {
+	width: 80%;
+}
+
+.pre-title .category-section {
+	align-self: center;
+	padding: 5px 10px;
+	border-radius: 20px;
+	background-color: #F9F5FF;
+}
+
+.pre-title .category-section .category-name {
+	color: #714BC9;
+    font-weight: 500;
+}
+
+.pre-title .author-name-date-section .author-name {
+	font-weight: 500;
+}
+
+.pre-title .author-name-date-section .publish-date {
+	color: #808080;
+}
+
+.see-more-text {
+	font-weight: 500;
+	cursor: pointer;
+}
+
 /* Changelog Title */
 
 body.changelog-title-enabled .changelogs-archive-wraper {
@@ -247,14 +304,17 @@ h2.changelog-title:after {
     visibility: visible;
 }
 
+.bsf-entry-content.content-open {
+	display: none;
+}
+
  /* Changelog Style */
 
  div#bsf-changelog-primary {
-    margin: 5em 0 !important;
+    margin: 2em 0 !important;
     padding: 0;
  }
  .product-tax-enabled .bsfc-archive-description,
- .post-type-archive-changelog .bsfc-archive-description, 
  .post-type-archive-changelog .bsfc-author-box,
  .product-tax-enabled .bsfc-author-box {
     background-color: #eee;
@@ -266,8 +326,7 @@ h2.changelog-title:after {
  body.post-type-archive-changelog article {
     background-color: #fff;
     border-bottom: 1px solid #eee;
-    margin: 0;
-    padding: 5.34em 6.67em;
+    margin: 2em 0 0 0;
 }
 /* Pagination */
 .product-tax-enabled .nav-links {
@@ -287,9 +346,9 @@ h2.changelog-title:after {
         float: none;
         width: 100%;
     }
-    .product-tax-enabled .bsfc-archive-description, 
-    .post-type-archive-changelog .bsfc-archive-description, 
-    .post-type-archive-changelog .bsfc-author-box, 
+    .product-tax-enabled .bsfc-archive-description,
+    .post-type-archive-changelog .bsfc-archive-description,
+    .post-type-archive-changelog .bsfc-author-box,
     .product-tax-enabled .bsfc-author-box {
         padding: 2em;
     }

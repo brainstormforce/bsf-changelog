@@ -56,12 +56,41 @@ get_header();?>
 					?>
 					<article id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-chnangelogs status-publish format-standard chnangelogs_category">
 						<header class="entry-header">
-							<h2 class="entry-title"><?php the_title(); ?> </h2>
-							<div class="changelog-publish-date"><?php echo  get_the_date( 'j M Y' ); ?></div>
+							<div class="pre-title">
+								<div class="author-img-section">
+									<?php if ( get_avatar( get_the_author_id() ) ) {
+										echo get_avatar( get_the_author_id() );
+                        			} else { ?>
+                            			<img src="/images/no-image-default.jpg" />
+                        			<?php } ?>
+								</div>
+								<div class="author-name-date-section">
+										<div class="author-name"><?php the_author(); ?></div>
+										<a href="<?php echo get_post_permalink(); ?>" class="publish-date"><?php echo get_the_date(); ?></a>
+								</div>
+								<div class="category-section">
+									<?php $terms = wp_get_post_terms( get_the_ID(), 'product' ); ?>
+									<a href="<?php echo get_term_link( (int) $terms[0]->term_id ); ?>" class="category-name">
+									<?php
+										echo $terms[0]->name;
+									?>
+									</a>
+								</div>
+							</div>
+							<a href="#<?php echo ( sanitize_title( get_the_title() ) ); ?>"><h2 id="<?php echo ( sanitize_title( get_the_title() ) ); ?>" class="entry-title"><?php the_title(); ?> </h2></a>
+							<div class="changelog-publish-date"><?php echo get_the_date( 'j M Y' ); ?></div>
 						</header>
-						<div class="bsf-entry-content clear" itemprop="text">
+						<div class="bsf-entry-content content-closed clear" itemprop="text">
+							<?php
+							$str = get_the_content();
+							$content = substr( $str, 0, apply_filters( 'bsf-changelog-content-length', 600 ) );
+							echo $content; ?>
+							<span class="see-more-text">...See more</span>
+						</div>
+						<div class="bsf-entry-content content-open clear" itemprop="text">
 							<?php the_content(); ?>
 						</div>
+						<div><?php the_post_thumbnail( 'full' ); ?></div>
 					</article>
 					<?php
 				endwhile;
