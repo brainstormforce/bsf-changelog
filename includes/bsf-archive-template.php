@@ -8,16 +8,6 @@
 
 get_header();?>
 
-<?php $has_multiple_product = get_option( 'bsf_changelog_category_template' ); ?>
-<div class="wrap changelogs-archive-wraper">
-	<?php
-		// Display category list.
-	if ( ( '1' === $has_multiple_product || false === $has_multiple_product ) ) {
-		echo do_shortcode( '[changelog_product_list]' );
-	}
-	?>
-</div><!-- .wrap -->
-	<?php if ( ! ( '1' === $has_multiple_product || false === $has_multiple_product ) ) { ?>
 	<div class="wrap changelog-wraper">
 		<div id="bsf-changelog-primary" class="content-area">
 			<main id="main" class="in-wrap" role="main">
@@ -109,5 +99,4 @@ get_header();?>
 		</div><!-- #primary -->
 	</div><!-- .wrap -->
 		<?php
-	}
 	get_footer();
