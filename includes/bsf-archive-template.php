@@ -6,7 +6,7 @@
  * @package Changelog/ArchiveTemplate
  */
 
-get_header();?>
+get_header(); ?>
 
 	<div class="wrap changelog-wraper">
 		<div id="bsf-changelog-primary" class="content-area">
@@ -44,7 +44,7 @@ get_header();?>
 					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 					 */
 					?>
-					<article id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-chnangelogs status-publish format-standard chnangelogs_category">
+					<div id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-chnangelogs status-publish format-standard chnangelogs_category">
 						<header class="entry-header">
 							<div class="pre-title">
 								<div class="author-img-section">
@@ -67,9 +67,15 @@ get_header();?>
 									</a>
 								</div>
 							</div>
-							<a href="#<?php echo ( sanitize_title( get_the_title() ) ); ?>"><h2 id="<?php echo ( sanitize_title( get_the_title() ) ); ?>" class="entry-title"><?php the_title(); ?> </h2></a>
+							<a href="#<?php echo ( sanitize_title( get_the_title() ) ); ?>" id="<?php echo ( sanitize_title( get_the_title() ) ); ?>"><h2 class="entry-title"><?php the_title(); ?> </h2></a>
 							<div class="changelog-publish-date"><?php echo get_the_date( 'j M Y' ); ?></div>
 						</header>
+						<?php
+						$img_pos = apply_filters( 'bsf_changelog_img_position_' . get_the_ID(), 'after' );
+						if ( 'before' === $img_pos ) { ?>
+							<div><?php the_post_thumbnail( 'full' ); ?></div>
+						<?php }
+						?>
 						<div class="bsf-entry-content content-closed clear" itemprop="text">
 							<?php
 							$str = get_the_content();
@@ -80,22 +86,32 @@ get_header();?>
 						<div class="bsf-entry-content content-open clear" itemprop="text">
 							<?php the_content(); ?>
 						</div>
-						<div><?php the_post_thumbnail( 'full' ); ?></div>
-					</article>
+						<?php if ( 'after' === $img_pos ) { ?>
+							<div><?php the_post_thumbnail( 'full' ); ?></div>
+						<?php }
+						?>
+					</div>
 					<?php
 				endwhile;
-				the_posts_pagination(
-					array(
-						'prev_text'          => '&laquo;<span class="screen-reader-text">' . __( 'Previous page', 'bsf-changelog' ) . '</span>',
-						'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'bsf-changelog' ) . '</span>&raquo;',
-						'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'bsf-changelog' ) . ' </span>',
-					)
-				);
-
 			endif;
 			?>
 
 			</main><!-- #main -->
+			<div class='bsf-pagination'>
+		<?php the_posts_pagination(
+			array(
+				'prev_text'          => '&laquo;<span class="screen-reader-text">' . __( 'Previous page', 'bsf-changelog' ) . '</span>',
+				'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'bsf-changelog' ) . '</span>&raquo;',
+			)
+		); ?>
+		</div>
+			<nav class="bsf-pagination-infinite">
+						<div class="bsf-loader">
+							<div class="bsf-loader-1"></div>
+							<div class="bsf-loader-2"></div>
+							<div class="bsf-loader-3"></div>
+						</div>
+					</nav>
 		</div><!-- #primary -->
 	</div><!-- .wrap -->
 		<?php

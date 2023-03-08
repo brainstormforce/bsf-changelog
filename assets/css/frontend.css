@@ -147,11 +147,11 @@
     position: relative;
     margin: 0;
  }
- .bsf-main-wrap article {
+ .bsf-main-wrap .type-chnangelogs {
      border-bottom: none;
      margin: 0 !important;
  }
- .bsf-main-wrap article i {
+ .bsf-main-wrap .type-chnangelogs i {
      font-size: inherit;
      line-height: inherit;
      margin-right: 10px;
@@ -189,7 +189,7 @@
 
 .pre-title .category-section {
 	align-self: center;
-	padding: 5px 10px;
+	padding: 3px 10px;
 	border-radius: 20px;
 	background-color: #F9F5FF;
 }
@@ -197,14 +197,17 @@
 .pre-title .category-section .category-name {
 	color: #714BC9;
     font-weight: 500;
+	font-size: 14px;
 }
 
 .pre-title .author-name-date-section .author-name {
 	font-weight: 500;
+	font-size: 14px;
 }
 
 .pre-title .author-name-date-section .publish-date {
 	color: #808080;
+	font-size: 14px;
 }
 
 .see-more-text {
@@ -324,8 +327,8 @@ h2.changelog-title:after {
     padding: 5em 6.67em;
     border: 1px solid #e8e8e8;
  }
- body.product-tax-enabled article,
- body.post-type-archive-changelog article {
+ body.product-tax-enabled .type-chnangelogs,
+ body.post-type-archive-changelog .type-chnangelogs {
     background-color: #fff;
     border-bottom: 1px solid #eee;
     margin: 2em 0 0 0;
@@ -344,6 +347,51 @@ h2.changelog-title:after {
     margin-bottom: 2em !important;
 }
 
+.bsf-pagination {
+	display: none;
+}
+
+.bsf-pagination-infinite {
+	text-align: center;
+	margin: 2.5em 0 0;
+  }
+  .bsf-loader {
+	display: none;
+	margin: 0 auto;
+	min-height: 58px;
+	line-height: 58px;
+	width: 70px;
+	text-align: center;
+  }
+
+  .bsf-loader > div {
+	width: 18px;
+	height: 18px;
+	background-color: #0085ba;
+	border-radius: 100%;
+	display: inline-block;
+	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+
+  .bsf-loader .bsf-loader-1 {
+	animation-delay: -0.32s;
+  }
+
+  .bsf-loader .bsf-loader-2 {
+	animation-delay: -0.16s;
+  }
+
+  @keyframes sk-bouncedelay {
+	0%,
+	80%,
+	100% {
+	  transform: scale(0);
+	}
+	40% {
+	  transform: scale(1);
+	}
+  }
+
 @media (max-width: 768px ) {
     .bsf-changelog-cat-wrap .bsf-changelog-col {
         float: none;
@@ -355,7 +403,7 @@ h2.changelog-title:after {
     .product-tax-enabled .bsfc-author-box {
         padding: 2em;
     }
-    body.product-tax-enabled article, body.post-type-archive-changelog article {
+    body.product-tax-enabled .type-chnangelogs, body.post-type-archive-changelog .type-chnangelogs {
         padding: 2em;
     }
     .bsf-changelog-col:after {
