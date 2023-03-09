@@ -176,6 +176,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		function register_bsf_changelogs_plugin_settings() {
 			// Register our settings.
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_category_template' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_scroll_pagination' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_title' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_sub_title' );
 		}

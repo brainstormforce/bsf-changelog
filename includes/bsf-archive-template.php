@@ -6,9 +6,11 @@
  * @package Changelog/ArchiveTemplate
  */
 
-get_header(); ?>
+get_header();
+$bsf_changelog_scroll_pagination = get_option( 'bsf_changelog_scroll_pagination' );
+$page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelog_scroll_pagination || 'yes' === $bsf_changelog_scroll_pagination ? 'bsf-infinite-scroll' : ''; ?>
 
-	<div class="wrap changelog-wraper">
+	<div class="wrap changelog-wraper <?php echo $page_class; ?>">
 		<div id="bsf-changelog-primary" class="content-area">
 			<main id="main" class="in-wrap" role="main">
 
@@ -68,7 +70,6 @@ get_header(); ?>
 								</div>
 							</div>
 							<a href="#<?php echo ( sanitize_title( get_the_title() ) ); ?>" id="<?php echo ( sanitize_title( get_the_title() ) ); ?>"><h2 class="entry-title"><?php the_title(); ?> </h2></a>
-							<div class="changelog-publish-date"><?php echo get_the_date( 'j M Y' ); ?></div>
 						</header>
 						<?php
 						$img_pos = apply_filters( 'bsf_changelog_img_position_' . get_the_ID(), 'after' );
@@ -105,13 +106,15 @@ get_header(); ?>
 			)
 		); ?>
 		</div>
+		<?php if ( isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelog_scroll_pagination || 'yes' === $bsf_changelog_scroll_pagination ) { ?>
 			<nav class="bsf-pagination-infinite">
-						<div class="bsf-loader">
-							<div class="bsf-loader-1"></div>
-							<div class="bsf-loader-2"></div>
-							<div class="bsf-loader-3"></div>
-						</div>
-					</nav>
+				<div class="bsf-loader">
+					<div class="bsf-loader-1"></div>
+					<div class="bsf-loader-2"></div>
+					<div class="bsf-loader-3"></div>
+				</div>
+			</nav>
+			<?php } ?>
 		</div><!-- #primary -->
 	</div><!-- .wrap -->
 		<?php

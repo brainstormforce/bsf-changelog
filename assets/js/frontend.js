@@ -24,37 +24,41 @@
   		});
 	});
 
-
-	var mainSelector = $('#main');
-	var rect = mainSelector[0].getBoundingClientRect();
-	var loadStatus = true;
-	var total = parseInt( bsf_pagination.infinite_total ) || '';
-	var count = parseInt( bsf_pagination.infinite_count ) || '';
-	var bsfLoadMore	= $('.bsf-load-more');
-	var offset = {
+	var is_scroll = $('.bsf-infinite-scroll');
+	console.log(is_scroll.length);
+	if( 0 != is_scroll.length ) {
+		var mainSelector = $('#main');
+		var rect = mainSelector[0].getBoundingClientRect();
+		var loadStatus = true;
+		var total = parseInt( bsf_pagination.infinite_total ) || '';
+		var count = parseInt( bsf_pagination.infinite_count ) || '';
+		var bsfLoadMore	= $('.bsf-load-more');
+		var offset = {
 					top: rect.top + window.scrollY,
 					left: rect.left + window.scrollX,
-				};
-				if( bsfLoadMore ){
-					bsfLoadMore.removeClass('active');
-			}
-	if( mainSelector.find('.type-chnangelogs:last-child').length > 0 ) {
-		var windowHeight50 = window.outerHeight / 1.25;
-		$( window ).on('scroll', function() {
-			if( (window.scrollY + windowHeight50 ) >= ( offset.top ) ) {
-				if (count > total) {
-					return false;
-				} else {
-					//	Pause for the moment ( execute if post loaded )
-					if( loadStatus == true ) {
-						NextloadPosts(count);
-						count++;
-						loadStatus = false;
+					};
+		if( bsfLoadMore ){
+			bsfLoadMore.removeClass('active');
+		}
+		if( mainSelector.find('.type-chnangelogs:last-child').length > 0 ) {
+			var windowHeight50 = window.outerHeight / 1.25;
+			$( window ).on('scroll', function() {
+				if( (window.scrollY + windowHeight50 ) >= ( offset.top ) ) {
+					if (count > total) {
+						return false;
+					} else {
+						//	Pause for the moment ( execute if post loaded )
+						if( loadStatus == true ) {
+							NextloadPosts(count);
+							count++;
+							loadStatus = false;
+						}
 					}
 				}
-			}
-		});
+			});
+		}
 	}
+
 	function NextloadPosts(pageNumber) {
 		var loader = $('.bsf-pagination-infinite .bsf-loader');
 		if( bsfLoadMore ){

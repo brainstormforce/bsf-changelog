@@ -347,7 +347,7 @@ h2.changelog-title:after {
     margin-bottom: 2em !important;
 }
 
-.bsf-pagination {
+.bsf-infinite-scroll .bsf-pagination {
 	display: none;
 }
 
