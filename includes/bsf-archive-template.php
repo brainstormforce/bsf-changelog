@@ -76,6 +76,7 @@ $page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelo
 						if ( 'before' === $img_pos ) { ?>
 							<div><?php the_post_thumbnail( 'full' ); ?></div>
 						<?php }
+						do_action( 'bsf_changelog_before_content_' . get_the_ID() );
 						?>
 						<div class="bsf-entry-content content-closed clear" itemprop="text">
 							<?php
@@ -87,7 +88,9 @@ $page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelo
 						<div class="bsf-entry-content content-open clear" itemprop="text">
 							<?php the_content(); ?>
 						</div>
-						<?php if ( 'after' === $img_pos ) { ?>
+						<?php
+						do_action( 'bsf_changelog_after_content_' . get_the_ID() );
+						if ( 'after' === $img_pos ) { ?>
 							<div><?php the_post_thumbnail( 'full' ); ?></div>
 						<?php }
 						?>
