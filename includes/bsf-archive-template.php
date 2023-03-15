@@ -80,10 +80,10 @@ $page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelo
 						?>
 						<div class="bsf-entry-content content-closed clear" itemprop="text">
 							<?php
-							$str = get_the_content();
-							$content = substr( $str, 0, apply_filters( 'bsf-changelog-content-length', 600 ) );
-							echo $content; ?>
-							<span class="see-more-text">...See more</span>
+							if ( has_excerpt() ) {
+								the_excerpt(); ?>
+								<span class="see-more-text">...See more</span>
+							<?php } ?>
 						</div>
 						<div class="bsf-entry-content content-open clear" itemprop="text">
 							<?php the_content(); ?>
