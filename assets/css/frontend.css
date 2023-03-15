@@ -8,10 +8,6 @@
     clear: both;
 }
 
-.changelog-wraper {
-	width: 690px;
-}
-
 *, *:before, *:after {box-sizing:  border-box !important;}
 
 @font-face {
@@ -162,9 +158,12 @@
 
 .pre-title {
 	display: flex;
-	margin-bottom: 10px;
+	margin-bottom: 16px;
 }
 
+.type-chnangelogs .entry-title {
+	font-size: 24px;
+}
 .pre-title .author-img-section,
 .pre-title .author-name-date-section,
 .pre-title .category-section {
@@ -173,7 +172,7 @@
 
 .pre-title .author-img-section {
 	align-self: center;
-	width: 8%;
+	width: auto;
 }
 
 .pre-title .author-img-section img {
@@ -391,6 +390,12 @@ h2.changelog-title:after {
 	  transform: scale(1);
 	}
   }
+
+@media (min-width: 768px ) {
+	.changelog-wraper {
+		width: 690px;
+	}
+}
 
 @media (max-width: 768px ) {
     .bsf-changelog-cat-wrap .bsf-changelog-col {
