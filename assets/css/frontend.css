@@ -308,10 +308,6 @@ h2.changelog-title:after {
     visibility: visible;
 }
 
-.bsf-entry-content.content-open {
-	display: none;
-}
-
  /* Changelog Style */
 
  div#bsf-changelog-primary {

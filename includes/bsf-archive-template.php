@@ -85,7 +85,8 @@ $page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelo
 								<span class="see-more-text">...See more</span>
 							<?php } ?>
 						</div>
-						<div class="bsf-entry-content content-open clear" itemprop="text">
+						<?php $style = has_excerpt() ? 'style="display: none"' : ''; ?>
+						<div class="bsf-entry-content content-open clear" itemprop="text" <?php echo $style; ?>>
 							<?php the_content(); ?>
 						</div>
 						<?php
