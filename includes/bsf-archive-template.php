@@ -74,7 +74,7 @@ $page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelo
 						<?php
 						$img_pos = apply_filters( 'bsf_changelog_img_position_' . get_the_ID(), 'after' );
 						if ( 'before' === $img_pos ) { ?>
-							<div><?php the_post_thumbnail( 'full' ); ?></div>
+							<div class="bsf-changelog-img"><?php the_post_thumbnail( 'full' ); ?></div>
 						<?php }
 						do_action( 'bsf_changelog_before_content_' . get_the_ID() );
 						?>
@@ -92,7 +92,7 @@ $page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelo
 						<?php
 						do_action( 'bsf_changelog_after_content_' . get_the_ID() );
 						if ( 'after' === $img_pos ) { ?>
-							<div><?php the_post_thumbnail( 'full' ); ?></div>
+							<div class="bsf-changelog-img"><?php the_post_thumbnail( 'full' ); ?></div>
 						<?php }
 						?>
 					</div>

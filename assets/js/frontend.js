@@ -14,13 +14,14 @@
 
     		const targetId = anchorLink.getAttribute('href').slice(1);
     		const targetElement = document.getElementById(targetId);
+			const offsetValue = targetElement.offsetTop - 100;
 
-    		if (targetElement) {
-      			// scroll to the target element
-      			targetElement.scrollIntoView({ behavior: 'smooth' });
-      			// update the URL to reflect the anchor link
-      			history.pushState(null, '', `#${targetId}`);
-    		}
+			// Update the URL with the hash value and offset value
+			window.location.hash = targetId;
+			window.scrollTo({
+			  top: offsetValue,
+			  behavior: 'smooth'
+			});
   		});
 	});
 

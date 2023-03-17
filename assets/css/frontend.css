@@ -172,7 +172,8 @@
 
 .pre-title .author-img-section {
 	align-self: center;
-	width: 10%;
+	height: 50px;
+	width: 50px;
 }
 
 .pre-title .author-img-section img {
@@ -202,6 +203,7 @@
 .pre-title .author-name-date-section .author-name {
 	font-weight: 500;
 	font-size: 14px;
+	margin-bottom: -8px;
 }
 
 .pre-title .author-name-date-section .publish-date {
@@ -302,6 +304,7 @@ h2.changelog-title:after {
 }
 
 .bsf-entry-content.clear {
+	font-size: 16px;
     width: 100%;
     height: auto;
     overflow: auto;
@@ -325,9 +328,12 @@ h2.changelog-title:after {
  body.product-tax-enabled .type-chnangelogs,
  body.post-type-archive-changelog .type-chnangelogs {
     background-color: #fff;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid #DADEE0;
     margin: 2em 0 0 0;
 	padding: 2em;
+}
+.bsf-changelog-img {
+	margin-top: 16px;
 }
 /* Pagination */
 .product-tax-enabled .nav-links {
@@ -336,10 +342,6 @@ h2.changelog-title:after {
 .product-tax-enabled .page-numbers {
     padding: 6px;
     border: 1px solid #d2d2d2;
-}
-.product-tax-enabled .entry-header,
-.single-product-enabled .entry-header {
-    margin-bottom: 2em !important;
 }
 
 .bsf-infinite-scroll .bsf-pagination {
