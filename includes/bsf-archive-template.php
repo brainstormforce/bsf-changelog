@@ -60,14 +60,16 @@ $page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelo
 										<div class="author-name"><?php the_author(); ?></div>
 										<a href="<?php echo get_post_permalink(); ?>" class="publish-date"><?php echo get_the_date(); ?></a>
 								</div>
+								<?php $terms = wp_get_post_terms( get_the_ID(), 'product' );
+								if ( $terms ) { ?>
 								<div class="category-section">
-									<?php $terms = wp_get_post_terms( get_the_ID(), 'product' ); ?>
 									<a href="<?php echo get_term_link( (int) $terms[0]->term_id ); ?>" class="category-name">
 									<?php
 										echo $terms[0]->name;
 									?>
 									</a>
 								</div>
+								<?php } ?>
 							</div>
 							<a href="#<?php echo ( sanitize_title( get_the_title() ) ); ?>" id="<?php echo ( sanitize_title( get_the_title() ) ); ?>"><h2 class="entry-title"><?php the_title(); ?> </h2></a>
 						</header>
