@@ -93,6 +93,7 @@
 				if( count > total ) {
 					$('.bsf-pagination-infinite').innerHTML = '<span class="bsf-load-more no-more active" style="display: inline-block;">' + msg + "</span>";
 				} else {
+					var pageUrlSelector = document.querySelector('a.next.page-numbers');
 					var newNextTargetUrl = nextDestUrl.replace(/\/page\/[0-9]+/, '/page/' + (pageNumber + 1));
 					pageUrlSelector.setAttribute('href', newNextTargetUrl);
 				}
