@@ -12,7 +12,9 @@
 
 get_header();
 $bsf_changelog_scroll_pagination = get_option( 'bsf_changelog_scroll_pagination' );
-$page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelog_scroll_pagination || 'yes' === $bsf_changelog_scroll_pagination ? 'bsf-infinite-scroll' : ''; ?>
+$page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelog_scroll_pagination || 'yes' === $bsf_changelog_scroll_pagination ? 'bsf-infinite-scroll' : '';
+$bsf_changelog_link_icon = get_option( 'bsf_changelog_link_icon' );
+$link_icon = isset( $bsf_changelog_link_icon ) && '1' === $bsf_changelog_link_icon || 'yes' === $bsf_changelog_link_icon ? '<i class="dashicons dashicons-paperclip"></i>' : ''; ?>
 
 <div class="wrap changelog-wraper <?php echo $page_class; ?>">
 	<div id="bsf-changelog-primary" class="content-area">
@@ -34,7 +36,8 @@ $page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelo
 				?>
 				<div id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-chnangelogs status-publish format-standard chnangelogs_category">
 						<header class="entry-header">
-							<div class="pre-title">
+							<div class="pre-title" id="<?php echo ( sanitize_title( get_the_title() ) ); ?>">
+								<div class="img-name-date-section">
 								<div class="author-img-section">
 									<?php if ( get_avatar( get_the_author_id() ) ) {
 										echo get_avatar( get_the_author_id() );
@@ -43,33 +46,34 @@ $page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelo
                         			<?php } ?>
 								</div>
 								<div class="author-name-date-section">
-										<div class="author-name"><?php the_author(); ?></div>
-										<a href="<?php echo get_post_permalink(); ?>" class="publish-date"><?php echo get_the_date(); ?></a>
+									<div class="author-name"><?php the_author(); ?></div>
+									<div class="publish-date"><?php echo get_the_date(); ?></div>
+								</div>
 								</div>
 							</div>
-							<a href="#<?php echo ( sanitize_title( get_the_title() ) ); ?>" id="<?php echo ( sanitize_title( get_the_title() ) ); ?>"><h2 class="entry-title"><?php the_title(); ?> </h2></a>
+							<a href="#<?php echo ( sanitize_title( get_the_title() ) ); ?>"><?php echo $link_icon; ?><h2 class="entry-title"><?php the_title(); ?> </h2></a>
 						</header>
 						<?php
 						$img_pos = apply_filters( 'bsf_changelog_img_position_' . get_the_ID(), 'after' );
-						if ( 'before' === $img_pos ) { ?>
+						if ( 'before' === $img_pos && has_post_thumbnail() ) { ?>
 							<div class="bsf-changelog-img"><?php the_post_thumbnail( 'full' ); ?></div>
 						<?php }
 						do_action( 'bsf_changelog_before_content_' . get_the_ID() );
 						?>
+						<?php
+							if ( has_excerpt() ) { ?>
 						<div class="bsf-entry-content content-closed clear" itemprop="text">
-							<?php
-							if ( has_excerpt() ) {
-								the_excerpt(); ?>
-								<span class="see-more-text">...See more</span>
-							<?php } ?>
+							<?php the_excerpt(); ?>
 						</div>
+						<span class="see-more-text">...See more</span>
+							<?php } ?>
 						<?php $style = has_excerpt() ? 'style="display: none"' : ''; ?>
 						<div class="bsf-entry-content content-open clear" itemprop="text" <?php echo $style; ?>>
 							<?php the_content(); ?>
 						</div>
 						<?php
 						do_action( 'bsf_changelog_after_content_' . get_the_ID() );
-						if ( 'after' === $img_pos ) { ?>
+						if ( 'after' === $img_pos && has_post_thumbnail() ) { ?>
 							<div class="bsf-changelog-img"><?php the_post_thumbnail( 'full' ); ?></div>
 						<?php }
 						?>

@@ -1,3 +1,7 @@
+html {
+	scroll-behavior: smooth;
+}
+
 .clearfix:before,
 .clearfix:after {
     display: table;
@@ -162,7 +166,15 @@
 }
 
 .type-chnangelogs .entry-title {
+	display: inline;
 	font-size: 24px;
+}
+.type-chnangelogs .dashicons-paperclip:before {
+	font-size: 20px;
+	vertical-align: middle;
+}
+.type-chnangelogs .dashicons-paperclip {
+	margin-right: 5px;
 }
 .pre-title .author-img-section,
 .pre-title .author-name-date-section,
@@ -170,10 +182,15 @@
 	display: inline-block;
 }
 
+.img-name-date-section {
+	display: flex;
+	width: -webkit-fill-available;
+}
+
 .pre-title .author-img-section {
 	align-self: center;
-	height: 50px;
-	width: 50px;
+	height: 40px;
+	width: 40px;
 }
 
 .pre-title .author-img-section img {
@@ -192,10 +209,12 @@
 	padding: 3px 10px;
 	border-radius: 20px;
 	background-color: #F9F5FF;
+	width: auto;
+	flex: none;
 }
 
 .pre-title .category-section .category-name {
-	color: #714BC9;
+	color: var(--ast-global-color-0);
     font-weight: 500;
 	font-size: 14px;
 }
@@ -311,6 +330,10 @@ h2.changelog-title:after {
     visibility: visible;
 }
 
+.bsf-entry-content.content-closed.clear p:last-child {
+	margin-bottom: 0px;
+}
+
  /* Changelog Style */
 
  div#bsf-changelog-primary {
@@ -364,7 +387,7 @@ h2.changelog-title:after {
   .bsf-loader > div {
 	width: 18px;
 	height: 18px;
-	background-color: #0085ba;
+	background-color: var(--ast-global-color-0);
 	border-radius: 100%;
 	display: inline-block;
 	animation: sk-bouncedelay 1.4s infinite ease-in-out both;

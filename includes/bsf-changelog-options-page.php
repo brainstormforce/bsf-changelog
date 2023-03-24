@@ -44,6 +44,19 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 							</td>
 						</tr>
 						<tr valign="top">
+							<th scope="row"><?php _e( 'Enable link icon for Changelog title?', 'bsf-changelog' ); ?></th>
+							<td>
+								<?php
+								$bsf_changelog_link_icon = get_option( 'bsf_changelog_link_icon' );
+								if ( isset( $bsf_changelog_link_icon ) && '1' === $bsf_changelog_link_icon || 'yes' === $bsf_changelog_link_icon ) {
+									echo '<input type="checkbox" checked name="bsf_changelog_link_icon" value="1">';
+								} else {
+									echo '<input type="checkbox" name="bsf_changelog_link_icon" value="1">';
+								}
+								?>
+							</td>
+						</tr>
+						<tr valign="top">
 							<th scope="row"><?php _e( 'Changelog Page Title', 'bsf-changelog' ); ?></th>
 							<td>
 								<?php

@@ -18,10 +18,6 @@
 
 			// Update the URL with the hash value and offset value
 			window.location.hash = targetId;
-			window.scrollTo({
-			  top: offsetValue,
-			  behavior: 'smooth'
-			});
   		});
 	});
 
