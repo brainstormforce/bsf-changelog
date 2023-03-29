@@ -124,6 +124,7 @@ class BSF_Changelog_Post_Type {
 			'excerpt',
 			'thumbnail',
 			'custom-fields',
+			'author',
 		);
 
 		$has_comments = get_option( 'bsf_search_has_comments' );

@@ -1,10 +1,27 @@
 (function($) {
 	$( '.see-more-text' ).click( function() {
 		post_id = ( $(this).parent().parent() ).attr('id');
+		seeMore(post_id);
+	});
+
+	function seeMore(post_id){
 		$( '#' + post_id + ' .bsf-entry-content.content-open' ).css( 'display', 'block');
 		$( '#' + post_id + ' .bsf-entry-content.content-closed' ).css( 'display', 'none');
 		$( '#' + post_id + ' .see-more-text' ).css( 'display', 'none');
-	});
+	}
+
+	var pattern = new RegExp('^[\\w\\-]+$');
+	var id = window.location.hash.substring(1);
+	if ( pattern.test( id ) ) {
+    	var targetElement = document.getElementById(id);
+		var offsetValue = targetElement.offsetTop;
+		if (targetElement.length) {
+			$('html,body').animate({
+				scrollTop: offsetValue
+			}, 1000);
+			return false;
+		}
+	}
 
 	const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
@@ -13,8 +30,6 @@
     		event.preventDefault();
 
     		const targetId = anchorLink.getAttribute('href').slice(1);
-    		const targetElement = document.getElementById(targetId);
-			const offsetValue = targetElement.offsetTop - 100;
 
 			// Update the URL with the hash value and offset value
 			window.location.hash = targetId;
@@ -93,6 +108,11 @@
 					var newNextTargetUrl = nextDestUrl.replace(/\/page\/[0-9]+/, '/page/' + (pageNumber + 1));
 					pageUrlSelector.setAttribute('href', newNextTargetUrl);
 				}
+
+				$( '.see-more-text' ).click( function() {
+					post_id = ( $(this).parent().parent() ).attr('id');
+					seeMore(post_id);
+				});
 
 				//	Complete the process 'loadStatus'
 				loadStatus = true;

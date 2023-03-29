@@ -60,15 +60,13 @@ $link_icon = isset( $bsf_changelog_link_icon ) && '1' === $bsf_changelog_link_ic
 						<?php }
 						do_action( 'bsf_changelog_before_content_' . get_the_ID() );
 						?>
-						<?php
-							if ( has_excerpt() ) { ?>
 						<div class="bsf-entry-content content-closed clear" itemprop="text">
-							<?php the_excerpt(); ?>
+							<?php $content = get_the_content();
+							$word_count = apply_filters( 'bsf_changelog_words_count', 70 );
+							$trimmed_content = wp_trim_words($content, $word_count, '<span class="see-more-text">...See more</span>');
+							echo $trimmed_content; ?>
 						</div>
-						<span class="see-more-text">...See more</span>
-							<?php } ?>
-						<?php $style = has_excerpt() ? 'style="display: none"' : ''; ?>
-						<div class="bsf-entry-content content-open clear" itemprop="text" <?php echo $style; ?>>
+						<div class="bsf-entry-content content-open clear" itemprop="text">
 							<?php the_content(); ?>
 						</div>
 						<?php
