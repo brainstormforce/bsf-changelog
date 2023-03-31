@@ -87,16 +87,14 @@ $link_icon = isset( $bsf_changelog_link_icon ) && '1' === $bsf_changelog_link_ic
 						<div class="bsf-entry-content content-closed clear" itemprop="text">
 							<?php $content = get_the_content();
 							$word_count = apply_filters( 'bsf_changelog_words_count', 300 );
-							$trimmed_content = Bsf_Changelog_Loader::truncate( $content, $word_count, array( 'ending' => '' ) );
+							$trimmed_content = Bsf_Changelog_Loader::shorten_text( $content, $word_count, '<span class="see-more-text">...See More</span>' );
 							echo $trimmed_content; ?>
 						</div>
 						<?php if ( strlen( $content ) > strlen( $trimmed_content ) ) { ?>
-							<span class="see-more-text">...See More</span>
 						<div class="bsf-entry-content content-open clear" itemprop="text">
 							<?php the_content(); ?>
 						</div>
-						<?php } ?>
-						<?php
+						<?php }
 						do_action( 'bsf_changelog_after_content_' . get_the_ID() );
 						if ( 'after' === $img_pos && has_post_thumbnail() ) { ?>
 							<div class="bsf-changelog-img"><?php the_post_thumbnail( 'full' ); ?></div>

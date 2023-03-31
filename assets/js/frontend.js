@@ -1,6 +1,6 @@
 (function($) {
 	$( '.see-more-text' ).click( function() {
-		post_id = ( $(this).parent() ).attr('id');
+		post_id = ( $(this).closest('.type-chnangelogs') ).attr('id');
 		seeMore(post_id);
 	});
 
@@ -110,7 +110,7 @@
 				}
 
 				$( '.see-more-text' ).click( function() {
-					post_id = ( $(this).parent() ).attr('id');
+					post_id = ( $(this).closest('.type-chnangelogs') ).attr('id');
 					seeMore(post_id);
 				});
 
