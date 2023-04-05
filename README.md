@@ -1,11 +1,11 @@
 # BSF Changelog #
-**Contributors:** [pratikchaskar](https://profiles.wordpress.org/pratikchaskar/)  
-**Tags:** changelog, wpchangelog, products-changelog,  
-**Requires at least:** 3.0  
-**Tested up to:** 6.1  
-**Stable tag:** 1.0.6  
-**License:** GPLv2 or later  
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
+**Contributors:** [pratikchaskar](https://profiles.wordpress.org/pratikchaskar/)
+**Tags:** changelog, wpchangelog, products-changelog,
+**Requires at least:** 3.0
+**Tested up to:** 6.2
+**Stable tag:** 1.0.6
+**License:** GPLv2 or later
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
 BSF Changelog allows you to create Changelog website within minute with custom layouts.
 
