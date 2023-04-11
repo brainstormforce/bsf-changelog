@@ -200,7 +200,7 @@ html {
 }
 
 .pre-title .author-name-date-section {
-	width: 80%;
+	width: auto;
 	margin-left: 10px;
 }
 
@@ -230,9 +230,31 @@ html {
 	font-size: 14px;
 }
 
+.bsf-version-tag {
+	align-self: center;
+    border-radius: 20px;
+    width: auto;
+    flex: none;
+    line-height: 1em;
+    margin-left: 10px;
+    padding: 5px 10px;
+    display: inline-block;
+    background-color: var(--ast-global-color-0);
+}
+
+.bsf-version-no {
+	color: #ffffff;
+	font-size: 14px;
+}
+
 .see-more-text {
 	font-weight: 500;
 	cursor: pointer;
+	font-size: 16px;
+}
+
+.content-closed p:last-of-type {
+	margin-bottom: 0px;
 }
 
 .content-open {
@@ -335,6 +357,7 @@ h2.changelog-title:after {
 
 .bsf-entry-content.content-closed.clear p:last-child {
 	margin-bottom: 0px;
+	display: inline;
 }
 
  /* Changelog Style */

@@ -63,6 +63,14 @@ $link_icon = isset( $bsf_changelog_link_icon ) && '1' === $bsf_changelog_link_ic
 									<div class="author-name"><?php the_author(); ?></div>
 									<div class="publish-date"><?php echo get_the_date(); ?></div>
 								</div>
+								<?php $tags = get_the_terms( get_the_ID(), 'changelog_tag' );
+								if ( $tags ) { ?>
+								<div class="bsf-version-tag">
+									<span class="bsf-version-no"><?php
+										echo $tags[0]->name;
+									?></span>
+								</div>
+								<?php } ?>
 								</div>
 								<?php $terms = wp_get_post_terms( get_the_ID(), 'product' );
 								if ( $terms ) { ?>
@@ -87,7 +95,7 @@ $link_icon = isset( $bsf_changelog_link_icon ) && '1' === $bsf_changelog_link_ic
 						<div class="bsf-entry-content content-closed clear" itemprop="text">
 							<?php $content = get_the_content();
 							$word_count = apply_filters( 'bsf_changelog_words_count', 300 );
-							$trimmed_content = Bsf_Changelog_Loader::shorten_text( $content, $word_count, '<span class="see-more-text">...See More</span>' );
+							$trimmed_content = Bsf_Changelog_Loader::shorten_text( $content, $word_count );
 							echo $trimmed_content; ?>
 						</div>
 						<?php if ( strlen( $content ) > strlen( $trimmed_content ) ) { ?>

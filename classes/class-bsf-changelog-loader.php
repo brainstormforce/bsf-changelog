@@ -298,36 +298,16 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			require_once BSF_CHANGELOG_BASE_DIR . 'includes/bsf-changelog-shortcode.php';
 		}
 
-		static function shorten_text($text, $length, $ellipsis = '...') {
-			// Remove any HTML tags and trim whitespace
-			//$text = strip_tags(trim($text));
-			// If the text is already shorter than the specified length, return it as is
+		static function shorten_text($text, $length) {
+			$text = preg_replace('/<!--(.|\s)*?-->/', '', $text);
 			if (strlen($text) <= $length) {
 				return $text;
 			}
-			// Shorten the text to the specified length
+
 			$short_text = substr($text, 0, $length);
-			// If the shortened text ends with an incomplete HTML tag, remove it
-			if (preg_match('/<[^>]*$/', $short_text)) {
-				$short_text = preg_replace('/<[^>]*$/', '', $short_text);
-			}
-			// Add the ellipsis to the end of the shortened text
-			$short_text .= $ellipsis;
-			// Find the last occurrence of any HTML tag in the shortened text
-			$last_tag_pos = strrpos($short_text, '<');
-			// If there are no HTML tags in the shortened text, return it as is
-			if ($last_tag_pos === false) {
-				return $short_text;
-			}
-			// Find the last occurrence of the corresponding closing tag
-			$last_close_tag_pos = strrpos($short_text, '>');
-			$last_close_tag = substr($short_text, $last_tag_pos, $last_close_tag_pos - $last_tag_pos + 1);
-			// If the last tag is a complete tag, return the shortened text as is
-			if (preg_match('/^<\s*\//', $last_close_tag)) {
-				return $short_text;
-			}
-			// Otherwise, remove the last incomplete tag and return the shortened text
-			return substr($short_text, 0, $last_tag_pos);
+
+			$short_text = force_balance_tags($short_text) . '<span class="see-more-text">...See more</span>';
+			return $short_text;
 		}
 
 
