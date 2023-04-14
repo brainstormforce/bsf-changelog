@@ -307,6 +307,8 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			$short_text = substr($text, 0, $length);
 
 			$short_text = force_balance_tags($short_text) . '<span class="see-more-text">...See more</span>';
+			$short_text = preg_replace('/<</', '<', $short_text);
+
 			return $short_text;
 		}
 
