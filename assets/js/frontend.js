@@ -7,6 +7,7 @@
 	function seeMore(post_id){
 		$( '#' + post_id + ' .bsf-entry-content.content-open' ).css( 'display', 'block');
 		$( '#' + post_id + ' .bsf-entry-content.content-closed' ).css( 'display', 'none');
+		$( '#' + post_id + ' .see-more-text' ).css( 'display', 'none');
 	}
 
 	var pattern = new RegExp('^[\\w\\-]+$');

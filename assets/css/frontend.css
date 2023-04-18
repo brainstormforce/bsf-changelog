@@ -257,9 +257,6 @@ html {
 	margin-bottom: 0px;
 }
 
-.content-open {
-	display: none;
-}
 /* Changelog Title */
 
 body.changelog-title-enabled .changelogs-archive-wraper {
