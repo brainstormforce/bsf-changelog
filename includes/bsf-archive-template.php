@@ -10,7 +10,9 @@ get_header();
 $bsf_changelog_scroll_pagination = get_option( 'bsf_changelog_scroll_pagination' );
 $page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelog_scroll_pagination || 'yes' === $bsf_changelog_scroll_pagination ? 'bsf-infinite-scroll' : '';
 $bsf_changelog_link_icon = get_option( 'bsf_changelog_link_icon' );
-$link_icon = isset( $bsf_changelog_link_icon ) && '1' === $bsf_changelog_link_icon || 'yes' === $bsf_changelog_link_icon ? '<i class="dashicons dashicons-paperclip"></i>' : ''; ?>
+$link_icon = isset( $bsf_changelog_link_icon ) && '1' === $bsf_changelog_link_icon || 'yes' === $bsf_changelog_link_icon ? '<i class="dashicons dashicons-paperclip"></i>' : '';
+$bsf_changelog_hide_featured_img = get_option( 'bsf_changelog_hide_featured_img' );
+$img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog_hide_featured_img || 'yes' === $bsf_changelog_hide_featured_img ? 'bsf-featured-img-hide' : ''; ?>
 
 	<div class="wrap changelog-wraper <?php echo $page_class; ?>">
 		<div id="bsf-changelog-primary" class="content-area">
@@ -88,7 +90,7 @@ $link_icon = isset( $bsf_changelog_link_icon ) && '1' === $bsf_changelog_link_ic
 						<?php
 						$img_pos = apply_filters( 'bsf_changelog_img_position_' . get_the_ID(), 'after' );
 						if ( 'before' === $img_pos && has_post_thumbnail() ) { ?>
-							<div class="bsf-changelog-img"><?php the_post_thumbnail( 'full' ); ?></div>
+							<div class="bsf-changelog-img <?php echo $img_class; ?>"><?php the_post_thumbnail( 'full' ); ?></div>
 						<?php }
 						do_action( 'bsf_changelog_before_content_' . get_the_ID() );
 						?>
@@ -96,7 +98,7 @@ $link_icon = isset( $bsf_changelog_link_icon ) && '1' === $bsf_changelog_link_ic
 							<div class="bsf-entry-content content-closed clear" itemprop="text">
 							<?php the_excerpt(); ?>
 							</div>
-							<span class="see-more-text">...See More</span>
+							<span class="see-more-text">Continue Reading...</span>
 						<?php } ?>
 						<?php $style = has_excerpt() ? 'style="display:none;"': ''; ?>
 						<div class="bsf-entry-content content-open clear" itemprop="text" <?php echo $style; ?>>
@@ -104,7 +106,7 @@ $link_icon = isset( $bsf_changelog_link_icon ) && '1' === $bsf_changelog_link_ic
 						</div>
 						<?php do_action( 'bsf_changelog_after_content_' . get_the_ID() );
 						if ( 'after' === $img_pos && has_post_thumbnail() ) { ?>
-							<div class="bsf-changelog-img"><?php the_post_thumbnail( 'full' ); ?></div>
+							<div class="bsf-changelog-img <?php echo $img_class; ?>"><?php the_post_thumbnail( 'full' ); ?></div>
 						<?php }
 						?>
 					</div>

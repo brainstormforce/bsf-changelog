@@ -177,6 +177,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			// Register our settings.
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_category_template' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_scroll_pagination' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_hide_featured_img' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_link_icon' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_title' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_sub_title' );

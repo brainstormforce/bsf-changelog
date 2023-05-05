@@ -44,6 +44,19 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 							</td>
 						</tr>
 						<tr valign="top">
+							<th scope="row"><?php _e( 'Hide Featured Image when content is expanded?', 'bsf-changelog' ); ?></th>
+							<td>
+								<?php
+								$bsf_changelog_hide_featured_img = get_option( 'bsf_changelog_hide_featured_img' );
+								if ( isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog_hide_featured_img || 'yes' === $bsf_changelog_hide_featured_img ) {
+									echo '<input type="checkbox" checked name="bsf_changelog_hide_featured_img" value="1">';
+								} else {
+									echo '<input type="checkbox" name="bsf_changelog_hide_featured_img" value="1">';
+								}
+								?>
+							</td>
+						</tr>
+						<tr valign="top">
 							<th scope="row"><?php _e( 'Enable link icon for Changelog title?', 'bsf-changelog' ); ?></th>
 							<td>
 								<?php
