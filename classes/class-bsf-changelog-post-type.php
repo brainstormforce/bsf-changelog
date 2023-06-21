@@ -170,7 +170,7 @@ class BSF_Changelog_Post_Type {
 					'hierarchical'        => false, // Hierarchical causes memory issues - WP loads all records!
 					'query_var'           => true,
 					'supports'            => $supports,
-					'has_archive'         => true,
+					'has_archive'         => 'whats-new',
 					'show_in_nav_menus'   => true,
 					'show_in_rest'        => true,
 				)

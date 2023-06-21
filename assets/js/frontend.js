@@ -5,11 +5,11 @@
 	});
 
 	function seeMore(post_id){
-		$( '#' + post_id + ' .bsf-entry-content.content-open' ).css( 'display', 'block');
-		$( '#' + post_id + ' .bsf-entry-content.content-closed' ).css( 'display', 'none');
-		$( '#' + post_id + ' .see-more-text' ).css( 'display', 'none');
+		$( '#' + post_id + ' .bsf-entry-content.content-open' ).css('height', 'auto').show();
+		$( '#' + post_id + ' .bsf-entry-content.content-closed' ).hide();
+		$( '#' + post_id + ' .see-more-text' ).hide();
 		if ( $( '#' + post_id + ' .bsf-changelog-img' ).hasClass( 'bsf-featured-img-hide' ) ) {
-			$( '#' + post_id + ' .bsf-changelog-img' ).css( 'display', 'none');
+			$( '#' + post_id + ' .bsf-changelog-img' ).hide();
 		}
 	}
 

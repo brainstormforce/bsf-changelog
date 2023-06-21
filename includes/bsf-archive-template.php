@@ -85,11 +85,12 @@ $img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog
 								</div>
 								<?php } ?>
 							</div>
-							<a href="#<?php echo ( sanitize_title( get_the_title() ) ); ?>"><?php echo $link_icon; ?><h2 class="entry-title"><?php the_title(); ?> </h2></a>
+							<a href="#<?php echo ( sanitize_title( get_post_field( 'post_name', get_post() ) ) ); ?>"><?php echo $link_icon; ?><h2 class="entry-title"><?php the_title(); ?> </h2></a>
 						</header>
 						<?php
 						$img_pos = apply_filters( 'bsf_changelog_img_position_' . get_the_ID(), 'after' );
-						if ( 'before' === $img_pos && has_post_thumbnail() ) { ?>
+						$img_pos_all = apply_filters( 'bsf_changelog_img_position_all', 'after' );
+						if ( ( 'before' === $img_pos || 'before' === $img_pos_all ) && has_post_thumbnail() ) { ?>
 							<div class="bsf-changelog-img <?php echo $img_class; ?>"><?php the_post_thumbnail( 'full' ); ?></div>
 						<?php }
 						do_action( 'bsf_changelog_before_content_' . get_the_ID() );
@@ -105,7 +106,7 @@ $img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog
 							<?php the_content(); ?>
 						</div>
 						<?php do_action( 'bsf_changelog_after_content_' . get_the_ID() );
-						if ( 'after' === $img_pos && has_post_thumbnail() ) { ?>
+						if ( ( 'after' === $img_pos || 'after' === $img_pos_all ) && has_post_thumbnail() ) { ?>
 							<div class="bsf-changelog-img <?php echo $img_class; ?>"><?php the_post_thumbnail( 'full' ); ?></div>
 						<?php }
 						?>
