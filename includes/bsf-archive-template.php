@@ -106,7 +106,7 @@ $img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog
 							<?php the_content(); ?>
 						</div>
 						<?php do_action( 'bsf_changelog_after_content_' . get_the_ID() );
-						if ( ( 'after' === $img_pos || 'after' === $img_pos_all ) && has_post_thumbnail() ) { ?>
+						if ( ( 'after' === $img_pos || 'after' === $img_pos_all ) && ( 'before' !== $img_pos && 'before' !== $img_pos_all ) && has_post_thumbnail() ) { ?>
 							<div class="bsf-changelog-img <?php echo $img_class; ?>"><?php the_post_thumbnail( 'full' ); ?></div>
 						<?php }
 						?>
