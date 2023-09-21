@@ -52,7 +52,7 @@ $img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog
 					?>
 					<div id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-chnangelogs status-publish format-standard chnangelogs_category">
 						<header class="entry-header">
-							<div class="pre-title" id="<?php echo ( sanitize_title( get_the_title() ) ); ?>">
+							<div class="pre-title" id="<?php echo ( sanitize_title( get_post_field( 'post_name', get_post() ) ) ); ?>">
 								<div class="img-name-date-section">
 								<div class="author-img-section">
 									<?php if ( get_avatar( get_the_author_id() ) ) {
