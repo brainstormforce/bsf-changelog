@@ -25,6 +25,25 @@ class BSF_Changelog_Post_Type {
 	public static function init() {
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 11 );
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 10 );
+		add_action( 'pre_get_posts', array( __CLASS__, 'update_changelog_list' ) );
+	}
+
+	/**
+	 * Custom update posts list.
+	 *
+	 * @param object $query Query object.
+	 */
+	public static function update_changelog_list( $query ) {
+		// Check if we are on the edit.php page and it's the main query
+		if ( is_admin() && $query->is_main_query() && $query->get('post_type') === BSF_CHANGELOG_POST_TYPE ) {
+			$query->set('orderby', 'date');
+			$query->set('order', 'DESC');
+		}
+
+		// On frontend exclude posts which has post parent.
+		if ( ! is_admin() && is_tax( 'product' ) && $query->is_main_query() ) {
+			$query->set( 'post_parent', 0 );
+		}
 	}
 
 	/**
@@ -125,6 +144,7 @@ class BSF_Changelog_Post_Type {
 			'thumbnail',
 			'custom-fields',
 			'author',
+			'page-attributes',
 		);
 
 		$has_comments = get_option( 'bsf_search_has_comments' );
@@ -160,6 +180,7 @@ class BSF_Changelog_Post_Type {
 						'remove_featured_image' => __( 'Remove Version image', 'bsf-changelog' ),
 						'use_featured_image'    => __( 'Use as Version image', 'bsf-changelog' ),
 						'items_list'            => __( 'Version list', 'bsf-changelog' ),
+						'attributes' 		    => __( 'Version Attributes', 'bsf-changelog' ),
 					),
 					'description'         => __( 'This is where you can add new changelogs to your site.', 'bsf-changelog' ),
 					'public'              => true,
@@ -167,12 +188,13 @@ class BSF_Changelog_Post_Type {
 					'map_meta_cap'        => true,
 					'publicly_queryable'  => true,
 					'exclude_from_search' => false,
-					'hierarchical'        => false, // Hierarchical causes memory issues - WP loads all records!
+					'hierarchical'        => true, // Hierarchical causes memory issues - WP loads all records!
 					'query_var'           => true,
 					'supports'            => $supports,
 					'has_archive'         => 'whats-new',
 					'show_in_nav_menus'   => true,
 					'show_in_rest'        => true,
+					'menu_icon'           => 'dashicons-list-view',
 				)
 			)
 		);

@@ -55,8 +55,8 @@ $img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog
 							<div class="pre-title" id="<?php echo ( sanitize_title( get_post_field( 'post_name', get_post() ) ) ); ?>">
 								<div class="img-name-date-section">
 								<div class="author-img-section">
-									<?php if ( get_avatar( get_the_author_id() ) ) {
-										echo get_avatar( get_the_author_id() );
+									<?php if ( get_avatar( get_the_author_meta('ID') ) ) {
+										echo get_avatar( get_the_author_meta('ID') );
                         			} else { ?>
                             			<img src="/images/no-image-default.jpg" />
                         			<?php } ?>

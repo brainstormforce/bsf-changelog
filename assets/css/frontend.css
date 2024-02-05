@@ -463,3 +463,106 @@ h2.changelog-title:after {
         margin: 35px 0;
     }
 }
+
+/* Changelog Sub version CSS */
+.bsf-sub-versions-list {
+	padding: 20px;
+    display: none;
+    border: 1px dashed #bbb;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+}
+.show-list .bsf-sub-versions-list {
+    display: block;
+}
+.bsf-sub-versions-title {
+    border: 1px dashed #bbb;
+    line-height: 20px;
+    padding: 15px;
+    margin-top: 2em;
+    font-size: 0.9em;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+}
+.show-list .bsf-sub-versions-title {
+    border-radius: 6px 6px 0 0;
+}
+.ast-subver-title {
+	flex: 1 1 auto;
+	font-weight: 600;
+}
+.ast-subver-svg {
+	fill: #2f3f4f;
+    width: 12px;
+	padding-top: 4px;
+}
+.show-list .ast-subver-svg {
+    transform: rotate(180deg);
+	padding-top: 0;
+}
+.bsf-sub-version-date {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 0.8em;
+}
+.bsf-sub-versions-list .bsf-subversion-item:not(:first-child) .bsf-sub-version-date {
+    top: 2.5em;
+}
+.bsf-sub-versions-list .bsf-subversion-item:last-child {
+    padding-bottom: 0;
+}
+.bsf-sub-version-title:before {
+    content: "";
+    background: var(--ast-global-color-0);
+    border-radius: 9999px;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    top: 35%;
+    left: calc(-2em + 4px);
+    transform: translate(0,-50%) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+    z-index: 9;
+}
+.bsf-subversion-item:after {
+    content: "";
+    background: var(--ast-global-color-6);
+    width: 1px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+.bsf-sub-versions-list .bsf-subversion-item:first-child:after {
+    top: 1rem;
+}
+.bsf-subversion-item {
+    position: relative;
+    padding-left: 2em;
+	padding-bottom: 2em;
+}
+
+.bsf-sub-version-content {
+    margin-left: 1.5em;
+}
+
+.bsf-sub-version-content > :last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.bsf-subversion-item .bsf-sub-version-title {
+    padding-top: 0 !important;
+    margin: 0 !important;
+    position: relative;
+}
+
+.bsf-sub-versions-list .bsf-subversion-item:not(:first-child) {
+    padding-top: 1.5em;
+}
+
+.bsf-sub-version-content p {
+    margin-bottom: 1em;
+}

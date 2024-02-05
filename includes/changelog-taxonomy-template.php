@@ -41,8 +41,8 @@ $img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog
 							<div class="pre-title" id="<?php echo ( sanitize_title( get_post_field( 'post_name', get_post() ) ) ); ?>">
 								<div class="img-name-date-section">
 								<div class="author-img-section">
-									<?php if ( get_avatar( get_the_author_id() ) ) {
-										echo get_avatar( get_the_author_id() );
+									<?php if ( get_avatar( get_the_author_meta('ID') ) ) {
+										echo get_avatar( get_the_author_meta('ID') );
                         			} else { ?>
                             			<img src="/images/no-image-default.jpg" />
                         			<?php } ?>
@@ -56,6 +56,7 @@ $img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog
 							<a href="#<?php echo ( sanitize_title( get_post_field( 'post_name', get_post() ) ) ); ?>"><?php echo $link_icon; ?><h2 class="entry-title"><?php the_title(); ?> </h2></a>
 						</header>
 						<?php
+						$img_pos = apply_filters( 'bsf_changelog_img_position_' . get_the_ID(), 'after' );
 						$img_pos_all = apply_filters( 'bsf_changelog_img_position_all', 'after' );
 						if ( ( 'before' === $img_pos || 'before' === $img_pos_all ) && has_post_thumbnail() ) { ?>
 							<div class="bsf-changelog-img <?php echo $img_class; ?>" style="margin-bottom: 16px;"><?php the_post_thumbnail( 'full' ); ?></div>
@@ -73,6 +74,7 @@ $img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog
 							<?php the_content(); ?>
 						</div>
 						<?php
+						do_action( 'bsf_changelog_after_version_content', get_the_ID() );
 						do_action( 'bsf_changelog_after_content_' . get_the_ID() );
 						if ( ( 'after' === $img_pos || 'after' === $img_pos_all ) && ( 'before' !== $img_pos && 'before' !== $img_pos_all ) && has_post_thumbnail() ) { ?>
 							<div class="bsf-changelog-img <?php echo $img_class; ?>"><?php the_post_thumbnail( 'full' ); ?></div>

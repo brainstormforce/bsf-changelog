@@ -41,12 +41,11 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 */
 		private function __construct() {
 
-					// minimum requirement for PHP version.
+			// minimum requirement for PHP version.
 			$php = '5.4';
 
 			// If current version is less than minimum requirement, display admin notice.
 			if ( version_compare( PHP_VERSION, $php, '<' ) ) {
-
 				add_action( 'admin_notices', array( $this, 'php_version_notice' ) );
 				return;
 			}
@@ -79,6 +78,57 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 				add_filter( 'body_class', array( $this, 'bsf_single_product_body_class' ) );
 			}
 
+			add_action( 'bsf_changelog_after_version_content', array( $this, 'render_subversion_content' ) );
+		}
+
+		/**
+		 * Render subversion content where $post_id set as Post Parent to other posts.
+		 *
+		 * @param int $id Post ID.
+		 */
+		public function render_subversion_content( $post_id ) {
+			$args = array(
+				'post_type'              => BSF_CHANGELOG_POST_TYPE,
+				'posts_per_page'         => -1,
+				'post_parent'            => get_the_ID(),
+				'update_post_meta_cache' => false,
+				'no_found_rows'          => true,
+				'post_status'            => 'publish',
+				'orderby'                => 'date',
+				'fields'                 => 'ids',
+				'order'                  => 'desc',
+				'nopaging'               => true,
+			);
+
+			$sub_versions_query = new WP_Query( $args );
+
+			if ( $sub_versions_query->have_posts() ) {
+				?>
+					<div class="bsf-sub-versions-wrapper">
+						<div class="bsf-sub-versions-title">
+							<span class="ast-subver-title"> <?php _e( 'See Sub Versions', 'bsf-changelog' ); ?> </span>
+							<span class="bsf-subver-toggle">
+								<svg class="ast-subver-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="16px" height="16.043px" viewBox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve"> <path d="M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z"></path>
+                				</svg>
+							</span>
+						</div>
+					<div class="bsf-sub-versions-list">
+				<?php
+					while ( $sub_versions_query->have_posts() ) {
+						$sub_versions_query->the_post();
+						$post_id    = get_the_ID();
+						$post_title = get_the_title();
+						?>
+							<div class="bsf-subversion-item">
+								<h4 class="bsf-sub-version-title"><?php echo esc_attr( $post_title ); ?></h4>
+								<span class="bsf-sub-version-date"> <?php echo get_the_date(); ?> </span>
+								<div class="bsf-sub-version-content"><?php echo do_shortcode( get_the_content() ); ?></div>
+							</div>
+						<?php
+					}
+				?> </div> </div> <?php
+				wp_reset_postdata();
+			}
 		}
 
 		/**

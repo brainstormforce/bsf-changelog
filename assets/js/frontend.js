@@ -4,6 +4,15 @@
 		seeMore(post_id);
 	});
 
+	$( '.bsf-sub-versions-title' ).on('click', function() {
+		let self = $(this);
+		if ( self.closest('.bsf-sub-versions-wrapper').hasClass('show-list') ) {
+			self.closest('.bsf-sub-versions-wrapper').removeClass('show-list');
+		} else {
+			self.closest('.bsf-sub-versions-wrapper').addClass('show-list');
+		}
+	});
+
 	function seeMore(post_id){
 		$( '#' + post_id + ' .bsf-entry-content.content-open' ).css('height', 'auto').show();
 		$( '#' + post_id + ' .bsf-entry-content.content-closed' ).hide();
