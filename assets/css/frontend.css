@@ -381,9 +381,6 @@ h2.changelog-title:after {
 .bsf-changelog-post-wrapper {
     padding: 40px;
 }
-.bsf-sub-versions-list .bsf-subversion-item:last-child {
-    padding-bottom: 20px;
-}
 .bsf-changelog-img {
 	margin-top: 16px;
 }
@@ -484,15 +481,12 @@ h2.changelog-title:after {
     font-size: 0.9em;
     background: #F9FAFB;
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 0 0 6px 6px;
     display: flex;
     gap: 10px;
     justify-content: center;
     align-content: center;
     align-items: center;
-}
-.show-list .bsf-sub-versions-title {
-    border-radius: 6px 6px 0 0;
 }
 .ast-subver-title {
 	font-weight: 600;
@@ -533,8 +527,8 @@ h2.changelog-title:after {
     position: relative;
 }
 
-.bsf-sub-versions-list .bsf-subversion-item:not(:first-child) {
-    border-top: 1px solid #E2E8F0;
+.bsf-sub-versions-list .bsf-subversion-item {
+    border-bottom: 1px solid #E2E8F0;
 }
 
 .bsf-sub-version-content p {
