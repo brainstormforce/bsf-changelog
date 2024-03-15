@@ -8,8 +8,10 @@
 		let self = $(this);
 		if ( self.closest('.bsf-sub-versions-wrapper').hasClass('show-list') ) {
 			self.closest('.bsf-sub-versions-wrapper').removeClass('show-list');
+			self.find('.ast-subver-title').text( 'See Sub Versions' );
 		} else {
 			self.closest('.bsf-sub-versions-wrapper').addClass('show-list');
+			self.find('.ast-subver-title').text( 'Hide Sub Versions' );
 		}
 	});
 

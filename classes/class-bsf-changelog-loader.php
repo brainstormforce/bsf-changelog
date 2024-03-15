@@ -105,6 +105,22 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			if ( $sub_versions_query->have_posts() ) {
 				?>
 					<div class="bsf-sub-versions-wrapper">
+						<div class="bsf-sub-versions-list">
+							<?php
+								while ( $sub_versions_query->have_posts() ) {
+									$sub_versions_query->the_post();
+									$post_id    = get_the_ID();
+									$post_title = get_the_title();
+									?>
+										<div class="bsf-subversion-item">
+											<h4 class="bsf-sub-version-title"><?php echo esc_attr( $post_title ); ?></h4>
+											<span class="bsf-sub-version-date"> <?php echo get_the_date(); ?> </span>
+											<div class="bsf-sub-version-content"><?php echo do_shortcode( get_the_content() ); ?></div>
+										</div>
+									<?php
+								}
+							?>
+						</div>
 						<div class="bsf-sub-versions-title">
 							<span class="ast-subver-title"> <?php _e( 'See Sub Versions', 'bsf-changelog' ); ?> </span>
 							<span class="bsf-subver-toggle">
@@ -112,21 +128,8 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
                 				</svg>
 							</span>
 						</div>
-					<div class="bsf-sub-versions-list">
+					</div>
 				<?php
-					while ( $sub_versions_query->have_posts() ) {
-						$sub_versions_query->the_post();
-						$post_id    = get_the_ID();
-						$post_title = get_the_title();
-						?>
-							<div class="bsf-subversion-item">
-								<h4 class="bsf-sub-version-title"><?php echo esc_attr( $post_title ); ?></h4>
-								<span class="bsf-sub-version-date"> <?php echo get_the_date(); ?> </span>
-								<div class="bsf-sub-version-content"><?php echo do_shortcode( get_the_content() ); ?></div>
-							</div>
-						<?php
-					}
-				?> </div> </div> <?php
 				wp_reset_postdata();
 			}
 		}

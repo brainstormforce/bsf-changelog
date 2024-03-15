@@ -37,6 +37,7 @@ $img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog
 				 */
 				?>
 				<div id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-chnangelogs status-publish format-standard chnangelogs_category">
+					<div class="bsf-changelog-post-wrapper">
 						<header class="entry-header">
 							<div class="pre-title" id="<?php echo ( sanitize_title( get_post_field( 'post_name', get_post() ) ) ); ?>">
 								<div class="img-name-date-section">
@@ -73,14 +74,15 @@ $img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog
 						<div class="bsf-entry-content content-open clear" itemprop="text" <?php echo $style; ?>>
 							<?php the_content(); ?>
 						</div>
-						<?php
-						do_action( 'bsf_changelog_after_version_content', get_the_ID() );
-						do_action( 'bsf_changelog_after_content_' . get_the_ID() );
-						if ( ( 'after' === $img_pos || 'after' === $img_pos_all ) && ( 'before' !== $img_pos && 'before' !== $img_pos_all ) && has_post_thumbnail() ) { ?>
-							<div class="bsf-changelog-img <?php echo $img_class; ?>"><?php the_post_thumbnail( 'full' ); ?></div>
-						<?php }
-						?>
 					</div>
+					<?php
+					do_action( 'bsf_changelog_after_version_content', get_the_ID() );
+					do_action( 'bsf_changelog_after_content_' . get_the_ID() );
+					if ( ( 'after' === $img_pos || 'after' === $img_pos_all ) && ( 'before' !== $img_pos && 'before' !== $img_pos_all ) && has_post_thumbnail() ) { ?>
+						<div class="bsf-changelog-img <?php echo $img_class; ?>"><?php the_post_thumbnail( 'full' ); ?></div>
+					<?php }
+					?>
+				</div>
 				<?php
 			endwhile;
 		endif;
