@@ -462,6 +462,12 @@ h2.changelog-title:after {
     .bsf-changelog-cat-wrap {
         margin: 35px 0;
     }
+	span.bsf-sub-version-date {
+		position: relative;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
 }
 
 /* Changelog Sub version CSS */
@@ -508,9 +514,6 @@ h2.changelog-title:after {
     top: 40px;
     font-size: 0.8em;
 }
-.bsf-sub-versions-list .bsf-subversion-item:not(:first-child) .bsf-sub-version-date {
-    top: 2.5em;
-}
 .bsf-subversion-item {
     position: relative;
 	padding: 40px 0;
@@ -533,4 +536,8 @@ h2.changelog-title:after {
 
 .bsf-sub-version-content p {
     margin-bottom: 1em;
+}
+
+.bsf-sub-version-content {
+    margin-top: 24px;
 }
