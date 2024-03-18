@@ -122,7 +122,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 							?>
 						</div>
 						<div class="bsf-sub-versions-title">
-							<span class="ast-subver-title"> <?php _e( 'See Sub Versions', 'bsf-changelog' ); ?> </span>
+							<span class="ast-subver-title"> <?php apply_filters( 'bsf_changelog_sub_version_show_text', _e( 'See More', 'bsf-changelog' ) ); ?> </span>
 							<span class="bsf-subver-toggle">
 								<svg class="ast-subver-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="16px" height="16.043px" viewBox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve"> <path d="M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z"></path>
                 				</svg>
@@ -382,6 +382,8 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 					'bsf_pagination',
 					array(
 						'infinite_count' => 2,
+						'hide_subversion_text' => apply_filters( 'bsf_changelog_sub_version_hide_text', __( 'Hide', 'bsf-changelog' ) ),
+						'show_subversion_text' => apply_filters( 'bsf_changelog_sub_version_show_text', __( 'See More', 'bsf-changelog' ) ),
 						'infinite_total' => $wp_query->max_num_pages,
 					)
 				);

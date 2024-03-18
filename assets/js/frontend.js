@@ -8,10 +8,10 @@
 		let self = $(this);
 		if ( self.closest('.bsf-sub-versions-wrapper').hasClass('show-list') ) {
 			self.closest('.bsf-sub-versions-wrapper').removeClass('show-list');
-			self.find('.ast-subver-title').text( 'See Sub Versions' );
+			self.find('.ast-subver-title').text( bsf_pagination.show_subversion_text );
 		} else {
 			self.closest('.bsf-sub-versions-wrapper').addClass('show-list');
-			self.find('.ast-subver-title').text( 'Hide Sub Versions' );
+			self.find('.ast-subver-title').text( bsf_pagination.hide_subversion_text );
 		}
 	});
 
@@ -59,9 +59,9 @@
 		var count = parseInt( bsf_pagination.infinite_count ) || '';
 		var bsfLoadMore	= $('.bsf-load-more');
 		var offset = {
-					top: rect.top + window.scrollY,
-					left: rect.left + window.scrollX,
-					};
+			top: rect.top + window.scrollY,
+			left: rect.left + window.scrollX,
+		};
 		if( bsfLoadMore ){
 			bsfLoadMore.removeClass('active');
 		}
