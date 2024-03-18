@@ -5,7 +5,7 @@
  * Author: Pratik Chaskar
  * Author URI: https://pratikchaskar.com
  * Contributors: brainstormforce, Anil
- * Version: 1.0.6
+ * Version: 1.0.7
  * Description: BSF Changelog plugin is used for building multi products changelog website within minute, This plugin provides shortcodes to display changelog versions list and custom designs.
  * Text Domain: bsf-changelog
  *
