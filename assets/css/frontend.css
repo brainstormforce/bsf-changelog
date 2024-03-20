@@ -376,7 +376,11 @@ h2.changelog-title:after {
     background-color: #fff;
     border-bottom: 2px solid #DADEE0;
     margin: 2em 0 0 0;
-	padding: 0;
+	padding: 2em;
+}
+body.product-tax-enabled .type-chnangelogs:has(.bsf-changelog-post-wrapper),
+body.post-type-archive-changelog .type-chnangelogs:has(.bsf-changelog-post-wrapper) {
+    padding: 0;
 }
 .bsf-changelog-post-wrapper {
     padding: 40px;
