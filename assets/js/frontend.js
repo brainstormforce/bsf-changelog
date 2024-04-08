@@ -4,7 +4,7 @@
 		seeMore(post_id);
 	});
 
-	$( '.bsf-sub-versions-title' ).on('click', function() {
+	$(document).on('click', '.bsf-sub-versions-title', function() {
 		let self = $(this);
 		if ( self.closest('.bsf-sub-versions-wrapper').hasClass('show-list') ) {
 			self.closest('.bsf-sub-versions-wrapper').removeClass('show-list');
@@ -126,17 +126,6 @@
 				$( '.see-more-text' ).click( function() {
 					post_id = ( $(this).closest('.type-chnangelogs') ).attr('id');
 					seeMore(post_id);
-				});
-
-				$( '.bsf-sub-versions-title' ).on('click', function() {
-					let self = $(this);
-					if ( self.closest('.bsf-sub-versions-wrapper').hasClass('show-list') ) {
-						self.closest('.bsf-sub-versions-wrapper').removeClass('show-list');
-						self.find('.ast-subver-title').text( bsf_pagination.show_subversion_text );
-					} else {
-						self.closest('.bsf-sub-versions-wrapper').addClass('show-list');
-						self.find('.ast-subver-title').text( bsf_pagination.hide_subversion_text );
-					}
 				});
 
 				//	Complete the process 'loadStatus'

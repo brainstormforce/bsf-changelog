@@ -384,6 +384,7 @@ body.post-type-archive-changelog .type-chnangelogs:has(.bsf-changelog-post-wrapp
 }
 .bsf-changelog-post-wrapper {
     padding: 40px;
+	background: #fff;
 }
 .bsf-changelog-img {
 	margin-top: 16px;

@@ -41,7 +41,7 @@ class BSF_Changelog_Post_Type {
 		}
 
 		// On frontend exclude posts which has post parent.
-		if ( ! is_admin() && is_tax( 'product' ) && $query->is_main_query() ) {
+		if ( ! is_admin() && ( is_tax( 'product' ) || is_post_type_archive( BSF_CHANGELOG_POST_TYPE ) ) && $query->is_main_query() ) {
 			$query->set( 'post_parent', 0 );
 		}
 	}
