@@ -51,65 +51,68 @@ $img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog
 					 */
 					?>
 					<div id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?> post type-chnangelogs status-publish format-standard chnangelogs_category">
-						<header class="entry-header">
-							<div class="pre-title" id="<?php echo ( sanitize_title( get_post_field( 'post_name', get_post() ) ) ); ?>">
-								<div class="img-name-date-section">
-								<div class="author-img-section">
-									<?php if ( get_avatar( get_the_author_meta('ID') ) ) {
-										echo get_avatar( get_the_author_meta('ID') );
-                        			} else { ?>
-                            			<img src="/images/no-image-default.jpg" />
-                        			<?php } ?>
+						<div class="bsf-changelog-post-wrapper">
+							<header class="entry-header">
+								<div class="pre-title" id="<?php echo ( sanitize_title( get_post_field( 'post_name', get_post() ) ) ); ?>">
+									<div class="img-name-date-section">
+									<div class="author-img-section">
+										<?php if ( get_avatar( get_the_author_meta('ID') ) ) {
+											echo get_avatar( get_the_author_meta('ID') );
+										} else { ?>
+											<img src="/images/no-image-default.jpg" />
+										<?php } ?>
+									</div>
+									<div class="author-name-date-section">
+										<div class="author-name"><?php the_author(); ?></div>
+										<div class="publish-date"><?php echo get_the_date(); ?></div>
+									</div>
+									<?php $tags = get_the_terms( get_the_ID(), 'changelog_tag' );
+									if ( $tags ) { ?>
+									<div class="bsf-version-tag">
+										<span class="bsf-version-no"><?php
+											echo $tags[0]->name;
+										?></span>
+									</div>
+									<?php } ?>
+									</div>
+									<?php $terms = wp_get_post_terms( get_the_ID(), 'product' );
+									if ( $terms ) { ?>
+									<div class="category-section">
+										<a href="<?php echo get_term_link( (int) $terms[0]->term_id ); ?>" class="category-name">
+										<?php
+											echo $terms[0]->name;
+										?>
+										</a>
+									</div>
+									<?php } ?>
 								</div>
-								<div class="author-name-date-section">
-									<div class="author-name"><?php the_author(); ?></div>
-									<div class="publish-date"><?php echo get_the_date(); ?></div>
+								<a href="#<?php echo ( sanitize_title( get_post_field( 'post_name', get_post() ) ) ); ?>"><?php echo $link_icon; ?><h2 class="entry-title"><?php the_title(); ?> </h2></a>
+							</header>
+							<?php
+							$img_pos = apply_filters( 'bsf_changelog_img_position_' . get_the_ID(), 'after' );
+							$img_pos_all = apply_filters( 'bsf_changelog_img_position_all', 'after' );
+							if ( ( 'before' === $img_pos || 'before' === $img_pos_all ) && has_post_thumbnail() ) { ?>
+								<div class="bsf-changelog-img <?php echo $img_class; ?>" style="margin-bottom: 16px;"><?php the_post_thumbnail( 'full' ); ?></div>
+							<?php }
+							do_action( 'bsf_changelog_before_content_' . get_the_ID() );
+							?>
+							<?php if ( has_excerpt() ) { ?>
+								<div class="bsf-entry-content content-closed clear" itemprop="text">
+								<?php the_excerpt(); ?>
 								</div>
-								<?php $tags = get_the_terms( get_the_ID(), 'changelog_tag' );
-								if ( $tags ) { ?>
-								<div class="bsf-version-tag">
-									<span class="bsf-version-no"><?php
-										echo $tags[0]->name;
-									?></span>
-								</div>
-								<?php } ?>
-								</div>
-								<?php $terms = wp_get_post_terms( get_the_ID(), 'product' );
-								if ( $terms ) { ?>
-								<div class="category-section">
-									<a href="<?php echo get_term_link( (int) $terms[0]->term_id ); ?>" class="category-name">
-									<?php
-										echo $terms[0]->name;
-									?>
-									</a>
-								</div>
-								<?php } ?>
+								<span class="see-more-text">Continue Reading...</span>
+							<?php } ?>
+							<?php $style = has_excerpt() ? 'style="display:none;"': ''; ?>
+							<div class="bsf-entry-content content-open clear" itemprop="text" <?php echo $style; ?>>
+								<?php the_content(); ?>
 							</div>
-							<a href="#<?php echo ( sanitize_title( get_post_field( 'post_name', get_post() ) ) ); ?>"><?php echo $link_icon; ?><h2 class="entry-title"><?php the_title(); ?> </h2></a>
-						</header>
-						<?php
-						$img_pos = apply_filters( 'bsf_changelog_img_position_' . get_the_ID(), 'after' );
-						$img_pos_all = apply_filters( 'bsf_changelog_img_position_all', 'after' );
-						if ( ( 'before' === $img_pos || 'before' === $img_pos_all ) && has_post_thumbnail() ) { ?>
-							<div class="bsf-changelog-img <?php echo $img_class; ?>" style="margin-bottom: 16px;"><?php the_post_thumbnail( 'full' ); ?></div>
-						<?php }
-						do_action( 'bsf_changelog_before_content_' . get_the_ID() );
-						?>
-						<?php if ( has_excerpt() ) { ?>
-							<div class="bsf-entry-content content-closed clear" itemprop="text">
-							<?php the_excerpt(); ?>
-							</div>
-							<span class="see-more-text">Continue Reading...</span>
-						<?php } ?>
-						<?php $style = has_excerpt() ? 'style="display:none;"': ''; ?>
-						<div class="bsf-entry-content content-open clear" itemprop="text" <?php echo $style; ?>>
-							<?php the_content(); ?>
+							<?php do_action( 'bsf_changelog_after_content_' . get_the_ID() );
+							if ( ( 'after' === $img_pos || 'after' === $img_pos_all ) && ( 'before' !== $img_pos && 'before' !== $img_pos_all ) && has_post_thumbnail() ) { ?>
+								<div class="bsf-changelog-img <?php echo $img_class; ?>"><?php the_post_thumbnail( 'full' ); ?></div>
+							<?php }
+							?>
 						</div>
-						<?php do_action( 'bsf_changelog_after_content_' . get_the_ID() );
-						if ( ( 'after' === $img_pos || 'after' === $img_pos_all ) && ( 'before' !== $img_pos && 'before' !== $img_pos_all ) && has_post_thumbnail() ) { ?>
-							<div class="bsf-changelog-img <?php echo $img_class; ?>"><?php the_post_thumbnail( 'full' ); ?></div>
-						<?php }
-						?>
+						<?php do_action( 'bsf_changelog_after_version_content', get_the_ID() ); ?>
 					</div>
 					<?php
 				endwhile;
