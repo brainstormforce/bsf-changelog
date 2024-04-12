@@ -87,6 +87,8 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * @param int $id Post ID.
 		 */
 		public function render_subversion_content( $post_id ) {
+			$bsf_changelog_expand_subversions_default = get_option( 'bsf_changelog_expand_subversions_default' );
+
 			$args = array(
 				'post_type'              => BSF_CHANGELOG_POST_TYPE,
 				'posts_per_page'         => -1,
@@ -104,7 +106,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 
 			if ( $sub_versions_query->have_posts() ) {
 				?>
-					<div class="bsf-sub-versions-wrapper">
+					<div class="bsf-sub-versions-wrapper <?php echo esc_attr( '1' === $bsf_changelog_expand_subversions_default || 'yes' === $bsf_changelog_expand_subversions_default ? 'show-list' : '' ); ?>">
 						<div class="bsf-sub-versions-list">
 							<?php
 								while ( $sub_versions_query->have_posts() ) {
@@ -232,6 +234,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_scroll_pagination' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_hide_featured_img' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_link_icon' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_expand_subversions_default' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_title' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_sub_title' );
 		}

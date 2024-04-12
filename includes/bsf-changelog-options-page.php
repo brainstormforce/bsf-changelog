@@ -70,6 +70,19 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 							</td>
 						</tr>
 						<tr valign="top">
+							<th scope="row"><?php _e( 'Expand sub versions by default?', 'bsf-changelog' ); ?></th>
+							<td>
+								<?php
+								$bsf_changelog_expand_subversions_default = get_option( 'bsf_changelog_expand_subversions_default' );
+								if ( isset( $bsf_changelog_expand_subversions_default ) && '1' === $bsf_changelog_expand_subversions_default || 'yes' === $bsf_changelog_expand_subversions_default ) {
+									echo '<input type="checkbox" checked name="bsf_changelog_expand_subversions_default" value="1">';
+								} else {
+									echo '<input type="checkbox" name="bsf_changelog_expand_subversions_default" value="1">';
+								}
+								?>
+							</td>
+						</tr>
+						<tr valign="top">
 							<th scope="row"><?php _e( 'Changelog Page Title', 'bsf-changelog' ); ?></th>
 							<td>
 								<?php
