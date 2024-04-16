@@ -12,8 +12,6 @@ html {
     clear: both;
 }
 
-*, *:before, *:after {box-sizing:  border-box !important;}
-
 @font-face {
   font-family: 'changelog';
   src:  url('../fonts/changelog.eot?9cclst');
