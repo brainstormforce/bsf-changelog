@@ -37,7 +37,7 @@
 		}
 	}
 
-	const anchorLinks = document.querySelectorAll('a[href^="#"]:not([href*="uagb-tab"])');
+	const anchorLinks = document.querySelectorAll('a[href^="#"]:not(.uagb-tabs-list)');
 
 	anchorLinks.forEach(anchorLink => {
 		anchorLink.addEventListener('click', event => {
