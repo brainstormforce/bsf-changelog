@@ -39,6 +39,7 @@ function bsf_render_changelog_list( $atts, $content = null ) {
 	<?php
 		$changelog_title     = get_option( 'bsf_changelog_title' );
 		$changelog_sub_title = get_option( 'bsf_changelog_sub_title' );
+		$bsf_changelog_default_raw_url = get_option( 'bsf_changelog_default_raw_url' );
 
 	if ( '' !== $changelog_title ) {
 		echo '<h2 class="changelog-title">' . esc_attr( $changelog_title ) . '</h2>';

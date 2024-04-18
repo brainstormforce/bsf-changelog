@@ -25,6 +25,88 @@ class BSF_Changelog_Post_Type {
 	public static function init() {
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 11 );
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 10 );
+		add_action( 'pre_get_posts', array( __CLASS__, 'update_changelog_list' ) );
+
+		add_action( 'product_add_form_fields', array( __CLASS__, 'add_form_fields' ), 10, 2 );
+		add_action( 'product_edit_form_fields', array( __CLASS__, 'edit_form_fields' ), 10, 2 );
+		add_action( 'created_product', array( __CLASS__, 'save_category_meta' ), 11, 2 );
+		add_action( 'edited_product', array( __CLASS__, 'updated_category_meta' ), 11, 2 );
+	}
+
+	/**
+	 * Add product category custom fields to add new screen.
+	 *
+	 * @since x.x.x
+	 * @param string $taxonomy to store taxonomy name.
+	 */
+	public static function add_form_fields( $taxonomy ) {
+		include_once BSF_CHANGELOG_BASE_DIR . 'includes/templates/add-category-meta.php';
+	}
+
+	/**
+	 * Add product category custom fields to edit screen.
+	 *
+	 * @since x.x.x
+	 * @param object $term to store term object.
+	 * @param string $taxonomy to store taxonomy name.
+	 */
+	public static function edit_form_fields( $term, $taxonomy ) {
+		$changelog_file_url = get_term_meta( $term->term_id, 'product_tax_changelog-file-url', true );
+		include_once BSF_CHANGELOG_BASE_DIR . 'includes/templates/edit-category-meta.php';
+	}
+
+	/**
+	 * Save docs category fields.
+	 *
+	 * @since x.x.x
+	 * @param int $term_id to store term id.
+	 */
+	public static function save_category_meta( $term_id, $tt_id ) {
+		if ( isset( $_POST['term_meta'] ) ) {
+			$cat_keys = array_keys( $_POST['term_meta'] );
+			foreach ( $cat_keys as $key ) {
+				if ( isset( $_POST['term_meta'][ $key ] ) ) {
+					add_term_meta( $term_id, "product_tax_$key", sanitize_text_field( $_POST['term_meta'][ $key ] ) );
+				}
+			}
+		}
+
+		$this->set_term_order( $term_id, $tt_id );
+	}
+
+	/**
+	 * Save docs category custom fields.
+	 *
+	 * @since x.x.x
+	 * @param int $term_id to store term id.
+	 */
+	public static function updated_category_meta( $term_id ) {
+		if ( isset( $_POST['term_meta'] ) ) {
+			$cat_keys = array_keys( $_POST['term_meta'] );
+			foreach ( $cat_keys as $key ) {
+				if ( isset( $_POST['term_meta'][ $key ] ) ) {
+					update_term_meta( $term_id, "product_tax_$key", $_POST['term_meta'][ $key ] );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Custom update posts list.
+	 *
+	 * @param object $query Query object.
+	 */
+	public static function update_changelog_list( $query ) {
+		// Check if we are on the edit.php page and it's the main query
+		if ( is_admin() && $query->is_main_query() && $query->get('post_type') === BSF_CHANGELOG_POST_TYPE ) {
+			$query->set('orderby', 'date');
+			$query->set('order', 'DESC');
+		}
+
+		// On frontend exclude posts which has post parent.
+		if ( ! is_admin() && ( is_tax( 'product' ) || is_post_type_archive( BSF_CHANGELOG_POST_TYPE ) ) && $query->is_main_query() ) {
+			$query->set( 'post_parent', 0 );
+		}
 	}
 
 	/**
@@ -124,6 +206,8 @@ class BSF_Changelog_Post_Type {
 			'excerpt',
 			'thumbnail',
 			'custom-fields',
+			'author',
+			'page-attributes',
 		);
 
 		$has_comments = get_option( 'bsf_search_has_comments' );
@@ -154,11 +238,12 @@ class BSF_Changelog_Post_Type {
 						'not_found'             => __( 'No version found', 'bsf-changelog' ),
 						'not_found_in_trash'    => __( 'No Version found in trash', 'bsf-changelog' ),
 						'parent'                => __( 'Parent Version', 'bsf-changelog' ),
-						'featured_image'        => __( 'changelogs image', 'bsf-changelog' ),
-						'set_featured_image'    => __( 'Set changelogs image', 'bsf-changelog' ),
+						'featured_image'        => __( 'Changelog Featured Image', 'bsf-changelog' ),
+						'set_featured_image'    => __( 'Set Changelog Featured Image', 'bsf-changelog' ),
 						'remove_featured_image' => __( 'Remove Version image', 'bsf-changelog' ),
 						'use_featured_image'    => __( 'Use as Version image', 'bsf-changelog' ),
 						'items_list'            => __( 'Version list', 'bsf-changelog' ),
+						'attributes' 		    => __( 'Version Attributes', 'bsf-changelog' ),
 					),
 					'description'         => __( 'This is where you can add new changelogs to your site.', 'bsf-changelog' ),
 					'public'              => true,
@@ -166,12 +251,13 @@ class BSF_Changelog_Post_Type {
 					'map_meta_cap'        => true,
 					'publicly_queryable'  => true,
 					'exclude_from_search' => false,
-					'hierarchical'        => false, // Hierarchical causes memory issues - WP loads all records!
+					'hierarchical'        => true, // Hierarchical causes memory issues - WP loads all records!
 					'query_var'           => true,
 					'supports'            => $supports,
-					'has_archive'         => true,
+					'has_archive'         => 'whats-new',
 					'show_in_nav_menus'   => true,
 					'show_in_rest'        => true,
+					'menu_icon'           => 'dashicons-list-view',
 				)
 			)
 		);

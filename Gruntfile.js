@@ -27,6 +27,60 @@ module.exports = function( grunt ) {
 			},
 		},
 
+		copy: {
+			main: {
+				options: {
+					mode: true,
+				},
+				src: [
+					'**',
+					'!node_modules/**',
+					'!.vscode/**',
+					'!build/**',
+					'!css/sourcemap/**',
+					'!.git/**',
+					'!bin/**',
+					'!.gitlab-ci.yml',
+					'!bin/**',
+					'!tests/**',
+					'!phpunit.xml.dist',
+					'!*.sh',
+					'!*.map',
+					'!*.zip',
+					'!Gruntfile.js',
+					'!package.json',
+					'!.gitignore',
+					'!phpunit.xml',
+					'!README.md',
+					'!sass/**',
+					'!codesniffer.ruleset.xml',
+					'!vendor/**',
+					'!composer.json',
+					'!composer.lock',
+					'!package-lock.json',
+					'!phpcs.xml.dist',
+				],
+				dest: 'bsf-changelog/',
+			},
+		},
+		compress: {
+			main: {
+				options: {
+					archive: 'bsf-changelog-<%= pkg.version %>.zip',
+					mode: 'zip',
+				},
+				files: [
+					{
+						src: [ './bsf-changelog/**' ],
+					},
+				],
+			},
+		},
+		clean: {
+			main: [ 'bsf-changelog' ],
+			zip: [ '*.zip' ],
+		},
+
 		makepot: {
 			target: {
 				options: {
@@ -44,10 +98,19 @@ module.exports = function( grunt ) {
 		},
 	} );
 
+	grunt.loadNpmTasks( 'grunt-contrib-copy' );
+	grunt.loadNpmTasks( 'grunt-contrib-compress' );
+	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
 	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
+	grunt.registerTask( 'release', [
+		'clean:zip',
+		'copy',
+		'compress',
+		'clean:main',
+	] );
 
 	grunt.util.linefeed = '\n';
 
