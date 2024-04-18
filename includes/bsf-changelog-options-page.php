@@ -98,8 +98,20 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 								<input type="text" class="regular-text code" name="bsf_changelog_sub_title" value="<?php echo get_option( 'bsf_changelog_sub_title' ); ?> "/>
 							</td>
 						</tr>
+						<tr valign="top">
+							<th scope="row"><?php _e( 'Changelog Raw File URL', 'bsf-changelog' ); ?></th>
+							<td>
+								<input type="text" placeholder="https://raw.githubusercontent.com/brainstormforce/bsf-products/master/astra/changelog.txt" class="regular-text code" name="bsf_changelog_default_raw_url" value="<?php echo get_option( 'bsf_changelog_default_raw_url' ); ?>"/>
+								<p class="description"> <em>
+									<?php _e( 'This URL will be use to redirect users when click on "More Details".', 'bsf-changelog' ); ?>
+								</em> </p>
+								<p class="description"> <em>
+									<?php echo sprintf( '%s <a href="%s">%s</a> %s', __( 'For multiple products', 'bsf-changelog' ), esc_url( admin_url( '/edit-tags.php?taxonomy=product&post_type=' . BSF_CHANGELOG_POST_TYPE ) ), __( 'Edit Product category', 'bsf-changelog' ), __( '& provide link there.', 'bsf-changelog' ) ) ?>
+								</em> </p>
+							</td>
+						</tr>
 					</table>
-						<?php submit_button(); ?>
+				<?php submit_button(); ?>
 		</form>
 	</div>
 	<div class="bsf-shortcodes-wrap">

@@ -237,6 +237,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_expand_subversions_default' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_title' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_sub_title' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_default_raw_url' );
 		}
 
 		/**
