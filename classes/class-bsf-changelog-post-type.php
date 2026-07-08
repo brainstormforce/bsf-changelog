@@ -70,8 +70,6 @@ class BSF_Changelog_Post_Type {
 				}
 			}
 		}
-
-		$this->set_term_order( $term_id, $tt_id );
 	}
 
 	/**
