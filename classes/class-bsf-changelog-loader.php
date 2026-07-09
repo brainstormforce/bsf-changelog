@@ -41,12 +41,11 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 */
 		private function __construct() {
 
-					// minimum requirement for PHP version.
+			// minimum requirement for PHP version.
 			$php = '5.4';
 
 			// If current version is less than minimum requirement, display admin notice.
 			if ( version_compare( PHP_VERSION, $php, '<' ) ) {
-
 				add_action( 'admin_notices', array( $this, 'php_version_notice' ) );
 				return;
 			}
@@ -79,6 +78,62 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 				add_filter( 'body_class', array( $this, 'bsf_single_product_body_class' ) );
 			}
 
+			add_action( 'bsf_changelog_after_version_content', array( $this, 'render_subversion_content' ) );
+		}
+
+		/**
+		 * Render subversion content where $post_id set as Post Parent to other posts.
+		 *
+		 * @param int $id Post ID.
+		 */
+		public function render_subversion_content( $post_id ) {
+			$bsf_changelog_expand_subversions_default = get_option( 'bsf_changelog_expand_subversions_default' );
+
+			$args = array(
+				'post_type'              => BSF_CHANGELOG_POST_TYPE,
+				'posts_per_page'         => -1,
+				'post_parent'            => get_the_ID(),
+				'update_post_meta_cache' => false,
+				'no_found_rows'          => true,
+				'post_status'            => 'publish',
+				'orderby'                => 'date',
+				'fields'                 => 'ids',
+				'order'                  => 'desc',
+				'nopaging'               => true,
+			);
+
+			$sub_versions_query = new WP_Query( $args );
+
+			if ( $sub_versions_query->have_posts() ) {
+				?>
+					<div class="bsf-sub-versions-wrapper <?php echo esc_attr( '1' === $bsf_changelog_expand_subversions_default || 'yes' === $bsf_changelog_expand_subversions_default ? 'show-list' : '' ); ?>">
+						<div class="bsf-sub-versions-list">
+							<?php
+								while ( $sub_versions_query->have_posts() ) {
+									$sub_versions_query->the_post();
+									$post_id    = get_the_ID();
+									$post_title = get_the_title();
+									?>
+										<div class="bsf-subversion-item">
+											<h4 class="bsf-sub-version-title"><?php echo esc_attr( $post_title ); ?></h4>
+											<span class="bsf-sub-version-date"> <?php echo get_the_date(); ?> </span>
+											<div class="bsf-sub-version-content"><?php echo do_shortcode( get_the_content() ); ?></div>
+										</div>
+									<?php
+								}
+							?>
+						</div>
+						<div class="bsf-sub-versions-title">
+							<span class="ast-subver-title"> <?php apply_filters( 'bsf_changelog_sub_version_show_text', _e( 'See More', 'bsf-changelog' ) ); ?> </span>
+							<span class="bsf-subver-toggle">
+								<svg class="ast-subver-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="16px" height="16.043px" viewBox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve"> <path d="M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z"></path>
+                				</svg>
+							</span>
+						</div>
+					</div>
+				<?php
+				wp_reset_postdata();
+			}
 		}
 
 		/**
@@ -176,8 +231,13 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		function register_bsf_changelogs_plugin_settings() {
 			// Register our settings.
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_category_template' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_scroll_pagination' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_hide_featured_img' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_link_icon' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_expand_subversions_default' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_title' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_sub_title' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_default_raw_url' );
 		}
 
 		/**
@@ -276,7 +336,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 
 			$file = dirname( dirname( __FILE__ ) );
 
-			define( 'BSF_CHANGELOG_VERSION', '1.0.6' );
+			define( 'BSF_CHANGELOG_VERSION', '1.0.7' );
 			define( 'BSF_CHANGELOG_DIR_NAME', plugin_basename( $file ) );
 			define( 'BSF_CHANGELOG_BASE_FILE', trailingslashit( $file ) . BSF_CHANGELOG_DIR_NAME . '.php' );
 			define( 'BSF_CHANGELOG_BASE_DIR', plugin_dir_path( BSF_CHANGELOG_BASE_FILE ) );
@@ -296,6 +356,21 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			require_once BSF_CHANGELOG_BASE_DIR . 'includes/bsf-changelog-shortcode.php';
 		}
 
+		static function shorten_text($text, $length) {
+			$text = preg_replace('/<!--(.|\s)*?-->/', '', $text);
+			if (strlen($text) <= $length) {
+				return $text;
+			}
+
+			$short_text = substr($text, 0, $length);
+
+			$short_text = force_balance_tags($short_text) . '<span class="see-more-text">...See more</span>';
+			$short_text = preg_replace('/<</', '<', $short_text);
+
+			return $short_text;
+		}
+
+
 		/**
 		 * Enqueue frontend scripts
 		 *
@@ -304,6 +379,18 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		function enqueue_front_scripts() {
 			if ( is_post_type_archive( 'changelog' ) || is_tax( 'product' ) ) {
 				wp_enqueue_style( 'bsf-changelog-frontend-style', BSF_CHANGELOG_BASE_URL . 'assets/css/frontend.css' );
+				wp_enqueue_script( 'bsf-changelog-frontend-script', BSF_CHANGELOG_BASE_URL . 'assets/js/frontend.js', array( 'jquery' ), BSF_CHANGELOG_VERSION, true );
+				global $wp_query;
+				wp_localize_script(
+					'bsf-changelog-frontend-script',
+					'bsf_pagination',
+					array(
+						'infinite_count' => 2,
+						'hide_subversion_text' => apply_filters( 'bsf_changelog_sub_version_hide_text', __( 'Hide', 'bsf-changelog' ) ),
+						'show_subversion_text' => apply_filters( 'bsf_changelog_sub_version_show_text', __( 'See More', 'bsf-changelog' ) ),
+						'infinite_total' => $wp_query->max_num_pages,
+					)
+				);
 			}
 		}
 
