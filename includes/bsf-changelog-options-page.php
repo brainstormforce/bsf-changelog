@@ -83,6 +83,27 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 							</td>
 						</tr>
 						<tr valign="top">
+							<th scope="row"><?php _e( 'Show Product Tabs on Archive Page?', 'bsf-changelog' ); ?></th>
+							<td>
+								<?php
+								$bsf_changelog_enable_product_tabs = get_option( 'bsf_changelog_enable_product_tabs' );
+								if ( isset( $bsf_changelog_enable_product_tabs ) && '1' === $bsf_changelog_enable_product_tabs || 'yes' === $bsf_changelog_enable_product_tabs ) {
+									echo '<input type="checkbox" checked name="bsf_changelog_enable_product_tabs" value="1">';
+								} else {
+									echo '<input type="checkbox" name="bsf_changelog_enable_product_tabs" value="1">';
+								}
+								?>
+								<p class="description"><?php _e( 'Shows a tab for each product on the main Changelog archive page, so visitors can switch between products without leaving the page. Off by default.', 'bsf-changelog' ); ?></p>
+							</td>
+						</tr>
+						<tr valign="top">
+							<th scope="row"><?php _e( 'Product Tabs Order', 'bsf-changelog' ); ?></th>
+							<td>
+								<input type="text" class="regular-text code" placeholder="product-one, product-two, product-three" name="bsf_changelog_product_tabs_order" value="<?php echo esc_attr( get_option( 'bsf_changelog_product_tabs_order' ) ); ?>"/>
+								<p class="description"><?php _e( 'Optional. Comma-separated product slugs, in the order you want the tabs to appear. The first one listed is shown by default. Leave blank to show every product in its default order.', 'bsf-changelog' ); ?></p>
+							</td>
+						</tr>
+						<tr valign="top">
 							<th scope="row"><?php _e( 'Changelog Page Title', 'bsf-changelog' ); ?></th>
 							<td>
 								<?php
@@ -127,6 +148,23 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 						<div class="bsf-shortcode-container wp-ui-text-highlight">
 							[changelog_product_list]
 						</div>
+		</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><?php _e( 'Display Product Tabs', 'bsf-changelog' ); ?></th>
+				<td>
+						<div class="bsf-shortcode-container wp-ui-text-highlight">
+							[changelog_product_tabs]
+						</div>
+						<p class="description">
+							<?php _e( 'Shows the same product tabs available on the archive page, anywhere you place this shortcode. Optional attributes:', 'bsf-changelog' ); ?>
+							<br />
+							<code>products</code> &mdash; <?php _e( 'comma-separated product slugs to show and their order, e.g. products="product-one,product-two". Defaults to every product.', 'bsf-changelog' ); ?>
+							<br />
+							<code>default</code> &mdash; <?php _e( 'slug of the tab to show first, e.g. default="product-two". Defaults to the first tab.', 'bsf-changelog' ); ?>
+							<br />
+							<code>limit</code> &mdash; <?php _e( 'max versions shown per tab before a "View all" link takes over, e.g. limit="10". Defaults to 15.', 'bsf-changelog' ); ?>
+						</p>
 		</td>
 				</tr>
 			</table>

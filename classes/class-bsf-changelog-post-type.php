@@ -36,7 +36,7 @@ class BSF_Changelog_Post_Type {
 	/**
 	 * Add product category custom fields to add new screen.
 	 *
-	 * @since x.x.x
+	 * @since 1.0.7
 	 * @param string $taxonomy to store taxonomy name.
 	 */
 	public static function add_form_fields( $taxonomy ) {
@@ -46,7 +46,7 @@ class BSF_Changelog_Post_Type {
 	/**
 	 * Add product category custom fields to edit screen.
 	 *
-	 * @since x.x.x
+	 * @since 1.0.7
 	 * @param object $term to store term object.
 	 * @param string $taxonomy to store taxonomy name.
 	 */
@@ -58,7 +58,7 @@ class BSF_Changelog_Post_Type {
 	/**
 	 * Save docs category fields.
 	 *
-	 * @since x.x.x
+	 * @since 1.0.7
 	 * @param int $term_id to store term id.
 	 */
 	public static function save_category_meta( $term_id, $tt_id ) {
@@ -75,7 +75,7 @@ class BSF_Changelog_Post_Type {
 	/**
 	 * Save docs category custom fields.
 	 *
-	 * @since x.x.x
+	 * @since 1.0.7
 	 * @param int $term_id to store term id.
 	 */
 	public static function updated_category_meta( $term_id ) {
