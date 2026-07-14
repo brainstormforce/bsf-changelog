@@ -159,7 +159,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * so `the_posts_pagination()` reflects that single product's real count
 		 * instead of paginating a mixed feed and then hiding rows client-side.
 		 *
-		 * @since 1.0.7
+		 * @since 1.0.8
 		 * @param WP_Query $query The main query, passed by reference.
 		 */
 		public function filter_archive_by_product_tab( $query ) {
@@ -193,7 +193,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * Get the slug of the currently active product tab, from the `bsf_product`
 		 * request var, falling back to the first configured tab.
 		 *
-		 * @since 1.0.7
+		 * @since 1.0.8
 		 * @return string Empty string when tabs aren't available at all.
 		 */
 		public function get_active_product_tab_slug() {
@@ -302,7 +302,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * Get 'product' terms matching the given slugs, in that order.
 		 * Falls back to all products (default term order) when no slugs are given.
 		 *
-		 * @since 1.0.7
+		 * @since 1.0.8
 		 * @param array $slugs Product term slugs, in the desired display order.
 		 * @return WP_Term[]
 		 */
@@ -341,7 +341,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * Get the 'product' terms to show as tabs on the Changelog archive page,
 		 * ordered per the "Product Tabs Order" setting when one is set.
 		 *
-		 * @since 1.0.7
+		 * @since 1.0.8
 		 * @return WP_Term[]
 		 */
 		public function get_archive_product_tabs_terms() {
@@ -359,7 +359,7 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * In "toggle" mode (the shortcode) all panels are pre-rendered and a tab
 		 * click just shows/hides the matching one via JS - see frontend.js.
 		 *
-		 * @since 1.0.7
+		 * @since 1.0.8
 		 * @param WP_Term[] $terms       Terms to render as tabs.
 		 * @param string    $active_slug Slug of the initially active tab.
 		 * @param bool      $link_mode   True to render real links (archive), false to render JS-toggle tabs (shortcode).

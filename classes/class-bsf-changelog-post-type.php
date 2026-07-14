@@ -36,7 +36,7 @@ class BSF_Changelog_Post_Type {
 	/**
 	 * Add product category custom fields to add new screen.
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.7
 	 * @param string $taxonomy to store taxonomy name.
 	 */
 	public static function add_form_fields( $taxonomy ) {
