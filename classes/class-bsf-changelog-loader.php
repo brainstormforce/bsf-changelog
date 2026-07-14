@@ -374,7 +374,10 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			// /page/N/ segment from the current request. Without this, switching tabs while on page 2+
 			// of one product would carry that page number over to a product with fewer pages and 404
 			// (WordPress correctly 404s a request for a pagination page that doesn't exist).
-			$tab_base_url = $link_mode ? remove_query_arg( 'bsf_product', get_pagenum_link( 1 ) ) : '';
+			// The second argument must be false: the default returns an HTML-escaped URL (& becomes
+			// a numeric entity), which remove_query_arg()/add_query_arg() would then mangle whenever
+			// the URL already carries query args (e.g. plain permalinks). esc_url() on output handles escaping.
+			$tab_base_url = $link_mode ? remove_query_arg( 'bsf_product', get_pagenum_link( 1, false ) ) : '';
 			?>
 			<ul class="bsf-product-tabs">
 				<?php foreach ( $terms as $term ) : ?>
