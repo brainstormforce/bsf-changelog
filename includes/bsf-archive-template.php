@@ -7,16 +7,45 @@
  */
 
 get_header();
+global $bsf_changelog_loader;
 $bsf_changelog_scroll_pagination = get_option( 'bsf_changelog_scroll_pagination' );
 $page_class = isset( $bsf_changelog_scroll_pagination ) && '1' === $bsf_changelog_scroll_pagination || 'yes' === $bsf_changelog_scroll_pagination ? 'bsf-infinite-scroll' : '';
 $bsf_changelog_link_icon = get_option( 'bsf_changelog_link_icon' );
 $link_icon = isset( $bsf_changelog_link_icon ) && '1' === $bsf_changelog_link_icon || 'yes' === $bsf_changelog_link_icon ? '<i class="dashicons dashicons-paperclip"></i>' : '';
 $bsf_changelog_hide_featured_img = get_option( 'bsf_changelog_hide_featured_img' );
-$img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog_hide_featured_img || 'yes' === $bsf_changelog_hide_featured_img ? 'bsf-featured-img-hide' : ''; ?>
+$img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog_hide_featured_img || 'yes' === $bsf_changelog_hide_featured_img ? 'bsf-featured-img-hide' : '';
 
-	<div class="wrap changelog-wraper <?php echo $page_class; ?>">
+// Product tabs are opt-in via Changelog Settings and default to off, so archives without it enabled render exactly as before.
+// When enabled, the active tab also scopes the main query itself (see Bsf_Changelog_Loader::filter_archive_by_product_tab()),
+// so the loop and the_posts_pagination() below always reflect that one product's real, correctly paginated count.
+$bsf_changelog_enable_product_tabs = get_option( 'bsf_changelog_enable_product_tabs' );
+$show_product_tabs                 = ( '1' === $bsf_changelog_enable_product_tabs || 'yes' === $bsf_changelog_enable_product_tabs );
+$product_tabs_terms                = array();
+$active_product_tab_slug           = '';
+$active_product_tab_name           = '';
+
+if ( $show_product_tabs ) {
+	$product_tabs_terms = $bsf_changelog_loader->get_archive_product_tabs_terms();
+	$show_product_tabs  = ! empty( $product_tabs_terms );
+	if ( $show_product_tabs ) {
+		$active_product_tab_slug = $bsf_changelog_loader->get_active_product_tab_slug();
+		foreach ( $product_tabs_terms as $tab_term ) {
+			if ( $tab_term->slug === $active_product_tab_slug ) {
+				$active_product_tab_name = $tab_term->name;
+				break;
+			}
+		}
+	}
+}
+?>
+
+	<div class="wrap changelog-wraper <?php echo $page_class; ?><?php echo $show_product_tabs ? ' bsf-product-tabs-enabled' : ''; ?>">
 		<div id="bsf-changelog-primary" class="content-area">
 			<main id="main" class="in-wrap" role="main">
+
+			<?php if ( $show_product_tabs ) : ?>
+				<?php $bsf_changelog_loader->render_product_tabs_nav( $product_tabs_terms, $active_product_tab_slug, true ); ?>
+			<?php endif; ?>
 
 			<?php
 				$changelog_title     = get_option( 'bsf_changelog_title' );
@@ -116,6 +145,19 @@ $img_class = isset( $bsf_changelog_hide_featured_img ) && '1' === $bsf_changelog
 					</div>
 					<?php
 				endwhile;
+			else :
+				?>
+				<p class="bsf-no-changelogs">
+					<?php
+					if ( $active_product_tab_name ) {
+						/* translators: %s: Product name. */
+						printf( esc_html__( 'No changelogs found for %s yet.', 'bsf-changelog' ), esc_html( $active_product_tab_name ) );
+					} else {
+						esc_html_e( 'No changelogs found.', 'bsf-changelog' );
+					}
+					?>
+				</p>
+				<?php
 			endif;
 			?>
 

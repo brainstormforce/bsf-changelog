@@ -15,6 +15,17 @@
 		}
 	});
 
+	// Toggle-mode product tabs (the [changelog_product_tabs] shortcode only - the archive
+	// page's tabs are real links, since its pagination needs a fresh, server-filtered query per tab).
+	$(document).on('click', '.bsf-product-tabs [data-bsf-product-tab]', function() {
+		var slug = $(this).data('bsf-product-tab');
+		$(this).closest('.bsf-product-tabs').find('.bsf-product-tab').removeClass('active');
+		$(this).closest('.bsf-product-tab').addClass('active');
+		$(this).closest('.bsf-product-tabs-wrap').find('[data-bsf-product-panel]').each(function() {
+			$(this).toggleClass('bsf-tab-hidden', $(this).data('bsf-product-panel') !== slug);
+		});
+	});
+
 	function seeMore(post_id){
 		$( '#' + post_id + ' .bsf-entry-content.content-open' ).css('height', 'auto').show();
 		$( '#' + post_id + ' .bsf-entry-content.content-closed' ).hide();

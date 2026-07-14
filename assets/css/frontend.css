@@ -255,6 +255,60 @@ html {
 	margin-bottom: 0px;
 }
 
+/* Product Tabs */
+.bsf-product-tabs {
+	display: flex !important;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	width: fit-content !important;
+	flex-wrap: wrap;
+	gap: 4px;
+	list-style: none;
+	margin: 0 0 24px;
+	padding: 4px;
+	background-color: #F9F5FF;
+	border-radius: 9999px;
+}
+
+.bsf-product-tabs .bsf-product-tab a,
+.bsf-product-tabs .bsf-product-tab > span {
+	display: inline-block;
+	cursor: pointer;
+	padding: 8px 20px;
+	border-radius: 9999px;
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--ast-global-color-0);
+	text-decoration: none;
+}
+
+.bsf-product-tabs .bsf-product-tab.active a,
+.bsf-product-tabs .bsf-product-tab.active > span {
+	color: #ffffff;
+	background-color: var(--ast-global-color-0);
+}
+
+.bsf-no-changelogs {
+	color: #808080;
+	font-size: 14px;
+	padding: 24px 0;
+	text-align: center;
+}
+
+.bsf-product-tab-view-all {
+	display: inline-block;
+	margin-top: 8px;
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--ast-global-color-0);
+}
+
+.type-chnangelogs.bsf-tab-hidden,
+.bsf-product-tab-panel.bsf-tab-hidden {
+	display: none;
+}
+
 /* Changelog Title */
 
 body.changelog-title-enabled .changelogs-archive-wraper {
@@ -398,6 +452,36 @@ body.post-type-archive-changelog .type-chnangelogs:has(.bsf-changelog-post-wrapp
 
 .bsf-pagination {
 	text-align: center;
+	margin-top: 32px;
+}
+
+.bsf-pagination .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 36px;
+	height: 36px;
+	margin: 0 3px;
+	padding: 0 8px;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 500;
+	color: #4a4a4a;
+	text-decoration: none;
+}
+
+.bsf-pagination a.page-numbers:hover {
+	background-color: #F9F5FF;
+	color: var(--ast-global-color-0);
+}
+
+.bsf-pagination .page-numbers.current {
+	background-color: var(--ast-global-color-0);
+	color: #ffffff;
+}
+
+.bsf-pagination .page-numbers.dots {
+	color: #808080;
 }
 
 .bsf-infinite-scroll .bsf-pagination {

@@ -150,6 +150,62 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			add_filter( 'archive_template', array( $this, 'get_bsf_changelog_archive_template' ) );
 			// Call register settings function.
 			add_action( 'admin_init', array( $this, 'register_bsf_changelogs_plugin_settings' ) );
+			// When Product Tabs are enabled, scope the archive's main query to the active tab so pagination stays correct per product.
+			add_action( 'pre_get_posts', array( $this, 'filter_archive_by_product_tab' ) );
+		}
+
+		/**
+		 * Scope the Changelog archive's main query to the active product tab,
+		 * so `the_posts_pagination()` reflects that single product's real count
+		 * instead of paginating a mixed feed and then hiding rows client-side.
+		 *
+		 * @since 1.0.7
+		 * @param WP_Query $query The main query, passed by reference.
+		 */
+		public function filter_archive_by_product_tab( $query ) {
+			if ( is_admin() || ! $query->is_main_query() || ! $query->is_post_type_archive( BSF_CHANGELOG_POST_TYPE ) ) {
+				return;
+			}
+
+			$enabled = get_option( 'bsf_changelog_enable_product_tabs' );
+			if ( '1' !== $enabled && 'yes' !== $enabled ) {
+				return;
+			}
+
+			$active_slug = $this->get_active_product_tab_slug();
+			if ( ! $active_slug ) {
+				return;
+			}
+
+			$query->set(
+				'tax_query', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+				array(
+					array(
+						'taxonomy' => 'product',
+						'field'    => 'slug',
+						'terms'    => $active_slug,
+					),
+				)
+			);
+		}
+
+		/**
+		 * Get the slug of the currently active product tab, from the `bsf_product`
+		 * request var, falling back to the first configured tab.
+		 *
+		 * @since 1.0.7
+		 * @return string Empty string when tabs aren't available at all.
+		 */
+		public function get_active_product_tab_slug() {
+			$terms = $this->get_archive_product_tabs_terms();
+			if ( empty( $terms ) ) {
+				return '';
+			}
+
+			$slugs     = wp_list_pluck( $terms, 'slug' );
+			$requested = isset( $_GET['bsf_product'] ) && is_string( $_GET['bsf_product'] ) ? sanitize_title( wp_unslash( $_GET['bsf_product'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+			return in_array( $requested, $slugs, true ) ? $requested : $terms[0]->slug;
 		}
 
 		/**
@@ -238,6 +294,100 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_title' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_sub_title' );
 			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_default_raw_url' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_enable_product_tabs' );
+			register_setting( 'bsf-changelogs-settings-group', 'bsf_changelog_product_tabs_order' );
+		}
+
+		/**
+		 * Get 'product' terms matching the given slugs, in that order.
+		 * Falls back to all products (default term order) when no slugs are given.
+		 *
+		 * @since 1.0.7
+		 * @param array $slugs Product term slugs, in the desired display order.
+		 * @return WP_Term[]
+		 */
+		public function get_product_terms_by_slugs( $slugs = array() ) {
+			$terms = get_terms(
+				array(
+					'taxonomy'   => 'product',
+					'hide_empty' => true,
+				)
+			);
+
+			if ( is_wp_error( $terms ) || empty( $terms ) ) {
+				return array();
+			}
+
+			if ( empty( $slugs ) ) {
+				return $terms;
+			}
+
+			$terms_by_slug = array();
+			foreach ( $terms as $term ) {
+				$terms_by_slug[ $term->slug ] = $term;
+			}
+
+			$ordered = array();
+			foreach ( $slugs as $slug ) {
+				if ( isset( $terms_by_slug[ $slug ] ) ) {
+					$ordered[] = $terms_by_slug[ $slug ];
+				}
+			}
+
+			return $ordered;
+		}
+
+		/**
+		 * Get the 'product' terms to show as tabs on the Changelog archive page,
+		 * ordered per the "Product Tabs Order" setting when one is set.
+		 *
+		 * @since 1.0.7
+		 * @return WP_Term[]
+		 */
+		public function get_archive_product_tabs_terms() {
+			$order = get_option( 'bsf_changelog_product_tabs_order' );
+			$slugs = $order ? array_filter( array_map( 'trim', explode( ',', $order ) ) ) : array();
+
+			return $this->get_product_terms_by_slugs( $slugs );
+		}
+
+		/**
+		 * Render the product tabs navigation.
+		 *
+		 * In "link" mode (the archive page) each tab is a real link that re-runs
+		 * the query server-side, so pagination always matches the active product.
+		 * In "toggle" mode (the shortcode) all panels are pre-rendered and a tab
+		 * click just shows/hides the matching one via JS - see frontend.js.
+		 *
+		 * @since 1.0.7
+		 * @param WP_Term[] $terms       Terms to render as tabs.
+		 * @param string    $active_slug Slug of the initially active tab.
+		 * @param bool      $link_mode   True to render real links (archive), false to render JS-toggle tabs (shortcode).
+		 */
+		public function render_product_tabs_nav( $terms, $active_slug, $link_mode = false ) {
+			if ( empty( $terms ) ) {
+				return;
+			}
+			?>
+			<?php
+			// get_pagenum_link( 1 ) resolves to the current query's "page 1" URL - i.e. it strips any
+			// /page/N/ segment from the current request. Without this, switching tabs while on page 2+
+			// of one product would carry that page number over to a product with fewer pages and 404
+			// (WordPress correctly 404s a request for a pagination page that doesn't exist).
+			$tab_base_url = $link_mode ? remove_query_arg( 'bsf_product', get_pagenum_link( 1 ) ) : '';
+			?>
+			<ul class="bsf-product-tabs">
+				<?php foreach ( $terms as $term ) : ?>
+					<li class="bsf-product-tab<?php echo esc_attr( $term->slug === $active_slug ? ' active' : '' ); ?>">
+						<?php if ( $link_mode ) : ?>
+							<a href="<?php echo esc_url( add_query_arg( 'bsf_product', $term->slug, $tab_base_url ) ); ?>"><?php echo esc_html( $term->name ); ?></a>
+						<?php else : ?>
+							<span data-bsf-product-tab="<?php echo esc_attr( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></span>
+						<?php endif; ?>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+			<?php
 		}
 
 		/**
@@ -377,9 +527,12 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * @since 1.0
 		 */
 		function enqueue_front_scripts() {
-			if ( is_post_type_archive( 'changelog' ) || is_tax( 'product' ) ) {
-				wp_enqueue_style( 'bsf-changelog-frontend-style', BSF_CHANGELOG_BASE_URL . 'assets/css/frontend.css' );
-				wp_enqueue_script( 'bsf-changelog-frontend-script', BSF_CHANGELOG_BASE_URL . 'assets/js/frontend.js', array( 'jquery' ), BSF_CHANGELOG_VERSION, true );
+			global $post;
+			$has_tabs_shortcode = ( $post instanceof WP_Post ) && has_shortcode( $post->post_content, 'changelog_product_tabs' );
+
+			if ( is_post_type_archive( 'changelog' ) || is_tax( 'product' ) || $has_tabs_shortcode ) {
+				wp_enqueue_style( 'bsf-changelog-frontend-style', BSF_CHANGELOG_BASE_URL . 'assets/css/frontend.css', array(), $this->get_asset_version( 'assets/css/frontend.css' ) );
+				wp_enqueue_script( 'bsf-changelog-frontend-script', BSF_CHANGELOG_BASE_URL . 'assets/js/frontend.js', array( 'jquery' ), $this->get_asset_version( 'assets/js/frontend.js' ), true );
 				global $wp_query;
 				wp_localize_script(
 					'bsf-changelog-frontend-script',
@@ -400,7 +553,21 @@ if ( ! class_exists( 'Bsf_Changelog_Loader' ) ) {
 		 * @since 1.0
 		 */
 		function enqueue_admin_scripts() {
-			wp_enqueue_style( 'bsf-changelog-options-style', BSF_CHANGELOG_BASE_URL . 'assets/css/admin.css' );
+			wp_enqueue_style( 'bsf-changelog-options-style', BSF_CHANGELOG_BASE_URL . 'assets/css/admin.css', array(), $this->get_asset_version( 'assets/css/admin.css' ) );
+		}
+
+		/**
+		 * Version an asset by its file's last-modified time, so browsers (and any
+		 * staging/CDN cache) always fetch the latest CSS/JS after a deploy instead
+		 * of needing a manual cache clear.
+		 *
+		 * @since 1.0.7
+		 * @param string $relative_path Path relative to the plugin root, e.g. 'assets/js/frontend.js'.
+		 * @return string
+		 */
+		private function get_asset_version( $relative_path ) {
+			$file_path = BSF_CHANGELOG_BASE_DIR . $relative_path;
+			return file_exists( $file_path ) ? (string) filemtime( $file_path ) : BSF_CHANGELOG_VERSION;
 		}
 	}
 
